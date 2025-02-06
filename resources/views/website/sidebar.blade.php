@@ -21,7 +21,7 @@ use App\Danhmucsanpham;
 						<div class="col-md-4 col-xs-4">
 							<div class="sidebar-product-img">
 								<a href="{{ route('indexCode', ['code' => $item->code]) }}">
-									<img src="public/upload/baiviet/{{$item->anhdaidien}}" class="img-responsive" alt="{{$item->name}}">
+									<img src="{{asset('upload/baiviet/'.$item->anhdaidien)}}" class="img-responsive" alt="{{$item->name}}">
 								</a>
 							</div>
 						</div>

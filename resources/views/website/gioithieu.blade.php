@@ -17,7 +17,7 @@
     <meta name="twitter:title" content="{{$gioithieu->title}}" />
     <meta name="twitter:site" content="@BrnBhaskar" />
     @foreach($hinhanhdaidien as $anh)
-        <meta property="og:image" content="{{ url('/') }}/public/upload/slider/{{$anh->anhdaidien}}" />
+        <meta property="og:image" content="{{ asset('upload/slider/'.$anh->anhdaidien) }}" />
         <meta property="og:image:url" content="" />
         <meta property="og:image:size" content="300" />
     @endforeach

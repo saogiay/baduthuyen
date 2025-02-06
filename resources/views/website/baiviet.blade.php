@@ -109,7 +109,7 @@
                                 <div class="box-index-post">
                                     <div class="box-index-post-img box-index-post-img-page">
                                         <a href="{{ route('indexCode', ['code' => $item->code]) }}" title="{{ $item->name }}">
-                                            <img src="public/upload/baiviet/{{ $item->anhdaidien }}" class="img-responsive" alt="{{ $item->name }}">
+                                            <img src="{{asset('upload/baiviet/'.$item->anhdaidien)}}" class="img-responsive" alt="{{ $item->name }}">
                                         </a>
                                         <div class="box-index-post-info">
                                             <ul class="notStyle">

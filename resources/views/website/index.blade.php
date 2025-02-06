@@ -23,7 +23,7 @@ $cauhinh = DB::table('cauhinh')->first();
     <meta name="twitter:title" content="{{$cauhinhseo->title}}" />
     <meta name="twitter:site" content="@BrnBhaskar" />
     @foreach($hinhanhdaidien as $anh)
-        <meta property="og:image" content="{{ url('/') }}/public/upload/slider/{{$anh->anhdaidien}}" />
+        <meta property="og:image" content="{{ asset('upload/slider/'.$anh->anhdaidien) }}" />
         <meta property="og:image:url" content="{!!url()->full();!!}" />
         <meta property="og:image:size" content="300" />
     @endforeach
@@ -49,7 +49,7 @@ $cauhinh = DB::table('cauhinh')->first();
              >
             <?php $i++ ?>
                 <a href="{{$item->linkbaiviet}}">
-                  <img src="public/upload/slider/{{$item->anhdaidien}}" alt="Slider">
+                  <img src="{{asset('upload/slider/'.$item->anhdaidien)}}" alt="Slider">
                 </a>
             </div>
             @endforeach
@@ -125,7 +125,7 @@ $cauhinh = DB::table('cauhinh')->first();
                             <div class="box-index-post">
                                 <div class="box-index-post-img">
                                     <a href="{{ route('indexCode', ['code' => $item->code]) }}" title="{{ $item->name }}">
-                                        <img src="public/upload/baiviet/{{ $item->anhdaidien }}" class="img-responsive" alt="{{ $item->name }}">
+                                        <img src="{{asset('upload/baiviet/'.$item->anhdaidien)}}" class="img-responsive" alt="{{ $item->name }}">
                                     </a>
                                     <div class="box-index-post-info">
                                         <ul class="notStyle">
@@ -167,7 +167,7 @@ $cauhinh = DB::table('cauhinh')->first();
                             <div class="new-block">
                                 <div class="new-block-img">
                                     <a href="{{ route('indexCode', ['code' => $item2->code]) }}">
-                                        <img src="public/upload/baiviet/{{ $item2->anhdaidien }}" alt="{{ $item2->name }}" />
+                                        <img src="{{asset('upload/baiviet/'.$item2->anhdaidien)}}" alt="{{ $item2->name }}" />
                                     </a>
                                 </div>
                                 <div class="new-block-cap">
@@ -215,7 +215,7 @@ $cauhinh = DB::table('cauhinh')->first();
                     <div class="col-md-3 col-xs-6">
                         <div class="activity-block">
                             <a href="{{ route('indexCode', ['code' => $item->code]) }}">
-                                <img src="public/upload/baiviet/{{ $item->anhdaidien }}" class="hover-shadow">
+                                <img src="{{asset('upload/baiviet/'.$item->anhdaidien)}}" class="hover-shadow">
                                 <div class="activity-block-cap">
                                     {{ $item->name }}
                                 </div>
@@ -284,7 +284,7 @@ $cauhinh = DB::table('cauhinh')->first();
                                             <div class="box-product-index">
                                                 <div class="box-product-index-img">
                                                     <a href="{{ route('indexCode', ['code' => $item->code]) }}" class="a-img-product">
-                                                        <img src="public/upload/sanpham/{{$item->anhdaidien}}" class="img-responsive" alt="{{$item->name}}">
+                                                        <img src="{{asset('upload/sanpham/'.$item->anhdaidien)}}" class="img-responsive" alt="{{$item->name}}">
                                                     </a>
                                                     <div class="quick-view">
                                                         <a href="{{ route('indexCode', ['code' => $item->code]) }}">Thông tin chi tiết</a>
@@ -348,7 +348,7 @@ $cauhinh = DB::table('cauhinh')->first();
                     <div class="new-block">
                         <div class="new-block-img">
                             <a href="{{ route('indexCode', ['code' => $item->code]) }}">
-                                <img src="public/upload/baiviet/{{ $item->anhdaidien }}" alt="{{ $item->name }}">
+                                <img src="{{asset('upload/baiviet/'.$item->anhdaidien)}}" alt="{{ $item->name }}">
                             </a>
                         </div>
                         <div class="new-block-cap">
@@ -413,7 +413,7 @@ $cauhinh = DB::table('cauhinh')->first();
         <?php $i += 1; ?>
         <div class="mySlides">
             <div class="numbertext">{{ $i }} / {{ count($hoatdong) }}</div>
-            <img src="public/upload/hoatdong/{{ $item->anhdaidien }}" style="width:100%">
+            <img src="{{asset('upload/hoatdong/'.$item->anhdaidien)}}" style="width:100%">
         </div>
         @endforeach
 
@@ -430,7 +430,7 @@ $cauhinh = DB::table('cauhinh')->first();
         <?php $y += 1; ?>
         <!-- Thumbnail image controls -->
         <div class="column">
-            <img class="demo" src="public/upload/hoatdong/{{ $item->anhdaidien }}" onclick="currentSlide({{ $y }})" alt="{{ $item->name }}">
+            <img class="demo" src="{{asset('upload/hoatdong/'.$item->anhdaidien)}}" onclick="currentSlide({{ $y }})" alt="{{ $item->name }}">
         </div>
         @endforeach
 

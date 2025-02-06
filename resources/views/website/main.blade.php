@@ -9,21 +9,21 @@ use App\Danhmucsanpham;
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<base href="{{asset('')}}">
-		<link rel="stylesheet" href="css/frontend/bootstrap.min.css">
-		<link rel="stylesheet" href="public/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/frontend/stellarnav.css">
-		<link rel="stylesheet" href="css/frontend/lightslider.css">
-		<link rel="stylesheet" href="css/frontend/owl.carousel.min.css">
-        <link rel="stylesheet" href="css/frontend/owl.theme.default.min.css">
+		<link rel="stylesheet" href="{{asset('css/frontend/bootstrap.min.css')}}">
+		<link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
+		<link rel="stylesheet" href="{{asset('css/frontend/stellarnav.css')}}">
+		<link rel="stylesheet" href="{{asset('css/frontend/lightslider.css')}}">
+		<link rel="stylesheet" href="{{asset('css/frontend/owl.carousel.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/frontend/owl.theme.default.min.css')}}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@400;700&family=Shrikhand&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="css/frontend/alo.css">
-		<link rel="stylesheet" href="css/frontend/style.css">
+		<link rel="stylesheet" href="{{asset('css/frontend/alo.css')}}">
+		<link rel="stylesheet" href="{{asset('css/frontend/style.css')}}">
 
 		<meta name="robots" content="index,follow" />
 		<meta name="google-site-verification" content="sxDrQyN6kO8uuQWwTP2EhvlDdY-4av45EOGXRNQ2AFY">
-		<link rel="shortcut icon" href="public/upload/cauhinh/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="{{asset('upload/cauhinh/favicon.ico')}}" type="image/x-icon">
 		@yield('meta_tags')
 		<?php $cauhinhseo = DB::table('cauhinhseo')->first() ?>
 		{!! $cauhinhseo->webmastertool !!}
@@ -113,7 +113,7 @@ use App\Danhmucsanpham;
 							<div class="col-md-4 col-sm-4 col-xs-4 no-pad-right">
 								<div class="logo-site">
 									<a href="{{ url('/') }}">
-										<img class="img-responsive" src="public/upload/cauhinh/{{ $cauhinh->logo }}" alt="{{ $cauhinh->tendoanhnghiep }}">
+										<img class="img-responsive" src="{{asset('upload/cauhinh/'.$cauhinh->logo)}}" alt="{{ $cauhinh->tendoanhnghiep }}">
 									</a>
 								</div>
 								<button type="button" class="hamburger is-closed" data-toggle="offcanvas">
@@ -125,7 +125,7 @@ use App\Danhmucsanpham;
 
 							<div class="col-xs-6 mobile-block-desktop-none">
 								<div class="thuong-hieu">
-									<img src="images/logo-nippon-paint.png" alt="Logo Nippon Paint">
+									<img src="{{asset('images/logo-nippon-paint.png')}}" alt="Logo Nippon Paint">
 								</div>
 							</div>
 
@@ -144,7 +144,7 @@ use App\Danhmucsanpham;
 							<div class="col-md-1 col-sm-1 col-xs-1 mobile-none-desktop-block"></div>
 							<div class="col-md-3 col-sm-3 col-xs-4 mobile-none-desktop-block">
 								<div class="thuong-hieu">
-									<img src="images/logo-nippon-paint.png" alt="Logo Nippon Paint">
+									<img src="{{asset('images/logo-nippon-paint.png')}}" alt="Logo Nippon Paint">
 								</div>
 							</div>
 		        		</div>
@@ -242,7 +242,7 @@ use App\Danhmucsanpham;
 	            <ul class="nav sidebar-nav">
 	            	<li class="sidebar-logo">
 		            	<a href="">
-							<img src="public/upload/cauhinh/{{ $cauhinh->logo }}" alt="Logo">
+							<img src="{{asset('upload/cauhinh/'.$cauhinh->logo)}}" alt="Logo">
 						</a>
 		            </li>
 	                <li class="sidebar-brand">
@@ -349,11 +349,11 @@ use App\Danhmucsanpham;
 			</ul>
 		</div>
 
-		<script src="js/frontend/jquery.min.js"></script>
-		<script src="js/frontend/bootstrap.min.js"></script>
-		<script src="js/frontend/stellarnav.js"></script>
-		<script src="js/frontend/lightslider.js"></script>
-		<script src="js/frontend/owl.carousel.js"></script>
+		<script src="{{asset('js/frontend/jquery.min.js')}}"></script>
+		<script src="{{asset('js/frontend/bootstrap.min.js')}}"></script>
+		<script src="{{asset('js/frontend/stellarnav.js')}}"></script>
+		<script src="{{asset('js/frontend/lightslider.js')}}"></script>
+		<script src="{{asset('js/frontend/owl.carousel.js')}}"></script>
 		<script type="text/javascript">
         	function googleTranslateElementInit() {
         		new google.translate.TranslateElement({pageLanguage: ''}, 'google_translate_element');
