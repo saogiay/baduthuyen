@@ -17,7 +17,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="{{$sanpham->title}}" />
     <meta name="twitter:site" content="@BrnBhaskar" />
-    <meta property="og:image" content="{{ url('/') }}/public/upload/sanpham/{{$sanpham->anhdaidien}}" />
+    <meta property="og:image" content="{{ asset('upload/sanpham/'.$sanpham->anhdaidien) }}" />
     <meta property="og:image:url" content="{!!url()->full();!!}" />
     <meta property="og:image:size" content="300" />
 @endsection
@@ -62,14 +62,14 @@
                                                         @if(count($hinhanhsanpham) > 0)
 
                                                         @foreach($hinhanhsanpham as $image)
-                                                        <li data-thumb="public/upload/sanpham/hinhanh/{{$image->hinhanhsanpham}}"> 
-                                                            <img src="public/upload/sanpham/hinhanh/{{$image->hinhanhsanpham}}" class="img-responsive" alt="{{$sanpham->name}}" />
+                                                        <li data-thumb="{{ asset('upload/sanpham/hinhanh/'.$image->hinhanhsanpham) }}"> 
+                                                            <img src="{{ asset('upload/sanpham/hinhanh/'.$image->hinhanhsanpham) }}" class="img-responsive" alt="{{$sanpham->name}}" />
                                                         </li>
                                                         @endforeach
 
                                                         @else
-                                                        <li data-thumb="public/upload/sanpham/{{$sanpham->anhdaidien}}"> 
-                                                            <img src="public/upload/sanpham/{{$sanpham->anhdaidien}}" class="img-responsive" alt="{{$sanpham->name}}" />
+                                                        <li data-thumb="{{ asset('upload/sanpham/'.$sanpham->anhdaidien) }}"> 
+                                                            <img src="{{ asset('upload/sanpham/'.$sanpham->anhdaidien) }}" class="img-responsive" alt="{{$sanpham->name}}" />
                                                         </li>
                                                         @endif
                                                     </ul>
@@ -247,7 +247,7 @@
                                 <div class="box-product-index">
                                     <div class="box-product-index-img">
                                         <a href="{{ route('indexCode', ['code' => $item->code]) }}" class="a-img-product">
-                                            <img src="public/upload/sanpham/{{$item->anhdaidien}}" class="img-responsive" alt="{{$item->name}}">
+                                            <img src="{{ asset('upload/sanpham/'.$item->anhdaidien) }}" class="img-responsive" alt="{{$item->name}}">
                                         </a>
                                         <div class="quick-view">
                                             <a href="{{ route('indexCode', ['code' => $item->code]) }}">Thông tin chi tiết</a>

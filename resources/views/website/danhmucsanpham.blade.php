@@ -18,7 +18,7 @@
     <meta name="twitter:title" content="{{$danhmucsanpham->title}}" />
     <meta name="twitter:site" content="@BrnBhaskar" />
     @foreach($hinhanhdaidien as $anh)
-        <meta property="og:image" content="{{ url('/') }}/public/upload/slider/{{$anh->anhdaidien}}" />
+        <meta property="og:image" content="{{ asset('upload/slider/'.$anh->anhdaidien) }}" />
         <meta property="og:image:url" content="" />
         <meta property="og:image:size" content="300" />
     @endforeach
@@ -62,7 +62,7 @@
                                 <div class="box-product-index margin-bottom-10">
                                     <div class="box-product-index-img box-product-index-img-page">
                                         <a href="{{ route('indexCode', ['code' => $item->code]) }}" class="a-img-product">
-                                            <img src="public/upload/sanpham/{{$item->anhdaidien}}" class="img-responsive" alt="{{$item->name}}">
+                                            <img src="{{asset('upload/sanpham/'.$item->anhdaidien)}}" class="img-responsive" alt="{{$item->name}}">
                                         </a>
                                         <div class="quick-view">
                                             <a href="{{ route('indexCode', ['code' => $item->code]) }}">Thông tin chi tiết</a>

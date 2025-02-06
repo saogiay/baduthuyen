@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="error-404">
-                        <img src="images/404.png" class="img-responsive" alt="404 Not Found" />
+                        <img src="{{asset('images/404.png')}}" class="img-responsive" alt="404 Not Found" />
                         <div class="error-404">
                             <div class="error-404-title">
                                 Trang bạn yêu cầu không tồn tại...

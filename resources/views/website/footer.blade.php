@@ -92,7 +92,7 @@
                         Hotline liên hệ
                     </div>
                     <div class="hotlineBot">
-                        <img class="imgHl" src="images/hotline-foot.png" alt="Hotline footer">
+                        <img class="imgHl" src="{{asset('images/hotline-foot.png')}}" alt="Hotline footer">
                         <div class="boxHotline">
                             <b>{{ $cauhinh->hotline1 }}</b>
                             <i>(Tất cả các ngày trong tuần)</i>
