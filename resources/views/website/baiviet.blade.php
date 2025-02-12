@@ -2,22 +2,22 @@
 
 @section('meta_tags')
 
-    <title>{{$baivietChitiet->title}}</title>
-    <meta name='description' itemprop='description' content='{{$baivietChitiet->description}}' />
+    <title>{{$baivietChitiet->title ?? $baivietChitiet->name}}</title>
+    <meta name='description' itemprop='description' content='{{$baivietChitiet->description ?? $baivietChitiet->motabaiviet}}' />
     <meta property='article:published_time' content='{{$baivietChitiet->created_at}}' />
     <link rel="canonical" href="{{url()->current()}}" />
     <meta property='article:section' content='event' />
-    <meta property="og:description" content="{{$baivietChitiet->description}}" />
-    <meta property="og:title" content="{{$baivietChitiet->title}}" />
+    <meta property="og:description" content="{{$baivietChitiet->description ?? $baivietChitiet->motabaiviet}}" />
+    <meta property="og:title" content="{{$baivietChitiet->title ?? $baivietChitiet->name}}" />
     <meta property="og:url" content="{{url()->current()}}" />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="en-us" />
     <meta property="og:locale:alternate" content="vi-vn" />
-    <meta property="og:site_name" content="{{env('SITE_URL', $baivietChitiet->title)}}" />
+    <meta property="og:site_name" content="{{env('SITE_URL', $baivietChitiet->title ?? $baivietChitiet->name)}}" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{$baivietChitiet->title}}" />
+    <meta name="twitter:title" content="{{$baivietChitiet->title ?? $baivietChitiet->name}}" />
     <meta name="twitter:site" content="@BrnBhaskar" />
-    <meta property="og:image" content="{{ url('/') }}/public/upload/baiviet/{{$baivietChitiet->anhdaidien}}" />
+    <meta property="og:image" content="{{ asset('upload/baiviet/'.$baivietChitiet->anhdaidien) }}" />
     <meta property="og:image:url" content="{!!url()->full();!!}" />
     <meta property="og:image:size" content="300" />
 @endsection

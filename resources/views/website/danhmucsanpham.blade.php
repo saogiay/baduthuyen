@@ -2,7 +2,7 @@
 
 @section('meta_tags')
 
-    <title>{{$danhmucsanpham->title}}</title>
+    <title>{{$danhmucsanpham->title ?? $danhmucsanpham->name}}</title>
     <meta name='description' itemprop='description' content='{{$danhmucsanpham->description}}' />
     <meta property='article:published_time' content='{{$danhmucsanpham->created_at}}' />
     <link rel="canonical" href="{{url()->current()}}" />
@@ -13,9 +13,9 @@
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="en-us" />
     <meta property="og:locale:alternate" content="vi-vn" />
-    <meta property="og:site_name" content="{{env('SITE_URL', $danhmucsanpham->title)}}" />
+    <meta property="og:site_name" content="{{env('SITE_URL', $danhmucsanpham->title ?? $danhmucsanpham->name)}}" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{$danhmucsanpham->title}}" />
+    <meta name="twitter:title" content="{{$danhmucsanpham->title ?? $danhmucsanpham->name}}" />
     <meta name="twitter:site" content="@BrnBhaskar" />
     @foreach($hinhanhdaidien as $anh)
         <meta property="og:image" content="{{ asset('upload/slider/'.$anh->anhdaidien) }}" />

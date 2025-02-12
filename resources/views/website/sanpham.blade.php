@@ -2,20 +2,20 @@
 
 @section('meta_tags')
 
-    <title>{{$sanpham->title}}</title>
-    <meta name='description' itemprop='description' content='{{$sanpham->description}}' />
+    <title>{{$sanpham->title ?? $sanpham->name}}</title>
+    <meta name='description' itemprop='description' content='{{$sanpham->description ?? $sanpham->motasanpham}}' />
     <meta property='article:published_time' content='{{$sanpham->created_at}}' />
     <link rel="canonical" href="{{url()->current()}}" />
     <meta property='article:section' content='event' />
-    <meta property="og:description" content="{{$sanpham->description}}" />
-    <meta property="og:title" content="{{$sanpham->title}}" />
+    <meta property="og:description" content="{{$sanpham->description ?? $sanpham->motasanpham}}" />
+    <meta property="og:title" content="{{$sanpham->title ?? $sanpham->name}}" />
     <meta property="og:url" content="{{url()->current()}}" />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="en-us" />
     <meta property="og:locale:alternate" content="vi-vn" />
-    <meta property="og:site_name" content="{{env('SITE_URL', $sanpham->title)}}" />
+    <meta property="og:site_name" content="{{env('SITE_URL', $sanpham->title ?? $sanpham->name)}}" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{$sanpham->title}}" />
+    <meta name="twitter:title" content="{{$sanpham->title ?? $sanpham->name}}" />
     <meta name="twitter:site" content="@BrnBhaskar" />
     <meta property="og:image" content="{{ asset('upload/sanpham/'.$sanpham->anhdaidien) }}" />
     <meta property="og:image:url" content="{!!url()->full();!!}" />

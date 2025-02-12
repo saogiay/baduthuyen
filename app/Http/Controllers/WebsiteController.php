@@ -18,6 +18,7 @@ use Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App;
+
 class WebsiteController extends Controller
 {
 
@@ -29,16 +30,16 @@ class WebsiteController extends Controller
         $danhmucsanpham = DB::table('danhmucsanpham')->where('danhmuccha_id', 0)->orWhere('danhmuccha_id', NULL)->limit(1)->get();
         $doitac = DB::table('doitac')->get();
         $hoatdong = DB::table('hoatdong')->get();
-      	$baiviet = DB::table('baiviet')->where('status2', 1)->limit(8)->get();
-    	return view('website.index', [
+        $baiviet = DB::table('baiviet')->where('status2', 1)->limit(8)->get();
+        return view('website.index', [
             'cauhinhseo' => $cauhinhseo,
             'gioithieu' => $gioithieu,
             'hinhanhdaidien' => $hinhanhdaidien,
             'danhmucsanpham' => $danhmucsanpham,
             'doitac' => $doitac,
             'hoatdong' => $hoatdong,
-          	'baiviet' => $baiviet
-    	]);
+            'baiviet' => $baiviet
+        ]);
     }
 
     public function error()
@@ -53,12 +54,12 @@ class WebsiteController extends Controller
 
     public function show($code, Request $request)
     {
-        $danhmucbaiviet = Danhmucbaiviet::where('code',$code)->first();
-        $baivietChitiet = Baiviet::where('code',$code)->first();
-        $danhmucsanpham = Danhmucsanpham::where('code',$code)->first();
+        $danhmucbaiviet = Danhmucbaiviet::where('code', $code)->first();
+        $baivietChitiet = Baiviet::where('code', $code)->first();
+        $danhmucsanpham = Danhmucsanpham::where('code', $code)->first();
         $sanpham = Sanpham::where('code', $code)->first();
         $hinhanhdaidien = DB::table('slider')->orderBy('id', 'desc')->limit(1)->get();
-        if($danhmucbaiviet){
+        if ($danhmucbaiviet) {
             $baiviet = Baiviet::where('danhmucbaiviet_id', $danhmucbaiviet->id)->orderBy('id', 'desc')->paginate(10);
             return view('website.danhmucbaiviet', [
                 'danhmucbaiviet' => $danhmucbaiviet,
@@ -67,7 +68,7 @@ class WebsiteController extends Controller
             ]);
         }
         // End danh mục bài tiết
-        elseif($baivietChitiet){
+        elseif ($baivietChitiet) {
             $baivietChitiet->count_page += 1;
             $baivietChitiet->save();
             $danhmucbaivietChitiet = DB::table('danhmucbaiviet')->where('id', $baivietChitiet->danhmucbaiviet_id)->first();
@@ -79,32 +80,32 @@ class WebsiteController extends Controller
             ]);
         }
         // End chi tiết bài viết
-        elseif($danhmucsanpham){
-            if($danhmucsanpham->danhmuccha_id == 0){
+        elseif ($danhmucsanpham) {
+            if ($danhmucsanpham->danhmuccha_id == 0) {
                 $danhmucsanphamCon = DB::table('danhmucsanpham')->where('danhmuccha_id', $danhmucsanpham->id)->get();
                 return view('website.danhmucsanphamCon', [
                     'danhmucsanpham' => $danhmucsanpham,
                     'danhmucsanphamCon' => $danhmucsanphamCon,
                     'hinhanhdaidien' => $hinhanhdaidien,
                 ]);
-            }else{
+            } else {
                 $dieukien[] = $danhmucsanpham->id;
-                $danhmucsanpham1 = Danhmucsanpham::where('danhmuccha_id',$danhmucsanpham->id)->get();
-                if(count($danhmucsanpham1) > 0)
-                foreach ($danhmucsanpham1 as $item1) {
-                    $dieukien[] = $item1->id;
-                    $danhmucsanpham2 = Danhmucsanpham::where('danhmuccha_id',$item1->id)->get();
-                    if(count($danhmucsanpham2) > 0)
-                    foreach ($danhmucsanpham2 as $item2) {
-                        $dieukien[] = $item2->id;
-                        $danhmucsanpham3 = Danhmucsanpham::where('danhmuccha_id',$item2->id)->get();
-                        if(count($danhmucsanpham3) > 0)
-                        foreach ($danhmucsanpham3 as $item3) {
-                            $dieukien[] = $item3->id;
-                        }
+                $danhmucsanpham1 = Danhmucsanpham::where('danhmuccha_id', $danhmucsanpham->id)->get();
+                if (count($danhmucsanpham1) > 0)
+                    foreach ($danhmucsanpham1 as $item1) {
+                        $dieukien[] = $item1->id;
+                        $danhmucsanpham2 = Danhmucsanpham::where('danhmuccha_id', $item1->id)->get();
+                        if (count($danhmucsanpham2) > 0)
+                            foreach ($danhmucsanpham2 as $item2) {
+                                $dieukien[] = $item2->id;
+                                $danhmucsanpham3 = Danhmucsanpham::where('danhmuccha_id', $item2->id)->get();
+                                if (count($danhmucsanpham3) > 0)
+                                    foreach ($danhmucsanpham3 as $item3) {
+                                        $dieukien[] = $item3->id;
+                                    }
+                            }
                     }
-                }
-                $sanpham = Sanpham::whereIn('danhmucsanpham_id',$dieukien)->orderBy('id', 'desc')->paginate(20);  
+                $sanpham = Sanpham::whereIn('danhmucsanpham_id', $dieukien)->orderBy('id', 'desc')->paginate(20);
             }
 
             return view('website.danhmucsanpham', [
@@ -114,7 +115,7 @@ class WebsiteController extends Controller
             ]);
         }
         // End danh mục sản phẩm
-        elseif($sanpham){
+        elseif ($sanpham) {
             $danhmucsanphamChitiet = DB::table('danhmucsanpham')->where('id', $sanpham->danhmucsanpham_id)->first();
             $hinhanhsanpham = Hinhanhsanpham::where('sanpham_id', $sanpham->id)->get();
             $sanphamlienquan = Sanpham::where('danhmucsanpham_id', $sanpham->danhmucsanpham_id)->orderBy('id', 'desc')->limit(5)->get();
@@ -128,7 +129,7 @@ class WebsiteController extends Controller
             ]);
         }
         // End sản phẩm
-        elseif($code == 'gioi-thieu'){
+        elseif ($code == 'gioi-thieu') {
             $gioithieu = DB::table('gioithieu')->first();
             return view('website.gioithieu', [
                 'gioithieu' => $gioithieu,
@@ -136,13 +137,13 @@ class WebsiteController extends Controller
             ]);
         }
         // End giới thiệu
-        elseif($code == 'lien-he'){
+        elseif ($code == 'lien-he') {
             return view('website.lienhe', [
                 'hinhanhdaidien' => $hinhanhdaidien,
             ]);
         }
         // End liên hệ
-        elseif($code == 'sitemap.xml'){
+        elseif ($code == 'sitemap.xml') {
             $danhmucbaivietList = Danhmucbaiviet::latest()->get();
             $danhmucsanphamList = Danhmucsanpham::latest()->get();
             $baivietList = Baiviet::latest()->get();
@@ -155,7 +156,7 @@ class WebsiteController extends Controller
             ])->header('Content-Type', 'text/xml');
         }
         // End sitemap
-        else{
+        else {
             return redirect()->route('error');
         }
     }
@@ -163,14 +164,14 @@ class WebsiteController extends Controller
 
     public function post($code, Request $request)
     {
-        if($code == 'tim-kiem'){
+        if ($code == 'tim-kiem') {
             $tukhoa = $request->tukhoa;
             $sanpham = DB::table('sanpham')
-                                    ->where('name', 'like', '%'.$request->tukhoa.'%')
-                                    ->orWhere('code', 'like', '%'.$request->tukhoa.'%')
-                                    ->orWhere('motasanpham', 'like', '%'.$request->tukhoa.'%')
-                                    ->orWhere('giasanpham', 'like', '%'.$request->tukhoa.'%')
-                                    ->paginate(10);
+                ->where('name', 'like', '%' . $request->tukhoa . '%')
+                ->orWhere('code', 'like', '%' . $request->tukhoa . '%')
+                ->orWhere('motasanpham', 'like', '%' . $request->tukhoa . '%')
+                ->orWhere('giasanpham', 'like', '%' . $request->tukhoa . '%')
+                ->paginate(10);
             $hinhanhdaidien = DB::table('slider')->orderBy('id', 'desc')->limit(1)->get();
             return view('website.timkiem', [
                 'tukhoa' => $tukhoa,
@@ -179,10 +180,8 @@ class WebsiteController extends Controller
             ]);
         }
         // End tìm kiếm
-        else{
+        else {
             return redirect()->route('error');
         }
-
     }
-
 }
