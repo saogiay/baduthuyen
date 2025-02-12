@@ -2,20 +2,20 @@
 
 @section('meta_tags')
 
-    <title>{{$danhmucbaiviet->title}}</title>
+    <title>{{$danhmucbaiviet->title ?? $danhmucbaiviet->name}}</title>
     <meta name='description' itemprop='description' content='{{$danhmucbaiviet->description}}' />
     <meta property='article:published_time' content='{{$danhmucbaiviet->created_at}}' />
     <link rel="canonical" href="{{url()->current()}}" />
     <meta property='article:section' content='event' />
     <meta property="og:description" content="{{$danhmucbaiviet->description}}" />
-    <meta property="og:title" content="{{$danhmucbaiviet->title}}" />
+    <meta property="og:title" content="{{$danhmucbaiviet->title ?? $danhmucbaiviet->name}}" />
     <meta property="og:url" content="{{url()->current()}}" />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="en-us" />
     <meta property="og:locale:alternate" content="vi-vn" />
-    <meta property="og:site_name" content="{{env('SITE_URL', $danhmucbaiviet->title)}}" />
+    <meta property="og:site_name" content="{{env('SITE_URL', $danhmucbaiviet->title ?? $danhmucbaiviet->name)}}" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{$danhmucbaiviet->title}}" />
+    <meta name="twitter:title" content="{{$danhmucbaiviet->title ?? $danhmucbaiviet->name}}" />
     <meta name="twitter:site" content="@BrnBhaskar" />
     @foreach($hinhanhdaidien as $anh)
         <meta property="og:image" content="{{ asset('upload/slider/'.$anh->anhdaidien) }}" />
