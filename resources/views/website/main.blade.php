@@ -40,7 +40,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="{{ $title }}" />
     <meta name="twitter:site" content="@BrnBhaskar" />
-    @if ($hinhanhdaidien)
+    @if (isset($hinhanhdaidien))
         <meta property="og:image" content="{{ $hinhanhdaidien }}" />
         <meta property="og:image:url" content="{{ $hinhanhdaidien }}" />
         <meta property="og:image:size" content="300" />
