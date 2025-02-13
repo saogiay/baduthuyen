@@ -9,15 +9,15 @@ class GioithieuController extends Controller
 {
     public function index()
     {
-    	$gioithieu = Gioithieu::paginate(15);
-    	return view('admin.gioithieu.index',[
+        $gioithieu = Gioithieu::paginate(15);
+        return view('admin.gioithieu.index', [
             'gioithieu' => $gioithieu,
         ]);
     }
 
     public function create()
     {
-    	return view('admin.gioithieu.create');
+        return view('admin.gioithieu.create');
     }
 
     public function createPost(Request $request)
@@ -32,15 +32,15 @@ class GioithieuController extends Controller
         ]);
         $gioithieu->save();
 
-    	return redirect('admin/gioithieu/index')->with('thongbao', 'Thêm mới thành công !');
+        return redirect('admin/gioithieu/index')->with('thongbao', 'Thêm mới thành công !');
     }
 
     public function update($id)
     {
         $gioithieuAll = Gioithieu::all();
-    	$gioithieu = Gioithieu::find($id);
-    	return view('admin.gioithieu.update',[
-            'gioithieu' => $gioithieu, 
+        $gioithieu = Gioithieu::find($id);
+        return view('admin.gioithieu.update', [
+            'gioithieu' => $gioithieu,
             'gioithieuAll' => $gioithieuAll,
         ]);
     }
@@ -48,7 +48,7 @@ class GioithieuController extends Controller
     public function updatePost(Request $request, $id)
     {
         // dd($request->all());
-    	$gioithieu = Gioithieu::find($id);
+        $gioithieu = Gioithieu::find($id);
 
         $gioithieu->fill([
             'noidunggioithieu' => $request->noidunggioithieu,
@@ -58,27 +58,24 @@ class GioithieuController extends Controller
             'gioithieungan' => $request->gioithieungan,
         ]);
 
-        if($request->hasFile('anhdaidien'))
-        {
+        if ($request->hasFile('anhdaidien')) {
             $file = $request->file('anhdaidien');
             $duoi_anhdaidien = $file->getClientOriginalExtension();
-            if($duoi_anhdaidien != 'jpg' && $duoi_anhdaidien != 'png' && $duoi_anhdaidien != 'jpeg')
-            {
-                return redirect('admin/gioithieu/update/'.$id)->with('thongbao_update', 'Bạn chỉ được chọn file ảnh có đuôi jpg, png, jpeg !');
+            if ($duoi_anhdaidien != 'jpg' && $duoi_anhdaidien != 'png' && $duoi_anhdaidien != 'jpeg') {
+                return redirect('admin/gioithieu/update/' . $id)->with('thongbao_update', 'Bạn chỉ được chọn file ảnh có đuôi jpg, png, jpeg !');
             }
             $name = $file->getClientOriginalName();
-            $anhdaidien = str_random(4)."_".$name;
-            while(file_exists("public/upload/gioithieu/".$anhdaidien))
-            {
-                $anhdaidien = str_random(4)."_".$name;
+            $anhdaidien = str_random(4) . "_" . $name;
+            while (file_exists("public/upload/gioithieu/" . $anhdaidien)) {
+                $anhdaidien = str_random(4) . "_" . $name;
             }
             $file->move("public/upload/gioithieu", $anhdaidien);
-            if($gioithieu->anhdaidien != NULL){
-                unlink("public/upload/gioithieu/".$gioithieu->anhdaidien);
+            if ($gioithieu->anhdaidien != NULL) {
+                unlink("public/upload/gioithieu/" . $gioithieu->anhdaidien);
             }
             $gioithieu->anhdaidien = $anhdaidien;
         }
-        
+
         $gioithieu->save();
 
         return redirect('admin/gioithieu/update/1')->with('thongbao', 'Sửa thành công !');
@@ -87,16 +84,16 @@ class GioithieuController extends Controller
     public function view($id)
     {
         $gioithieu = Gioithieu::find($id);
-        return view('admin.gioithieu.view',[
-            'gioithieu' => $gioithieu, 
+        return view('admin.gioithieu.view', [
+            'gioithieu' => $gioithieu,
         ]);
     }
 
     public function delete($id)
     {
-    	$gioithieu = Gioithieu::find($id);
-    	$gioithieu->delete();
-    	return redirect('admin/gioithieu/index')->with('thongbao', 'Bạn đã xóa thành công !');
+        $gioithieu = Gioithieu::find($id);
+        $gioithieu->delete();
+        return redirect('admin/gioithieu/index')->with('thongbao', 'Bạn đã xóa thành công !');
     }
 
     public function upload(Request $request)
@@ -120,7 +117,7 @@ class GioithieuController extends Controller
             //Upload File
             $request->file('upload')->storeAs('uploads', $filenametostore);
 
-           // $url = Storage::putFileAs('avatars', $request->file('upload'), $filenametostore);
+            // $url = Storage::putFileAs('avatars', $request->file('upload'), $filenametostore);
 
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
             $url = asset('public/uploads/' . $filenametostore);
