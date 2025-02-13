@@ -182,7 +182,8 @@ class WebsiteController extends Controller
                 'gioithieu' => $gioithieu,
                 'hinhanhdaidien' => $hinhanhdaidien,
                 'cauhinh' => $cauhinh,
-                'headings' => $gioithieu->headings ?? $cauhinhseo->headings
+                'headings' => $gioithieu->headings ?? $cauhinhseo->headings,
+                'cauhinhseo' => $cauhinhseo,
             ]);
         }
         // End giới thiệu
