@@ -11,17 +11,22 @@
 */
 
 // Route admin
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\UploadController;
 
 Route::get('myLogin', 'UserController@login');
 Route::post('myLogin', 'UserController@loginPost');
 Route::get('myLogin/logout', 'UserController@logout');
-Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
 
-	Route::group(['prefix' => 'layout'], function(){
+	Route::post('upload', [UploadController::class, 'upload']);
+
+	Route::group(['prefix' => 'layout'], function () {
 		Route::get('index', 'Controller@index');
 	});
 
-	Route::group(['prefix' => 'danhmucsanpham'], function(){
+	Route::group(['prefix' => 'danhmucsanpham'], function () {
 		Route::get('index', 'DanhmucsanphamController@index');
 		Route::get('create', 'DanhmucsanphamController@create');
 		Route::post('create', 'DanhmucsanphamController@createPost');
@@ -31,7 +36,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function(){
 		Route::get('delete/{id}', 'DanhmucsanphamController@delete');
 	});
 
-	Route::group(['prefix' => 'sanpham'], function(){
+	Route::group(['prefix' => 'sanpham'], function () {
 		Route::get('index', 'SanphamController@index');
 		Route::get('create', 'SanphamController@create');
 		Route::post('create', 'SanphamController@createPost');
@@ -43,7 +48,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function(){
 		Route::get('deleteHinhanhsanpham/{id}', 'SanphamController@removeHinhanhsanpham');
 	});
 
-	Route::group(['prefix' => 'thongtinlienhe'], function(){
+	Route::group(['prefix' => 'thongtinlienhe'], function () {
 		Route::get('index', 'ThongtinlienheController@index');
 		Route::get('update/{id}', 'ThongtinlienheController@update');
 		Route::post('update/{id}', 'ThongtinlienheController@updatePost');
@@ -51,7 +56,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function(){
 		Route::get('delete/{id}', 'ThongtinlienheController@delete');
 	});
 
-	Route::group(['prefix' => 'danhmucbaiviet'], function(){
+	Route::group(['prefix' => 'danhmucbaiviet'], function () {
 		Route::get('index', 'DanhmucbaivietController@index');
 		Route::get('create', 'DanhmucbaivietController@create');
 		Route::post('create', 'DanhmucbaivietController@createPost');
@@ -61,7 +66,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function(){
 		Route::get('delete/{id}', 'DanhmucbaivietController@delete');
 	});
 
-	Route::group(['prefix' => 'baiviet'], function(){
+	Route::group(['prefix' => 'baiviet'], function () {
 		Route::get('index', 'BaivietController@index');
 		Route::get('create', 'BaivietController@create');
 		Route::post('create', 'BaivietController@createPost');
@@ -71,7 +76,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function(){
 		Route::get('delete/{id}', 'BaivietController@delete');
 	});
 
-	Route::group(['prefix' => 'gioithieu'], function(){
+	Route::group(['prefix' => 'gioithieu'], function () {
 		Route::get('index', 'GioithieuController@index');
 		Route::get('create', 'GioithieuController@create');
 		Route::post('create', 'GioithieuController@createPost');
@@ -83,7 +88,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function(){
 		Route::post('ckeditor/image_upload', 'GioithieuController@upload')->name('upload');
 	});
 
-	Route::group(['prefix' => 'slider'], function(){
+	Route::group(['prefix' => 'slider'], function () {
 		Route::get('index', 'SliderController@index');
 		Route::get('create', 'SliderController@create');
 		Route::post('create', 'SliderController@createPost');
@@ -93,7 +98,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function(){
 		Route::get('delete/{id}', 'SliderController@delete');
 	});
 
-	Route::group(['prefix' => 'doitac'], function(){
+	Route::group(['prefix' => 'doitac'], function () {
 		Route::get('index', 'DoitacController@index');
 		Route::get('create', 'DoitacController@create');
 		Route::post('create', 'DoitacController@createPost');
@@ -103,7 +108,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function(){
 		Route::get('delete/{id}', 'DoitacController@delete');
 	});
 
-	Route::group(['prefix' => 'hoatdong'], function(){
+	Route::group(['prefix' => 'hoatdong'], function () {
 		Route::get('index', 'HoatdongController@index');
 		Route::get('create', 'HoatdongController@create');
 		Route::post('create', 'HoatdongController@createPost');
@@ -113,7 +118,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function(){
 		Route::get('delete/{id}', 'HoatdongController@delete');
 	});
 
-	Route::group(['prefix' => 'cauhinh'], function(){
+	Route::group(['prefix' => 'cauhinh'], function () {
 		Route::get('index', 'CauhinhController@index');
 		Route::get('create', 'CauhinhController@create');
 		Route::post('create', 'CauhinhController@createPost');
@@ -123,7 +128,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function(){
 		Route::get('delete/{id}', 'CauhinhController@delete');
 	});
 
-	Route::group(['prefix' => 'cauhinhseo'], function(){
+	Route::group(['prefix' => 'cauhinhseo'], function () {
 		Route::get('index', 'CauhinhseoController@index');
 		Route::get('create', 'CauhinhseoController@create');
 		Route::post('create', 'CauhinhseoController@createPost');
@@ -133,7 +138,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function(){
 		Route::get('delete/{id}', 'CauhinhseoController@delete');
 	});
 
-	Route::group(['prefix' => 'user'], function(){
+	Route::group(['prefix' => 'user'], function () {
 		Route::get('index', 'UserController@index');
 		Route::get('create', 'UserController@create');
 		Route::post('create', 'UserController@createPost');
@@ -158,6 +163,10 @@ Route::post('{code}', 'WebsiteController@post')->name('indexCodePost');
 Route::get('thong-tin/xac-nhan', 'WebsiteController@xacnhan')->name('xacnhan');
 Route::get('index/error-404', 'WebsiteController@error')->name('error');
 
-Route::any('{query}',
- function() { return redirect()->route('error'); })
-    ->where('query', '.*');
+Route::any(
+	'{query}',
+	function () {
+		return redirect()->route('error');
+	}
+)
+	->where('query', '.*');
