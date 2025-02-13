@@ -113,3 +113,21 @@
     </div>
 </section>
 <div class="bg section-bg fill bg-fill bg-loaded"></div>
+<section id="footerBottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="footer-coppyright">
+                   {{date('Y')}} © All Rights Reserved. <a href="https://daivietsoft.com/">Thiết kế website</a>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="theH">
+                    <marquee direction="left" onmouseout="this.start()" scrollamount="4" onmouseover="this.stop()">
+                        {!!$headings ?? $cauhinhseo->headings!!}
+                    </marquee>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

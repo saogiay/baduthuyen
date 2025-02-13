@@ -1,26 +1,5 @@
 @extends('website.main')
 
-@section('meta_tags')
-
-    <title>{{$baivietChitiet->title ?? $baivietChitiet->name}}</title>
-    <meta name='description' itemprop='description' content='{{$baivietChitiet->description ?? $baivietChitiet->motabaiviet}}' />
-    <meta property='article:published_time' content='{{$baivietChitiet->created_at}}' />
-    <link rel="canonical" href="{{url()->current()}}" />
-    <meta property='article:section' content='event' />
-    <meta property="og:description" content="{{$baivietChitiet->description ?? $baivietChitiet->motabaiviet}}" />
-    <meta property="og:title" content="{{$baivietChitiet->title ?? $baivietChitiet->name}}" />
-    <meta property="og:url" content="{{url()->current()}}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:locale" content="en-us" />
-    <meta property="og:locale:alternate" content="vi-vn" />
-    <meta property="og:site_name" content="{{env('SITE_URL', $baivietChitiet->title ?? $baivietChitiet->name)}}" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{$baivietChitiet->title ?? $baivietChitiet->name}}" />
-    <meta name="twitter:site" content="@BrnBhaskar" />
-    <meta property="og:image" content="{{ asset('upload/baiviet/'.$baivietChitiet->anhdaidien) }}" />
-    <meta property="og:image:url" content="{!!url()->full();!!}" />
-    <meta property="og:image:size" content="300" />
-@endsection
 
 @section('content')
 
@@ -147,22 +126,4 @@
     </div>
 
     @include('website.footer')
-    <section id="footerBottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="footer-coppyright">
-                       {{date('Y')}} © All Rights Reserved. <a href="https://daivietsoft.com/">Thiết kế website</a>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="theH">
-                        <marquee direction="left" onmouseout="this.start()" scrollamount="4" onmouseover="this.stop()">
-                            {!!$baivietChitiet->headings!!}
-                        </marquee>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 @endsection

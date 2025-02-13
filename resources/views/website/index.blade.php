@@ -1,37 +1,7 @@
-<?php
-use Illuminate\Support\Facades\DB;
-use App\Danhmucsanpham;
-use App\Sanpham;
-$cauhinh = DB::table('cauhinh')->first();
-?>
+
 @extends('website.main')
 
-@section('meta_tags')
-    <title>{{$cauhinhseo->title}}</title>
-    <meta name='description' itemprop='description' content='{{$cauhinhseo->description}}' />
-    <meta property='article:published_time' content='{{$cauhinhseo->created_at}}' />
-    <link rel="canonical" href="{{url()->current()}}" />
-    <meta property='article:section' content='event' />
-    <meta property="og:description" content="{{$cauhinhseo->description}}" />
-    <meta property="og:title" content="{{$cauhinhseo->title}}" />
-    <meta property="og:url" content="{{url()->current()}}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:locale" content="en-us" />
-    <meta property="og:locale:alternate" content="vi-vn" />
-    <meta property="og:site_name" content="{{env('SITE_URL', $cauhinhseo->title)}}" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{$cauhinhseo->title}}" />
-    <meta name="twitter:site" content="@BrnBhaskar" />
-    @foreach($hinhanhdaidien as $anh)
-        <meta property="og:image" content="{{ asset('upload/slider/'.$anh->anhdaidien) }}" />
-        <meta property="og:image:url" content="{!!url()->full();!!}" />
-        <meta property="og:image:size" content="300" />
-    @endforeach
-@endsection
-
 @section('content')
-
-<?php $cauhinh = DB::table('cauhinh')->first() ?>
 
 <div class="slider">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -439,23 +409,11 @@ $cauhinh = DB::table('cauhinh')->first();
 
 @include('website.footer')
 
-<section id="footerBottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="footer-coppyright">
-                   {{date('Y')}} © All Rights Reserved. <a href="https://daivietsoft.com/">Thiết kế website</a>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="theH">
-                    <marquee direction="left" onmouseout="this.start()" scrollamount="4" onmouseover="this.stop()">
-                        {!!$cauhinhseo->headings!!}
-                    </marquee>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 @endsection
+
+@push('scripts')
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+</script>
+@endpush
