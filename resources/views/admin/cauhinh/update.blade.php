@@ -61,7 +61,7 @@
 							</div>
 						@endif
 						<div style="height: 5px"></div>
-						<img src="public/upload/cauhinh/{{$cauhinh->logo}}" class="img-responsive" />
+						<img src="{{asset("upload/cauhinh/" . $cauhinh->logo)}}" class="img-responsive" />
 						<div class="help-block"></div>
 					</div>
 				</div>

@@ -117,7 +117,7 @@
 							</div>
 						@endif
 						<div style="height: 5px"></div>
-						<img src="public/upload/baiviet/{{$baiviet->anhdaidien}}" class="img-responsive image_baiviet_backend_update" />
+						<img src="{{asset("upload/baiviet/".$baiviet->anhdaidien)}}" class="img-responsive image_baiviet_backend_update" />
 						<div class="help-block"></div>
 					</div>
 				</div>

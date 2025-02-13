@@ -32,7 +32,7 @@
 							</div>
 						@endif
 						<div style="height: 5px"></div>
-						<img src="public/upload/slider/{{$slider->anhdaidien}}" class="img-responsive" />
+						<img src="{{asset("upload/slider/" . $slider->anhdaidien)}}" class="img-responsive" />
 						<div class="help-block"></div>
 					</div>
 				</div>
