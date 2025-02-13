@@ -6,15 +6,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Quản trị website</title>
 		<base href="{{asset('')}}">
-		<link rel="stylesheet" href="css/backend/bootstrap.min.css">
-		<link rel="stylesheet" href="public/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/backend/ionicons.min.css">
-		<link rel="stylesheet" href="css/backend/jquery-ui.css">
-		<link rel="stylesheet" href="css/backend/bootstrap-datepicker.min.css">
-		<link rel="stylesheet" href="css/backend/AdminLTE.css">
-		<link rel="stylesheet" href="css/backend/_all-skins.min.css">
-		<link rel="stylesheet" href="css/backend/morris.css">
-		<link rel="stylesheet" href="css/backend/style.css">
+		<link rel="stylesheet" href="{{asset("css/backend/bootstrap.min.css")}}">
+		<link rel="stylesheet" href="{{asset("font-awesome/css/font-awesome.min.css")}}">
+		<link rel="stylesheet" href="{{asset("css/backend/ionicons.min.css")}}">
+		<link rel="stylesheet" href="{{asset("css/backend/jquery-ui.css")}}">
+		<link rel="stylesheet" href="{{asset("css/backend/bootstrap-datepicker.min.css")}}">
+		<link rel="stylesheet" href="{{asset("css/backend/AdminLTE.css")}}">
+		<link rel="stylesheet" href="{{asset("css/backend/_all-skins.min.css")}}">
+		<link rel="stylesheet" href="{{asset("css/backend/morris.css")}}">
+		<link rel="stylesheet" href="{{asset("css/backend/style.css")}}">
 	</head>
 	<body class="hold-transition skin-blue sidebar-mini">
 		<div class="wrapper">
@@ -132,14 +132,14 @@
 		    </footer>
 		</div>
 		<!-- ./wrapper -->
-		<script src="js/backend/jquery.min.js"></script>
-		<script src="js/backend/jquery-ui.js"></script>
-		<script src="js/backend/moment.min.js"></script>
-		<script src="js/backend/bootstrap.min.js"></script>
-		<script src="js/backend/raphael.min.js"></script>
-		<script src="js/backend/morris.min.js"></script>
-		<script src="js/backend/adminlte.min.js"></script>
-		<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+		<script src="{{asset("js/backend/jquery.min.js")}}"></script>
+		<script src="{{asset("js/backend/jquery-ui.js")}}"></script>
+		<script src="{{asset("js/backend/moment.min.js")}}"></script>
+		<script src="{{asset("js/backend/bootstrap.min.js")}}"></script>
+		<script src="{{asset("js/backend/raphael.min.js")}}"></script>
+		<script src="{{asset("js/backend/morris.min.js")}}"></script>
+		<script src="{{asset("js/backend/adminlte.min.js")}}"></script>
+		<script src="{{asset('../vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 		    <script>
 		        // CKEDITOR.replace( 'editor' );
 		        $(document).ready(function () {
@@ -149,7 +149,7 @@
 		            });
 		        });
 		    </script>
-		<script src="js/backend/demo.js"></script>
-		<script src="js/backend/custom.js"></script>
+		<script src="{{asset("js/backend/demo.js")}}"></script>
+		<script src="{{asset("js/backend/custom.js")}}"></script>
 	</body>
 </html>

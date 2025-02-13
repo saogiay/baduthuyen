@@ -57,7 +57,7 @@
 								{{ ($sanpham->currentPage() - 1) * $sanpham->perPage() + $loop->iteration }}
 							</td>
 							<td width="7%">
-								<img src="public/upload/sanpham/{{$item->anhdaidien}}" class="img-responsive image_baiviet_backend" >
+								<img src="{{asset("upload/sanpham/" . $item->anhdaidien)}}" class="img-responsive image_baiviet_backend" >
 							</td>
 							<td width="30%">{{$item->name}}</td>
 							<td width="12%">

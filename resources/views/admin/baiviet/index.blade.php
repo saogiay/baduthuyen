@@ -60,7 +60,7 @@
 								{{ ($baiviet->currentPage() - 1) * $baiviet->perPage() + $loop->iteration }}
 							</td>
 							<td width="8%">
-								<img src="public/upload/baiviet/{{$item->anhdaidien}}" class="img-responsive image_baiviet_backend" >
+								<img src="{{asset("upload/baiviet/".$item->anhdaidien)}}" class="img-responsive image_baiviet_backend" >
 							</td>
 							<td width="25%">{{$item->name}}</td>
 							<td width="12%">

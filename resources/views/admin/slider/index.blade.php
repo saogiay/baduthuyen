@@ -46,7 +46,7 @@
 								{{ ($slider->currentPage() - 1) * $slider->perPage() + $loop->iteration }}
 							</td>
 							<td width="15%">
-								<img src="public/upload/slider/{{$item->anhdaidien}}" class="img-responsive" >
+								<img src="{{asset("upload/slider/" . $item->anhdaidien)}}" class="img-responsive" >
 							</td>
 							<td >{{$item->linkbaiviet}}</td>
 							<td class="text-center">
