@@ -41,6 +41,7 @@
                             <i class="fa fa-bars"></i> {{$danhmucbaivietChitiet->name}} |
                             <i class="fa fa-eye"></i> {{ $baivietChitiet->count_page }} lượt xem
                         </div>
+                        <div id="table-of-contents"></div>
                         <div class="chi-tiet-bai-viet">
                             {!!$baivietChitiet->noidungbaiviet!!}
                         </div>
@@ -148,6 +149,52 @@
             }
         };
 
+        function generateTableOfContents() {
+            const contentElement = document.querySelector(".chi-tiet-bai-viet");
+            const tocElement = document.getElementById("table-of-contents");
+
+            if (!contentElement || !tocElement) return;
+
+            const headings = contentElement.querySelectorAll("h2, h3, h4, h5, h6"); // VÌ EDITOR KHÔNG DÙNG H1
+            if (headings.length === 0) {
+                tocElement.style.display = "none"; // Ẩn mục lục nếu không có tiêu đề
+                return;
+            }
+
+            let tocHTML = '<ul style="padding: 10px; border: 1px solid #c6c6c6; list-style-type: none;">';
+            headings.forEach((heading, index) => {
+                const id = heading.id || `heading-${index}`;
+                heading.id = id; // Gán ID nếu chưa có
+
+                const level = parseInt(heading.tagName.replace("H", ""), 10) - 2; // Lấy số từ H2, ... VÌ EDITOR KHÔNG DÙNG H1
+                tocHTML += `<li style="margin-left: ${level * 10}px;">
+                                <a href="#${id}" class="toc-link">${heading.innerText}</a>
+                            </li>`;
+            });
+            tocHTML += "</ul>";
+            tocElement.innerHTML = tocHTML;
+
+            // Thêm sự kiện click để cuộn mượt mà không thay đổi URL
+            document.querySelectorAll(".toc-link").forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault(); // Ngăn trình duyệt thay đổi URL
+
+                    const targetId = this.getAttribute("href").substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        const offset = targetElement.getBoundingClientRect().top + window.scrollY - 50; // Trừ 50px nếu có header cố định
+
+                        window.scrollTo({
+                            top: offset,
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+        };
+
+        generateTableOfContents();
         convertEmbedMediaFromCkeditor5();
     });
 </script>

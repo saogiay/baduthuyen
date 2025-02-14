@@ -280,6 +280,21 @@
 				return uploadAdapter(loader);
 			};
 		};
+		const addIdsToHeadings = () => {
+			const editorContent = document.querySelector("#editor").value;
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(editorContent, "text/html");
+
+			const headers = doc.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+			headers.forEach((header, index) => {
+				const text = header.textContent.trim().toLowerCase().replace(/\s+/g, "-"); // Tạo ID từ nội dung tiêu đề
+				header.id = `heading-${index}-${text}`;
+			});
+
+			// Cập nhật lại nội dung CKEditor sau khi đã thêm ID
+			document.querySelector("#editor").value = doc.body.innerHTML;
+		}
 		ClassicEditor.create(document.querySelector("#editor"), {
 				plugins: configPlugins,
 				toolbar: configToolbarItems,
@@ -333,6 +348,7 @@
 				};
 				editor.model.document.on('change:data', () => {
 					document.querySelector("#editor").value = editor.getData();
+					addIdsToHeadings();
 				});
 			})
 			.catch((error) => console.error("Error initializing CKEditor", error));
