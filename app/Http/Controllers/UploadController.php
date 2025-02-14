@@ -10,25 +10,15 @@ use Illuminate\Support\Str;
 
 class UploadController extends Controller
 {
-    protected function ensureDirectoryExists(string $path): void
-    {
-        if (!File::isDirectory(public_path("storage/$path"))) {
-            File::makeDirectory(public_path("storage/$path"), 0777, true, true);
-        }
-    }
+    use SaveFileTrait;
+
     public function upload(Request $request)
     {
         $path = $request->path ?? 'uploads';
 
         $file = $request->file('file');
 
-        $this->ensureDirectoryExists($path);
-
-        $fileName = Str::random(4) . '_' . preg_replace('/\s+/', '', $file->getClientOriginalName());
-
-        $fileName = Str::slug($fileName) . '.' . $file->getClientOriginalExtension();
-
-        Storage::disk('public')->putFileAs($path, $file, $fileName);
+        $fileName = $this->saveFile($file, $path);
 
         return response()->json([
             'url' => Storage::disk('public')->url($path . '/' . $fileName),
