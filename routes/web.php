@@ -13,14 +13,13 @@
 // Route admin
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\UploadController;
 
 Route::get('myLogin', 'UserController@login');
 Route::post('myLogin', 'UserController@loginPost');
 Route::get('myLogin/logout', 'UserController@logout');
+
 Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
 
-	Route::post('upload', [UploadController::class, 'upload']);
 
 	Route::group(['prefix' => 'layout'], function () {
 		Route::get('index', 'Controller@index');

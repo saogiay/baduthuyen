@@ -26,10 +26,10 @@ class UploadController extends Controller
 
         $fileName = Str::random(4) . '_' . preg_replace('/\s+/', '', $file->getClientOriginalName());
 
-        $fileName = Str::slug($fileName);
+        $fileName = Str::slug($fileName) . '.' . $file->getClientOriginalExtension();
 
-        Storage::putFileAs("public/$path", $file, $fileName);
+        Storage::disk('public')->putFileAs($path, $file, $fileName);
 
-        return $fileName;
+        return Storage::disk('public')->url($path . '/' . $fileName);
     }
 }
