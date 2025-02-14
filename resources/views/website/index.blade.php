@@ -102,7 +102,8 @@
                                                     $parentsCategory = DB::table('danhmucbaiviet')->select('name')->where('id', $item->danhmucbaiviet_id)->first();
                                                     ?>
                                                     <li class="post"><i class="fa fa-check-square"></i>
-                                                        <span>{{ $parentsCategory->name }}</span></li>
+                                                        <span>{{ $parentsCategory->name }}</span>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -415,6 +416,8 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('js/frontend/owl.carousel.js') }}"></script>
+
     <script>
         var slideIndex = 1;
         showSlides(slideIndex);
