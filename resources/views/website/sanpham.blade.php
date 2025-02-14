@@ -15,10 +15,12 @@
                         </li>
 
                         <li>
-                            <a itemprop="title" href="{{ route('indexCode', ['code' => $danhmucsanphamChitiet->code]) }}">{{$danhmucsanphamChitiet->name}}</a>
+                            <a itemprop="title"
+                                href="{{ route('indexCode', ['code' => $danhmucsanphamChitiet->code]) }}">{{ $danhmucsanphamChitiet->name }}</a>
                         </li>
                         <li>
-                            <a itemprop="title" href="{{ route('indexCode', ['code' => $sanpham->code]) }}">{{$sanpham->name}}</a>
+                            <a itemprop="title"
+                                href="{{ route('indexCode', ['code' => $sanpham->code]) }}">{{ $sanpham->name }}</a>
                         </li>
                     </ul>
                 </div>
@@ -35,21 +37,23 @@
                                 <div class="row">
                                     <div class="col-md-4 col-sm-4">
                                         <div class="anh-san-pham">
-                                            <div class="item">            
+                                            <div class="item">
                                                 <div class="clearfix" style="max-width:474px;">
                                                     <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                                                        @if(count($hinhanhsanpham) > 0)
-
-                                                        @foreach($hinhanhsanpham as $image)
-                                                        <li data-thumb="{{ asset('upload/sanpham/hinhanh/'.$image->hinhanhsanpham) }}"> 
-                                                            <img src="{{ asset('upload/sanpham/hinhanh/'.$image->hinhanhsanpham) }}" class="img-responsive" alt="{{$sanpham->name}}" />
-                                                        </li>
-                                                        @endforeach
-
+                                                        @if (count($hinhanhsanpham) > 0)
+                                                            @foreach ($hinhanhsanpham as $image)
+                                                                <li
+                                                                    data-thumb="{{ asset('storage/sanpham/hinhanh/' . $image->hinhanhsanpham) }}">
+                                                                    <img src="{{ asset('storage/sanpham/hinhanh/' . $image->hinhanhsanpham) }}"
+                                                                        class="img-responsive" alt="{{ $sanpham->name }}" />
+                                                                </li>
+                                                            @endforeach
                                                         @else
-                                                        <li data-thumb="{{ asset('upload/sanpham/'.$sanpham->anhdaidien) }}"> 
-                                                            <img src="{{ asset('upload/sanpham/'.$sanpham->anhdaidien) }}" class="img-responsive" alt="{{$sanpham->name}}" />
-                                                        </li>
+                                                            <li
+                                                                data-thumb="{{ asset('storage/sanpham/' . $sanpham->anhdaidien) }}">
+                                                                <img src="{{ asset('storage/sanpham/' . $sanpham->anhdaidien) }}"
+                                                                    class="img-responsive" alt="{{ $sanpham->name }}" />
+                                                            </li>
                                                         @endif
                                                     </ul>
                                                 </div>
@@ -59,41 +63,46 @@
                                     <div class="col-md-5 col-sm-5">
                                         <div class="noi-dung-san-pham-web-info">
                                             <div class="ten-san-pham">
-                                                {{$sanpham->name}}
+                                                {{ $sanpham->name }}
                                             </div>
                                             <div class="noi-dung-san-pham-web-info-spice">
 
-                                                @if($sanpham->giasanpham != NULL or $sanpham->giasanpham != 0)
-                                                <span>{{ number_format($sanpham->giasanpham) }}đ</span>
+                                                @if ($sanpham->giasanpham != null or $sanpham->giasanpham != 0)
+                                                    <span>{{ number_format($sanpham->giasanpham) }}đ</span>
                                                 @else
-                                                <span>Liên hệ</span>
+                                                    <span>Liên hệ</span>
                                                 @endif
 
                                             </div>
-                                            
+
                                             <div class="noi-dung-san-pham-web-info-description">
                                                 {!! $sanpham->motasanpham !!}
                                             </div>
 
                                             <div class="product-button_group">
                                                 <div class="button-group__flex">
-                                                    <a href="https://m.me/{{ $cauhinh->mess }}" target="_blank" class="btn-mua-ngay">
-                                                        Tư vấn &amp; Đặt hàng                                               
+                                                    <a href="https://m.me/{{ $cauhinh->mess }}" target="_blank"
+                                                        class="btn-mua-ngay">
+                                                        Tư vấn &amp; Đặt hàng
                                                         <span>(Thông qua Chat Messenger)</span>
                                                     </a>
-                                                    <a href="https://zalo.me/{{ $cauhinh->zalo }}" target="_blank" class="btn-mua-ngay btn-zalo">
-                                                        Tư vấn &amp; Đặt hàng                                               
+                                                    <a href="https://zalo.me/{{ $cauhinh->zalo }}" target="_blank"
+                                                        class="btn-mua-ngay btn-zalo">
+                                                        Tư vấn &amp; Đặt hàng
                                                         <span>(Thông qua Chat Zalo)</span>
                                                     </a>
                                                 </div>
-                                                
+
                                                 <p style="color: #DD0303; margin-top: 10px; margin-bottom: 2px;">
                                                     Bạn cần hỗ trợ tư vấn thêm về sản phẩm?</p>
-                                                <p style="color: #232323; margin-bottom: 0; text-align: center">Gọi ngay Hotline                                            :
+                                                <p style="color: #232323; margin-bottom: 0; text-align: center">Gọi ngay
+                                                    Hotline :
                                                     <span style="white-space: nowrap">
-                                                        <a style="color: #DD0303;font-weight: 600;text-decoration: none;" href="tel:{{ $cauhinh->hotline1 }}">{{ $cauhinh->hotline1 }}</a>
+                                                        <a style="color: #DD0303;font-weight: 600;text-decoration: none;"
+                                                            href="tel:{{ $cauhinh->hotline1 }}">{{ $cauhinh->hotline1 }}</a>
                                                         &nbsp;-&nbsp;
-                                                        <a style="color: #DD0303;font-weight: 600;text-decoration: none;" href="tel:{{ $cauhinh->hotline2 }}">{{ $cauhinh->hotline2 }}</a>
+                                                        <a style="color: #DD0303;font-weight: 600;text-decoration: none;"
+                                                            href="tel:{{ $cauhinh->hotline2 }}">{{ $cauhinh->hotline2 }}</a>
                                                     </span>
                                                 </p>
                                             </div>
@@ -180,29 +189,37 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="3">
                                     <div class="chi-tiet-bai-viet noi-dung-chi-tiet">
-                                        {!!$sanpham->noidungsanpham!!}
+                                        {!! $sanpham->noidungsanpham !!}
                                     </div>
                                     <div class="social-links">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <ul>
                                                     <li>
-                                                        <a rel="nofollow" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={!!url()->full();!!}" class="social-button " id="">
+                                                        <a rel="nofollow" target="_blank"
+                                                            href="https://www.facebook.com/sharer/sharer.php?u={!! url()->full() !!}"
+                                                            class="social-button " id="">
                                                             <span class="fa fa-facebook"></span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?text=my share text&amp;url={!!url()->full();!!}" class="social-button " id="">
+                                                        <a rel="nofollow" target="_blank"
+                                                            href="https://twitter.com/intent/tweet?text=my share text&amp;url={!! url()->full() !!}"
+                                                            class="social-button " id="">
                                                             <span class="fa fa-twitter"></span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a rel="nofollow" target="_blank" href="https://plus.google.com/share?url={!!url()->full();!!}" class="social-button " id="">
+                                                        <a rel="nofollow" target="_blank"
+                                                            href="https://plus.google.com/share?url={!! url()->full() !!}"
+                                                            class="social-button " id="">
                                                             <span class="fa fa-google-plus"></span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a rel="nofollow" target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url={!!url()->full();!!}&amp;title=my share text&amp;summary=dit is de linkedin summary" class="social-button " id="">
+                                                        <a rel="nofollow" target="_blank"
+                                                            href="http://www.linkedin.com/shareArticle?mini=true&amp;url={!! url()->full() !!}&amp;title=my share text&amp;summary=dit is de linkedin summary"
+                                                            class="social-button " id="">
                                                             <span class="fa fa-linkedin"></span>
                                                         </a>
                                                     </li>
@@ -217,48 +234,53 @@
                     </div>
 
                     <div class="page-product">
-                        <div class="detail-content-title detail-content-title-recents detail-content-title-recents-san-pham">
+                        <div
+                            class="detail-content-title detail-content-title-recents detail-content-title-recents-san-pham">
                             Các sản phẩm liên quan
                         </div>
                         <div class="row">
-                         @foreach($sanphamlienquan as $item)
-                            <div class="col-xs-5ths">
-                                <div class="box-product-index">
-                                    <div class="box-product-index-img">
-                                        <a href="{{ route('indexCode', ['code' => $item->code]) }}" class="a-img-product">
-                                            <img src="{{ asset('upload/sanpham/'.$item->anhdaidien) }}" class="img-responsive" alt="{{$item->name}}">
-                                        </a>
-                                        <div class="quick-view">
-                                            <a href="{{ route('indexCode', ['code' => $item->code]) }}">Thông tin chi tiết</a>
-                                        </div>
-                                    </div>
-                                    <div class="box-product-index-cap">
-                                        <div class="box-product-index-code">
-                                            Mã SP: <span>{{ $item->masp }}</span>
-                                        </div>
-                                        <div class="box-product-index-name">
-                                            <a href="{{ route('indexCode', ['code' => $item->code]) }}" title="{{$item->name}}">
-                                                @if(mb_strlen($item->name, 'UTF-8') >= 45)
-                                                    {{mb_substr($item->name,0,45,'UTF-8')}}...
-                                                @else
-                                                    {{$item->name}}
-                                                @endif
+                            @foreach ($sanphamlienquan as $item)
+                                <div class="col-xs-5ths">
+                                    <div class="box-product-index">
+                                        <div class="box-product-index-img">
+                                            <a href="{{ route('indexCode', ['code' => $item->code]) }}"
+                                                class="a-img-product">
+                                                <img src="{{ asset('storage/sanpham/' . $item->anhdaidien) }}"
+                                                    class="img-responsive" alt="{{ $item->name }}">
                                             </a>
+                                            <div class="quick-view">
+                                                <a href="{{ route('indexCode', ['code' => $item->code]) }}">Thông tin chi
+                                                    tiết</a>
+                                            </div>
                                         </div>
-                                        <div class="box-product-index-spice">
-                                            @if($item->giasanpham != NULL or $item->giasanpham != 0)
-                                            {{ number_format($item->giasanpham) }}đ
-                                            @else
-                                            Liên hệ
-                                            @endif
+                                        <div class="box-product-index-cap">
+                                            <div class="box-product-index-code">
+                                                Mã SP: <span>{{ $item->masp }}</span>
+                                            </div>
+                                            <div class="box-product-index-name">
+                                                <a href="{{ route('indexCode', ['code' => $item->code]) }}"
+                                                    title="{{ $item->name }}">
+                                                    @if (mb_strlen($item->name, 'UTF-8') >= 45)
+                                                        {{ mb_substr($item->name, 0, 45, 'UTF-8') }}...
+                                                    @else
+                                                        {{ $item->name }}
+                                                    @endif
+                                                </a>
+                                            </div>
+                                            <div class="box-product-index-spice">
+                                                @if ($item->giasanpham != null or $item->giasanpham != 0)
+                                                    {{ number_format($item->giasanpham) }}đ
+                                                @else
+                                                    Liên hệ
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

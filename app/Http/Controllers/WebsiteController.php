@@ -37,7 +37,7 @@ class WebsiteController extends Controller
             'created_at' => $cauhinhseo->created_at,
             'cauhinhseo' => $cauhinhseo,
             'cauhinh' => $cauhinh,
-            'hinhanhdaidien' => asset('upload/slider/' . $hinhanhdaidien->anhdaidien),
+            'hinhanhdaidien' => asset('storage/slider/' . $hinhanhdaidien->anhdaidien),
             'danhmucsanpham' => $danhmucsanpham,
             'doitac' => $doitac,
             'hoatdong' => $hoatdong,
@@ -103,7 +103,7 @@ class WebsiteController extends Controller
                 'baivietChitiet' => $baivietChitiet,
                 'danhmucbaivietChitiet' => $danhmucbaivietChitiet,
                 'baivietlienquan' => $baivietlienquan,
-                'hinhanhdaidien' => asset('upload/baiviet/' . $baivietChitiet->anhdaidien),
+                'hinhanhdaidien' => asset('storage/baiviet/' . $baivietChitiet->anhdaidien),
             ]);
         }
         // End chi tiết bài viết
@@ -169,7 +169,7 @@ class WebsiteController extends Controller
                 'danhmucsanphamChitiet' => $danhmucsanphamChitiet,
                 'hinhanhsanpham' => $hinhanhsanpham,
                 'sanphamlienquan' => $sanphamlienquan,
-                'hinhanhdaidien' => asset('upload/sanpham/' . $sanpham->anhdaidien),
+                'hinhanhdaidien' => asset('storage/sanpham/' . $sanpham->anhdaidien),
             ]);
         }
         // End sản phẩm
