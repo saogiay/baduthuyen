@@ -7,17 +7,18 @@ use App\Cauhinh;
 
 class CauhinhController extends Controller
 {
+    use SaveFileTrait;
     public function index()
     {
-    	$cauhinh = Cauhinh::paginate(15);
-    	return view('admin.cauhinh.index',[
+        $cauhinh = Cauhinh::paginate(15);
+        return view('admin.cauhinh.index', [
             'cauhinh' => $cauhinh,
         ]);
     }
 
     public function create()
     {
-    	return view('admin.cauhinh.create');
+        return view('admin.cauhinh.create');
     }
 
     public function createPost(Request $request)
@@ -35,39 +36,23 @@ class CauhinhController extends Controller
             'fanpage' => $request->fanpage,
             'map' => $request->map,
             'about' => $request->about,
-			'zalo' => $request->zalo,
+            'zalo' => $request->zalo,
         ]);
 
-        if($request->hasFile('logo'))
-        {
-            $file = $request->file('logo');
-            $duoi_logo = $file->getClientOriginalExtension();
-            if($duoi_logo != 'jpg' && $duoi_logo != 'png' && $duoi_logo != 'jpeg')
-            {
-                return redirect('admin/cauhinh/create')->with('thongbao_create', 'Bạn chỉ được chọn file ảnh có đuôi jpg, png, jpeg !');
-            }
-            $name = $file->getClientOriginalName();
-            $logo = str_random(4)."_".$name;
-            while(file_exists("public/upload/cauhinh/".$logo))
-            {
-                $logo = str_random(4)."_".$name;
-            }
-            $file->move("public/upload/cauhinh", $logo);
-            $cauhinh->logo = $logo;
-        }else{
-            $cauhinh->logo = "";
+        if ($request->hasFile('logo')) {
+            $cauhinh->logo = $this->saveFile($request->file('logo'), 'cauhinh');
         }
 
         $cauhinh->save();
 
-    	return redirect('admin/cauhinh/index')->with('thongbao', 'Thêm mới thành công !');
+        return redirect('admin/cauhinh/index')->with('thongbao', 'Thêm mới thành công !');
     }
 
     public function update($id)
     {
         $cauhinhAll = Cauhinh::all();
-    	$cauhinh = Cauhinh::find($id);
-    	return view('admin.cauhinh.update',[
+        $cauhinh = Cauhinh::find($id);
+        return view('admin.cauhinh.update', [
             'cauhinh' => $cauhinh,
             'cauhinhAll' => $cauhinhAll,
         ]);
@@ -76,7 +61,7 @@ class CauhinhController extends Controller
     public function updatePost(Request $request, $id)
     {
         // dd($request->all());
-    	$cauhinh = Cauhinh::find($id);
+        $cauhinh = Cauhinh::find($id);
 
         $cauhinh->fill([
             'tendoanhnghiep' => $request->tendoanhnghiep,
@@ -89,52 +74,36 @@ class CauhinhController extends Controller
             'email' => $request->email,
             'fanpage' => $request->fanpage,
             'map' => $request->map,
-			'zalo' => $request->zalo,
+            'zalo' => $request->zalo,
             'mess' => $request->mess,
             'ytb' => $request->ytb,
             'google' => $request->google,
             'twiter' => $request->twiter,
         ]);
 
-        if($request->hasFile('logo'))
-        {
-            $file = $request->file('logo');
-            $duoi_logo = $file->getClientOriginalExtension();
-            if($duoi_logo != 'jpg' && $duoi_logo != 'png' && $duoi_logo != 'jpeg')
-            {
-                return redirect('admin/cauhinh/update/'.$id)->with('thongbao_update', 'Bạn chỉ được chọn file ảnh có đuôi jpg, png, jpeg !');
-            }
-            $name = $file->getClientOriginalName();
-            $logo = str_random(4)."_".$name;
-            while(file_exists("public/upload/cauhinh/".$logo))
-            {
-                $logo = str_random(4)."_".$name;
-            }
-            $file->move("public/upload/cauhinh", $logo);
-            if($cauhinh->logo != NULL){
-                unlink("public/upload/cauhinh/".$cauhinh->logo);
-            }
-            $cauhinh->logo = $logo;
+        if ($request->hasFile('logo')) {
+            $this->deleteFile($cauhinh->logo, 'cauhinh');
+            $cauhinh->logo = $this->saveFile($request->file('logo'), 'cauhinh');
         }
 
         $cauhinh->save();
 
-    	// return redirect('admin/cauhinh/index')->with('thongbao', 'Sửa thành công !');
+        // return redirect('admin/cauhinh/index')->with('thongbao', 'Sửa thành công !');
         return redirect('admin/cauhinh/update/1')->with('thongbao', 'Sửa thành công !');
     }
 
     public function view($id)
     {
         $cauhinh = Cauhinh::find($id);
-        return view('admin.cauhinh.view',[
+        return view('admin.cauhinh.view', [
             'cauhinh' => $cauhinh,
         ]);
     }
 
     public function delete($id)
     {
-    	$cauhinh = Cauhinh::find($id);
-    	$cauhinh->delete();
-    	return redirect('admin/cauhinh/index')->with('thongbao', 'Bạn đã xóa thành công !');
+        $cauhinh = Cauhinh::find($id);
+        $cauhinh->delete();
+        return redirect('admin/cauhinh/index')->with('thongbao', 'Bạn đã xóa thành công !');
     }
 }

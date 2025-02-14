@@ -7,10 +7,11 @@ use App\Slider;
 
 class SliderController extends Controller
 {
+    use SaveFileTrait;
     public function index()
     {
-    	$slider = Slider::paginate(15);
-    	return view('admin.slider.index',[
+        $slider = Slider::paginate(15);
+        return view('admin.slider.index', [
             'slider' => $slider,
 
         ]);
@@ -18,7 +19,7 @@ class SliderController extends Controller
 
     public function create()
     {
-    	return view('admin.slider.create');
+        return view('admin.slider.create');
     }
 
     public function createPost(Request $request)
@@ -29,36 +30,20 @@ class SliderController extends Controller
             'linkbaiviet' => $request->linkbaiviet,
         ]);
 
-        if($request->hasFile('anhdaidien'))
-        {
-            $file = $request->file('anhdaidien');
-            $duoi_anhdaidien = $file->getClientOriginalExtension();
-            if($duoi_anhdaidien != 'jpg' && $duoi_anhdaidien != 'png' && $duoi_anhdaidien != 'jpeg')
-            {
-                return redirect('admin/slider/create')->with('thongbao_create', 'Bạn chỉ được chọn file ảnh có đuôi jpg, png, jpeg !');
-            }
-            $name = $file->getClientOriginalName();
-            $anhdaidien = str_random(4)."_".$name;
-            while(file_exists("public/upload/slider/".$anhdaidien))
-            {
-                $anhdaidien = str_random(4)."_".$name;
-            }
-            $file->move("public/upload/slider", $anhdaidien);
-            $slider->anhdaidien = $anhdaidien;
-        }else{
-            $slider->anhdaidien = "";
+        if ($request->hasFile('anhdaidien')) {
+            $slider->anhdaidien = $this->saveFile($request->file('anhdaidien'), 'slider');
         }
 
         $slider->save();
 
-    	return redirect('admin/slider/index')->with('thongbao', 'Thêm mới thành công !');
+        return redirect('admin/slider/index')->with('thongbao', 'Thêm mới thành công !');
     }
 
     public function update($id)
     {
         $sliderAll = Slider::all();
-    	$slider = Slider::find($id);
-    	return view('admin.slider.update',[
+        $slider = Slider::find($id);
+        return view('admin.slider.update', [
             'slider' => $slider,
             'sliderAll' => $sliderAll,
         ]);
@@ -67,50 +52,34 @@ class SliderController extends Controller
     public function updatePost(Request $request, $id)
     {
         // dd($request->all());
-    	$slider = Slider::find($id);
+        $slider = Slider::find($id);
 
         $slider->fill([
             'linkbaiviet' => $request->linkbaiviet,
         ]);
 
-        if($request->hasFile('anhdaidien'))
-        {
-            $file = $request->file('anhdaidien');
-            $duoi_anhdaidien = $file->getClientOriginalExtension();
-            if($duoi_anhdaidien != 'jpg' && $duoi_anhdaidien != 'png' && $duoi_anhdaidien != 'jpeg')
-            {
-                return redirect('admin/slider/update/'.$id)->with('thongbao_update', 'Bạn chỉ được chọn file ảnh có đuôi jpg, png, jpeg !');
-            }
-            $name = $file->getClientOriginalName();
-            $anhdaidien = str_random(4)."_".$name;
-            while(file_exists("public/upload/slider/".$anhdaidien))
-            {
-                $anhdaidien = str_random(4)."_".$name;
-            }
-            $file->move("public/upload/slider", $anhdaidien);
-            if($slider->anhdaidien != NULL){
-                unlink("public/upload/slider/".$slider->anhdaidien);
-            }
-            $slider->anhdaidien = $anhdaidien;
+        if ($request->hasFile('anhdaidien')) {
+            $this->deleteFile('slider', $slider->anhdaidien);
+            $slider->anhdaidien = $this->saveFile($request->file('anhdaidien'), 'slider');
         }
 
         $slider->save();
 
-    	return redirect('admin/slider/index')->with('thongbao', 'Sửa thành công !');
+        return redirect('admin/slider/index')->with('thongbao', 'Sửa thành công !');
     }
 
     public function view($id)
     {
         $slider = Slider::find($id);
-        return view('admin.slider.view',[
+        return view('admin.slider.view', [
             'slider' => $slider,
         ]);
     }
 
     public function delete($id)
     {
-    	$slider = Slider::find($id);
-    	$slider->delete();
-    	return redirect('admin/slider/index')->with('thongbao', 'Bạn đã xóa thành công !');
+        $slider = Slider::find($id);
+        $slider->delete();
+        return redirect('admin/slider/index')->with('thongbao', 'Bạn đã xóa thành công !');
     }
 }
