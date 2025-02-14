@@ -29,6 +29,14 @@ class Cauhinh extends Model
 
     private static $caches = [];
 
+    protected static function booted()
+    {
+        static::updated(function (Cauhinh $entry) {
+            Cache::forget('cauhinh');
+            static::getAndCache();
+        });
+    }
+
     public static function getAndCache()
     {
         if (count(self::$caches) > 0) {

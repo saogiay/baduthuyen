@@ -42,27 +42,6 @@ owl.owlCarousel({
   },
 });
 
-// slider chi tiết sản phẩm
-$(document).ready(function () {
-  $('#content-slider').lightSlider({
-    loop: true,
-    keyPress: true,
-  });
-  $('#image-gallery').lightSlider({
-    gallery: true,
-    item: 1,
-    thumbItem: 5,
-    slideMargin: 0,
-    speed: 500,
-    auto: false,
-    // auto:true,
-    loop: true,
-    onSliderLoad: function () {
-      $('#image-gallery').removeClass('cS-hidden');
-    },
-  });
-});
-
 // Open the Modal
 function openModal() {
   document.getElementById('myModal').style.display = 'block';
