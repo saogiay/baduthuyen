@@ -144,16 +144,6 @@
 	<script src="{{asset("js/backend/raphael.min.js")}}"></script>
 	<script src="{{asset("js/backend/morris.min.js")}}"></script>
 	<script src="{{asset("js/backend/adminlte.min.js")}}"></script>
-	<!-- <script src="{{asset('../vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-	<script>
-		// CKEDITOR.replace( 'editor' );
-		$(document).ready(function() {
-			CKEDITOR.replace('editor', {
-				filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-				filebrowserUploadMethod: 'form'
-			});
-		});
-	</script> -->
 	<script>
 		const {
 			ClassicEditor,
