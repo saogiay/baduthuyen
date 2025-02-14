@@ -102,16 +102,43 @@
 	    	</div>
 
 	    	<div class="row">
-	    		<div class="col-md-7 col-xs-12">
-{{-- 	    			@for($i = 1; $i<=10; $i++) --}}
-	        		<div class="field-caterory-name">
-	        			<label>Hình ảnh chi tiết ( Width: 800px | Height: 450px )</label>
-	        			<input type="file" name="image_detail[]" class="form-control" multiple="multiple">
-	        			<div class="help-block"></div>
-        			</div>
-        			{{-- @endfor --}}
+				<div class="col-md-7 col-xs-12">
+					<div class="field-caterory-name">
+						<label>Hình ảnh chi tiết (Width: 800px | Height: 450px)</label>
+						<input type="file" name="image_detail[]" id="image-input" class="form-control" multiple>
+						<div class="help-block"></div>
+					</div>
+					<div id="preview-container" class="mt-3 row"></div>
 				</div>
-	    	</div>
+			</div>
+			
+			<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				document.getElementById("image-input").addEventListener("change", function (event) {
+					const previewContainer = document.getElementById("preview-container");
+					previewContainer.innerHTML = ""; // Xóa ảnh cũ khi chọn mới
+			
+					const files = event.target.files;
+					if (!files.length) return;
+			
+					Array.from(files).forEach((file, index) => {
+						const reader = new FileReader();
+						reader.onload = function (e) {
+							const colDiv = document.createElement("div");
+							colDiv.className = "col-md-4 col-xs-12 mb-2";
+							colDiv.innerHTML = `
+								<div class="image-preview">
+									<img src="${e.target.result}" class="img-thumbnail" style="width: 100%; height: auto;">
+									<input type="text" name="image_alt[]" class="form-control mt-1" placeholder="Nhập alt cho ảnh">
+								</div>
+							`;
+							previewContainer.appendChild(colDiv);
+						};
+						reader.readAsDataURL(file);
+					});
+				});
+			});
+			</script>
 
 	    	<div class="row">
 	    		<div class="col-md-7 col-xs-12">

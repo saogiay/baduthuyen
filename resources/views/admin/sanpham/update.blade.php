@@ -123,7 +123,7 @@
                                 <div class="div-sanpham_image_many">
                                     @foreach ($hinhanhsanpham as $item)
                                         <span class="div-sanpham_image_many-box">
-                                            <img src="public/upload/sanpham/hinhanh/{{ $item->hinhanhsanpham }}"
+                                            <img src="{{ asset('storage/sanpham/hinhanh/'.$sanpham->id .'/' . $item->hinhanhsanpham )}}"
                                                 class="img-responsive image_baiviet_backend_update sanpham_image_many" />
                                             <a href="admin/sanpham/deleteHinhanhsanpham/{{ $item->id }}"><i
                                                     class="fa fa-trash"></i> Xóa</a>

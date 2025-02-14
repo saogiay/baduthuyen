@@ -57,6 +57,8 @@ class BaivietController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'headings' => $request->headings,
+            'alt_avatar' => $request->alt_avatar ? $request->alt_avatar : $request->name,
+            'keyword' => $request->keyword,
         ]);
 
         if ($request->hasFile('anhdaidien')) {
@@ -119,6 +121,8 @@ class BaivietController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'headings' => $request->headings,
+            'alt_avatar' => $request->alt_avatar ? $request->alt_avatar : $request->name,
+            'keyword' => $request->keyword,
         ]);
 
         if ($request->hasFile('anhdaidien')) {

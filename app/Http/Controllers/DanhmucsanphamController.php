@@ -50,6 +50,7 @@ class DanhmucsanphamController extends Controller
             'description' => $request->description,
             'headings' => $request->headings,
             'vitri' => $request->vitri,
+            'keyword' => $request->keyword,
         ]);
 
         if($request->hasFile('anhdaidien'))
@@ -123,6 +124,7 @@ class DanhmucsanphamController extends Controller
             'description' => $request->description,
             'headings' => $request->headings,
             'vitri' => $request->vitri,
+            'keyword' => $request->keyword,
         ]);
 
         if($request->hasFile('anhdaidien'))

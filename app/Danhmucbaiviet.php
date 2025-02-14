@@ -8,7 +8,7 @@ class Danhmucbaiviet extends Model
 {
     protected $table = "danhmucbaiviet";
     protected $fillable = [
-    	'name', 'code', 'status', 'status2', 'title', 'description', 'headings'
+    	'name', 'code', 'status', 'status2', 'title', 'description', 'headings', 'keyword'
     ];
 
     public function baiviet()

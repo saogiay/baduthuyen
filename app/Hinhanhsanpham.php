@@ -8,7 +8,7 @@ class Hinhanhsanpham extends Model
 {
     protected $table = "hinhanhsanpham";
     protected $fillable = [
-    	'hinhanhsanpham', 'sanpham_id'
+    	'hinhanhsanpham', 'sanpham_id', 'alt'
     ];
 
     public function sanpham()
