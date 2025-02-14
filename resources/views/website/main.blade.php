@@ -23,7 +23,7 @@
 
     <meta name="robots" content="index,follow" />
     <meta name="google-site-verification" content="sxDrQyN6kO8uuQWwTP2EhvlDdY-4av45EOGXRNQ2AFY">
-    <link rel="shortcut icon" href="{{ asset('upload/cauhinh/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('storage/cauhinh/favicon.ico') }}" type="image/x-icon">
 
     <title>{{ $title }}</title>
     <meta name='description' itemprop='description' content='{{ $description }}' />
@@ -154,7 +154,7 @@
                         <div class="col-md-4 col-sm-4 col-xs-4 no-pad-right">
                             <div class="logo-site">
                                 <a href="{{ url('/') }}">
-                                    <img class="img-responsive" src="{{ asset('upload/cauhinh/' . $cauhinh->logo) }}"
+                                    <img class="img-responsive" src="{{ asset('storage/cauhinh/' . $cauhinh->logo) }}"
                                         alt="{{ $cauhinh->tendoanhnghiep }}">
                                 </a>
                             </div>
@@ -293,7 +293,7 @@
             <ul class="nav sidebar-nav">
                 <li class="sidebar-logo">
                     <a href="">
-                        <img src="{{ asset('upload/cauhinh/' . $cauhinh->logo) }}" alt="Logo">
+                        <img src="{{ asset('storage/cauhinh/' . $cauhinh->logo) }}" alt="Logo">
                     </a>
                 </li>
                 <li class="sidebar-brand">
