@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Sanpham;
 use App\Danhmucsanpham;
 use App\Hinhanhsanpham;
+use App\Rules\checkSlug;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
 
@@ -32,13 +33,20 @@ class SanphamController extends Controller
 
     public function createPost(Request $request)
     {
-        $message = [
-            'name.required' => 'Chưa nhập tên sản phẩm !',
-            'name.unique' => 'Tên sản phẩm đã tồn tại !',
-        ];
+        $request['code'] = $request->code ? changTitle($request->code) :changTitle($request->name);
+    	$message = [
+                'name.required' => 'Chưa nhập tên sản phẩm !',
+                'name.unique' => 'Tên sản phẩm đã tồn tại !',
+                'masp.required' => 'Chưa nhập mã sản phẩm !',
+                'masp.unique' => 'Mã sản phẩm đã tồn tại !',
+                'anhdaidien.mimes' => 'Bạn chỉ được chọn file ảnh có đuôi jpg, png, jpeg !',
+            ];
         $validated =
             [
-                'name' => 'required|unique:sanpham,name,' . $request->id,
+                'name' => 'required|unique:sanpham,name,'.$request->id,
+                'masp' => 'required|unique:sanpham,masp,'.$request->id,
+                'anhdaidien' => 'mimes:jpg,png,jpeg',
+                'code' => ['string', new checkSlug()],
             ];
         $this->validate($request, $validated, $message);
 
@@ -46,7 +54,7 @@ class SanphamController extends Controller
 
         $sanpham->fill([
             'name' => $request->name,
-            'code' => changTitle($request->name),
+            'code' => $request->code,
             'status' => $request->status,
             'giasanpham' => $request->giasanpham,
             'masp' => $request->masp,
@@ -95,7 +103,18 @@ class SanphamController extends Controller
 
     public function updatePost(Request $request, $id)
     {
-        $sanpham = Sanpham::find($id);
+    	$sanpham = Sanpham::find($id);
+        $request['code'] = $request->code ? changTitle($request->code) :changTitle($request->name);
+        if ($request->code != $sanpham->code) {
+            $message = [
+                'code' => ['string', new checkSlug()],
+            ];
+            $validated =
+                [
+                    'code' => ['string', new checkSlug()],
+                ];
+            $this->validate($request, $validated, $message);
+        }
 
         $message = [
             'name.required' => 'Chưa nhập tên sản phẩm !',
@@ -103,13 +122,14 @@ class SanphamController extends Controller
         ];
         $validated =
             [
-                'name' => 'required|unique:sanpham,name,' . $request->id,
+                'name' => 'required|unique:sanpham,name,'.$request->id,
+                'anhdaidien' => 'mimes:jpg,png,jpeg',
             ];
         $this->validate($request, $validated, $message);
 
         $sanpham->fill([
             'name' => $request->name,
-            'code' => changTitle($request->name),
+            'code' => $request->code,
             'status' => $request->status,
             'masp' => $request->masp,
             'giasanpham' => $request->giasanpham,

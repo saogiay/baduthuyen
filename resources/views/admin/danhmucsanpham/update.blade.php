@@ -30,6 +30,16 @@
 				</div>
 	    	</div>
 
+			<div class="row">
+	    		<div class="col-md-7 col-xs-12">
+	        		<div class="field-caterory-name">
+						<label>Code</label>
+						<input type="text" class="form-control" name="code" placeholder="Nhập code url... " aria-required="true" value="{{$danhmucsanpham->code}}">
+						<div class="help-block"></div>
+					</div>
+				</div>
+	    	</div>
+
 	    	<div class="row">
 	    		<div class="col-md-7 col-xs-12">
 	        		<div class="field-caterory-name">
