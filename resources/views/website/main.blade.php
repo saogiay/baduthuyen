@@ -411,7 +411,6 @@
     <script src="{{ asset('js/frontend/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/frontend/stellarnav.js') }}"></script>
     <script src="{{ asset('js/frontend/lightslider.js') }}"></script>
-    <script src="{{ asset('js/frontend/owl.carousel.js') }}"></script>
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
