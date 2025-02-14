@@ -20,7 +20,6 @@ Route::get('myLogin/logout', 'UserController@logout');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
 
-
 	Route::group(['prefix' => 'layout'], function () {
 		Route::get('index', 'Controller@index');
 	});

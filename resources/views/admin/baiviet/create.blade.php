@@ -178,7 +178,7 @@
 	    		<div class="col-md-7 col-xs-12">
 	        		<div class="field-caterory-name">
 						<label>Thẻ Headings</label>
-						<textarea class="form-control ckeditor" rows="7" name="headings" placeholder="Nhập thẻ headings ..."></textarea>
+						<textarea class="form-control" rows="7" name="headings" placeholder="Nhập thẻ headings ..."></textarea>
 						<div class="help-block"></div>
 					</div>
 				</div>
