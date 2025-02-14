@@ -30,6 +30,8 @@ class UploadController extends Controller
 
         Storage::disk('public')->putFileAs($path, $file, $fileName);
 
-        return Storage::disk('public')->url($path . '/' . $fileName);
+        return response()->json([
+            'url' => Storage::disk('public')->url($path . '/' . $fileName),
+        ], 200);
     }
 }
