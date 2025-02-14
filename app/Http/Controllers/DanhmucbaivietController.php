@@ -47,6 +47,7 @@ class DanhmucbaivietController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'headings' => $request->headings,
+            'keyword' => $request->keyword,
         ]);
 
         $danhmucbaiviet->save();
@@ -96,6 +97,7 @@ class DanhmucbaivietController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'headings' => $request->headings,
+            'keyword' => $request->keyword,
         ]);
 
         $danhmucbaiviet->save();

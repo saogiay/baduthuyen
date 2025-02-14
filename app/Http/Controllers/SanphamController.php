@@ -7,6 +7,7 @@ use App\Sanpham;
 use App\Danhmucsanpham;
 use App\Hinhanhsanpham;
 use App\Rules\checkSlug;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
 
@@ -33,60 +34,70 @@ class SanphamController extends Controller
 
     public function createPost(Request $request)
     {
-        $request['code'] = $request->code ? changTitle($request->code) :changTitle($request->name);
-    	$message = [
+        DB::beginTransaction();
+        try {
+            $request['code'] = $request->code ? changTitle($request->code) : changTitle($request->name);
+            $message = [
                 'name.required' => 'Chưa nhập tên sản phẩm !',
                 'name.unique' => 'Tên sản phẩm đã tồn tại !',
                 'masp.required' => 'Chưa nhập mã sản phẩm !',
                 'masp.unique' => 'Mã sản phẩm đã tồn tại !',
                 'anhdaidien.mimes' => 'Bạn chỉ được chọn file ảnh có đuôi jpg, png, jpeg !',
             ];
-        $validated =
-            [
-                'name' => 'required|unique:sanpham,name,'.$request->id,
-                'masp' => 'required|unique:sanpham,masp,'.$request->id,
-                'anhdaidien' => 'mimes:jpg,png,jpeg',
-                'code' => ['string', new checkSlug()],
-            ];
-        $this->validate($request, $validated, $message);
+            $validated =
+                [
+                    'name' => 'required|unique:sanpham,name,' . $request->id,
+                    'masp' => 'required|unique:sanpham,masp,' . $request->id,
+                    'anhdaidien' => 'mimes:jpg,png,jpeg',
+                    'code' => ['string', new checkSlug()],
+                ];
+            $this->validate($request, $validated, $message);
 
-        $sanpham = new Sanpham;
+            $sanpham = new Sanpham;
 
-        $sanpham->fill([
-            'name' => $request->name,
-            'code' => $request->code,
-            'status' => $request->status,
-            'giasanpham' => $request->giasanpham,
-            'masp' => $request->masp,
-            'motasanpham' => $request->motasanpham,
-            'noidungsanpham' => $request->noidungsanpham,
-            'danhmucsanpham_id' => $request->danhmucsanpham_id,
-            'title' => $request->title,
-            'description' => $request->description,
-            'headings' => $request->headings,
-        ]);
+            $sanpham->fill([
+                'name' => $request->name,
+                'code' => $request->code,
+                'status' => $request->status,
+                'giasanpham' => $request->giasanpham,
+                'masp' => $request->masp,
+                'motasanpham' => $request->motasanpham,
+                'noidungsanpham' => $request->noidungsanpham,
+                'danhmucsanpham_id' => $request->danhmucsanpham_id,
+                'title' => $request->title,
+                'description' => $request->description,
+                'headings' => $request->headings,
+                'keyword' => $request->keyword,
+                'alt_avatar' => $request->alt_avatar ? $request->alt_avatar : $request->name,
+            ]);
 
 
 
-        if ($request->hasFile('anhdaidien')) {
-            $sanpham->anhdaidien = $this->saveFile($request->file('anhdaidien'), 'sanpham');
-        }
-        $sanpham->save();
+            if ($request->hasFile('anhdaidien')) {
+                $sanpham->anhdaidien = $this->saveFile($request->file('anhdaidien'), 'sanpham');
+            }
+            $sanpham->save();
 
-        $sanpham_id = $sanpham->id;
+            $sanpham_id = $sanpham->id;
 
-        if (Input::hasFile('image_detail')) {
-            foreach (Input::file('image_detail') as $file) {
-                $sanpham_img = new Hinhanhsanpham();
-                if (isset($file)) {
-                    $sanpham_img->sanpham_id = $sanpham_id;
-                    $sanpham_img->hinhanhsanpham = $this->saveFile($file, 'sanpham/hinhanh/' . $sanpham_id);
-                    $sanpham_img->save();
+            if (Input::hasFile('image_detail')) {
+                foreach (Input::file('image_detail') as $i => $file) {
+                    $sanpham_img = new Hinhanhsanpham();
+                    if (isset($file)) {
+                        $sanpham_img->sanpham_id = $sanpham_id;
+                        $sanpham_img->hinhanhsanpham = $this->saveFile($file, 'sanpham/hinhanh/' . $sanpham_id);
+                        $sanpham_img->alt = $request->image_alt[$i] ?? null;
+                        $sanpham_img->save();
+                    }
                 }
             }
-        }
+            DB::commit();
 
-        return redirect('admin/sanpham/index')->with('thongbao', 'Thêm mới thành công !');
+            return redirect('admin/sanpham/index')->with('thongbao', 'Thêm mới thành công !');
+        } catch (\Exception $e) {
+            Db::rollBack();
+            return redirect('admin/sanpham/index')->with('thongbao', 'Thêm mới thất bại !');
+        }
     }
 
     public function update($id)
@@ -103,73 +114,88 @@ class SanphamController extends Controller
 
     public function updatePost(Request $request, $id)
     {
-    	$sanpham = Sanpham::find($id);
-        $request['code'] = $request->code ? changTitle($request->code) :changTitle($request->name);
-        if ($request->code != $sanpham->code) {
+        DB::beginTransaction();
+        try {
+            $sanpham = Sanpham::find($id);
+            $request['code'] = $request->code ? changTitle($request->code) : changTitle($request->name);
+            if ($request->code != $sanpham->code) {
+                $message = [
+                    'code' => ['string', new checkSlug()],
+                ];
+                $validated =
+                    [
+                        'code' => ['string', new checkSlug()],
+                    ];
+                $this->validate($request, $validated, $message);
+            }
+
             $message = [
-                'code' => ['string', new checkSlug()],
+                'name.required' => 'Chưa nhập tên sản phẩm !',
+                'name.unique' => 'Tên sản phẩm đã tồn tại !',
             ];
             $validated =
                 [
-                    'code' => ['string', new checkSlug()],
+                    'name' => 'required|unique:sanpham,name,' . $request->id,
+                    'anhdaidien' => 'mimes:jpg,png,jpeg',
                 ];
             $this->validate($request, $validated, $message);
-        }
 
-        $message = [
-            'name.required' => 'Chưa nhập tên sản phẩm !',
-            'name.unique' => 'Tên sản phẩm đã tồn tại !',
-        ];
-        $validated =
-            [
-                'name' => 'required|unique:sanpham,name,'.$request->id,
-                'anhdaidien' => 'mimes:jpg,png,jpeg',
-            ];
-        $this->validate($request, $validated, $message);
-
-        $sanpham->fill([
-            'name' => $request->name,
-            'code' => $request->code,
-            'status' => $request->status,
-            'masp' => $request->masp,
-            'giasanpham' => $request->giasanpham,
-            'motasanpham' => $request->motasanpham,
-            'noidungsanpham' => $request->noidungsanpham,
-            'danhmucsanpham_id' => $request->danhmucsanpham_id,
-            'title' => $request->title,
-            'description' => $request->description,
-            'headings' => $request->headings,
-        ]);
+            $sanpham->fill([
+                'name' => $request->name,
+                'code' => $request->code,
+                'status' => $request->status,
+                'masp' => $request->masp,
+                'giasanpham' => $request->giasanpham,
+                'motasanpham' => $request->motasanpham,
+                'noidungsanpham' => $request->noidungsanpham,
+                'danhmucsanpham_id' => $request->danhmucsanpham_id,
+                'title' => $request->title,
+                'description' => $request->description,
+                'headings' => $request->headings,
+            ]);
 
 
-        if ($request->hasFile('anhdaidien')) {
-            $this->deleteFile('sanpham', $sanpham->anhdaidien);
-            $sanpham->anhdaidien = $this->saveFile($request->file('anhdaidien'), 'sanpham');
-        }
+            if ($request->hasFile('anhdaidien')) {
+                $this->deleteFile('sanpham', $sanpham->anhdaidien);
+                $sanpham->anhdaidien = $this->saveFile($request->file('anhdaidien'), 'sanpham');
+            }
 
-        $sanpham->save();
+            $sanpham->save();
 
-        $sanpham_id = $sanpham->id;
+            $sanpham_id = $sanpham->id;
 
-        if (Input::hasFile('image_detail')) {
-            foreach (Input::file('image_detail') as $file) {
-                if (isset($file)) {
-                    $this->deleteFile('sanpham/hinhanh/' . $sanpham_id, $file->getClientOriginalName());
-                    $sanpham_img = new Hinhanhsanpham();
-                    $sanpham_img->sanpham_id = $sanpham_id;
-                    $sanpham_img->hinhanhsanpham = $this->saveFile($file, 'sanpham/hinhanh/' . $sanpham_id);
-                    $sanpham_img->save();
+            if (Input::hasFile('image_detail')) {
+                foreach (Input::file('image_detail') as $i => $file) {
+                    if (isset($file)) {
+                        $this->deleteFile('sanpham/hinhanh/' . $sanpham_id, $file->getClientOriginalName());
+                        $sanpham_img = new Hinhanhsanpham();
+                        $sanpham_img->sanpham_id = $sanpham_id;
+                        $sanpham_img->hinhanhsanpham = $this->saveFile($file, 'sanpham/hinhanh/' . $sanpham_id);
+                        $sanpham_img->alt = $request->image_alt[$i] ?? null;
+                        $sanpham_img->save();
+                    }
                 }
             }
+            DB::commit();
+            return redirect('admin/sanpham/index')->with('thongbao', 'Sửa thành công !');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect('admin/sanpham/index')->with('thongbao', 'Sửa thất bại !');
         }
-
-        return redirect('admin/sanpham/index')->with('thongbao', 'Sửa thành công !');
     }
 
     public function removeHinhanhsanpham($id)
     {
         $hinhanhsanpham = Hinhanhsanpham::find($id);
         $hinhanhsanpham->delete();
+        return redirect()->back();
+    }
+
+    public function updateAltHinhanhsanpham(Request $request, $id)
+    {
+        $hinhanhsanpham = Hinhanhsanpham::find($id);
+        $hinhanhsanpham->alt = $request->alt;
+        $hinhanhsanpham->save();
         return redirect()->back();
     }
 
