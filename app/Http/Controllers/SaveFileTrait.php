@@ -6,6 +6,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic;
 
 trait SaveFileTrait
 {
@@ -27,9 +28,11 @@ trait SaveFileTrait
 
         $fileName = Str::random(4) . '_' . preg_replace('/\s+/', '', $file->getClientOriginalName());
 
-        $fileName = Str::slug($fileName) . '.' . $file->getClientOriginalExtension();
+        $fileName = Str::slug($fileName) . '.webp';
 
-        Storage::disk('public')->putFileAs($path, $file, $fileName);
+        $webp = ImageManagerStatic::make($file)->encode('webp', 70);
+
+        Storage::disk('public')->put($path . '/' . $fileName, $webp);
 
         return $fileName;
     }
