@@ -21,36 +21,49 @@
 				</div>
 				@endif
 
-				<div class="row">
-					<div class="col-md-7 col-xs-12">
-						<div class="field-caterory-name">
-							<label>Tên bài viết</label>
-							<input type="text" class="form-control" name="name" placeholder="Nhập tên bài viết... " aria-required="true">
-							@if($errors->first('name'))
-							<p class="alert alert-danger"><i class=""></i> {{ $errors->first('name') }}</p>
-							@endif
-							<div class="help-block"></div>
-						</div>
+	    	<div class="row">
+	    		<div class="col-md-7 col-xs-12">
+	        		<div class="field-caterory-name">
+						<label>Tên bài viết</label>
+						<input type="text" class="form-control" name="name" placeholder="Nhập tên bài viết... " aria-required="true" value="{{old('name')}}">
+						@if($errors->first('name'))
+						<p class="alert alert-danger"><i class=""></i> {{ $errors->first('name') }}</p>
+						@endif
+						<div class="help-block"></div>
 					</div>
 				</div>
+	    	</div>
 
-				<div class="row">
-					<div class="col-md-7 col-xs-12">
-						<div class="field-caterory-name">
-							<label>Danh mục cha</label>
-							<select class="form-control" name="danhmucbaiviet_id">
-								<option value="0">Lựa chọn danh mục cha</option>
-								@foreach($danhmucbaiviet as $item)
-								<option value="{{$item->id}}">{{$item->name}}</option>
-								@endforeach
-							</select>
-							@if($errors->first('danhmucbaiviet_id'))
-							<p class="alert alert-danger"><i class=""></i> {{ $errors->first('danhmucbaiviet_id') }}</p>
-							@endif
-							<div class="help-block"></div>
-						</div>
+			<div class="row">
+	    		<div class="col-md-7 col-xs-12">
+	        		<div class="field-caterory-name">
+						<label>Code</label>
+						<input type="text" class="form-control" name="code" placeholder="Nhập code url... " aria-required="true" value= "{{old('code')}}">
+						@if($errors->first('code'))
+						<p class="alert alert-danger"><i class=""></i> {{ $errors->first('code') }}</p>
+						@endif
+						<div class="help-block"></div>
 					</div>
 				</div>
+	    	</div>
+
+	    	<div class="row">
+	    		<div class="col-md-7 col-xs-12">
+	        		<div class="field-caterory-name">
+						<label>Danh mục cha</label>
+						<select class="form-control" name="danhmucbaiviet_id">
+		                    <option value="0">Lựa chọn danh mục cha</option>
+		                    @foreach($danhmucbaiviet as $item)
+		                    <option value="{{$item->id}}">{{$item->name}}</option>
+		                    @endforeach
+		              	</select>
+		              	@if($errors->first('danhmucbaiviet_id'))
+						<p class="alert alert-danger"><i class=""></i> {{ $errors->first('danhmucbaiviet_id') }}</p>
+						@endif
+						<div class="help-block"></div>
+					</div>
+				</div>
+	    	</div>
 
 				<div class="row">
 					<div class="col-md-7 col-xs-12">

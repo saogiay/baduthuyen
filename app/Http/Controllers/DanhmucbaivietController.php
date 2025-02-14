@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Danhmucbaiviet;
+use App\Rules\checkSlug;
 
 class DanhmucbaivietController extends Controller
 {
@@ -25,6 +26,7 @@ class DanhmucbaivietController extends Controller
 
     public function createPost(Request $request)
     {
+        $request['code'] = $request->code ? changTitle($request->code) :changTitle($request->name);
     	$message = [
                 'name.required' => 'Chưa nhập tên danh mục !',
                 'name.unique' => 'Tên danh mục đã tồn tại !',
@@ -32,13 +34,14 @@ class DanhmucbaivietController extends Controller
         $validated =
             [
                 'name' => 'required|unique:danhmucbaiviet,name,'.$request->id,
+                'code' => ['string', new checkSlug()],
             ];
         $this->validate($request, $validated, $message);
 
         $danhmucbaiviet = new Danhmucbaiviet;
         $danhmucbaiviet->fill([
             'name' => $request->name,
-            'code' => changTitle($request->name),
+            'code' => $request->code,
             'status' => $request->status,
             'status2' => $request->status2,
             'title' => $request->title,
@@ -61,8 +64,19 @@ class DanhmucbaivietController extends Controller
 
     public function updatePost(Request $request, $id)
     {
-        // dd($request->all());
     	$danhmucbaiviet = Danhmucbaiviet::find($id);
+        $request['code'] = $request->code ? changTitle($request->code) :changTitle($request->name);
+        if ($request->code != $danhmucbaiviet->code) {
+            $message = [
+                'code.unique' => 'Code đã tồn tại trong hệ thống!',
+            ];
+            $validated =
+                [
+                    'code' => ['string', new checkSlug()],
+                ];
+            $this->validate($request, $validated, $message);
+        }
+
 
     	$message = [
                 'name.required' => 'Chưa nhập tên danh mục !',
@@ -76,7 +90,7 @@ class DanhmucbaivietController extends Controller
 
         $danhmucbaiviet->fill([
             'name' => $request->name,
-            'code' => changTitle($request->name),
+            'code' => $request->code,
             'status' => $request->status,
             'status2' => $request->status2,
             'title' => $request->title,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Baiviet;
 use App\Danhmucbaiviet;
+use App\Rules\checkSlug;
 
 class BaivietController extends Controller
 {
@@ -29,20 +30,23 @@ class BaivietController extends Controller
 
     public function createPost(Request $request)
     {
-        $message = [
-            'name.required' => 'Chưa nhập tên bài viết !',
-            'name.unique' => 'Tên bài viết đã tồn tại !',
-        ];
+        $request['code'] = $request->code ? changTitle($request->code) :changTitle($request->name);
+    	$message = [
+                'name.required' => 'Chưa nhập tên bài viết !',
+                'name.unique' => 'Tên bài viết đã tồn tại !',
+            ];
         $validated =
             [
-                'name' => 'required|unique:baiviet,name,' . $request->id,
+                'name' => 'required|unique:baiviet,name,'.$request->id,
+                'code' => ['string', new checkSlug()],
+                'anhdaidien' => 'mimes:jpg,png,jpeg',
             ];
         $this->validate($request, $validated, $message);
 
         $baiviet = new Baiviet;
         $baiviet->fill([
             'name' => $request->name,
-            'code' => changTitle($request->name),
+            'code' =>   $request->code,
             'motabaiviet' => $request->motabaiviet,
             'noidungbaiviet' => $request->noidungbaiviet,
             'status' => $request->status,
@@ -77,7 +81,19 @@ class BaivietController extends Controller
     public function updatePost(Request $request, $id)
     {
         // dd($request->all());
-        $baiviet = Baiviet::find($id);
+    	$baiviet = Baiviet::find($id);
+
+        $request['code'] = $request->code ? changTitle($request->code) :changTitle($request->name);
+        if ($request->code != $baiviet->code) {
+            $message = [
+                'code.unique' => 'Code đã tồn tại trong hệ thống!',
+            ];
+            $validated =
+                [
+                    'code' => ['string', new checkSlug()],
+                ];
+            $this->validate($request, $validated, $message);
+        }
 
         $message = [
             'name.required' => 'Chưa nhập tên bài viết !',
@@ -85,13 +101,14 @@ class BaivietController extends Controller
         ];
         $validated =
             [
-                'name' => 'required|unique:baiviet,name,' . $request->id,
+                'name' => 'required|unique:baiviet,name,'.$request->id,
+                'anhdaidien' => 'mimes:jpg,png,jpeg',
             ];
         $this->validate($request, $validated, $message);
 
         $baiviet->fill([
             'name' => $request->name,
-            'code' => changTitle($request->name),
+            'code' =>  $request->code,
             'motabaiviet' => $request->motabaiviet,
             'noidungbaiviet' => $request->noidungbaiviet,
             'status' => $request->status,

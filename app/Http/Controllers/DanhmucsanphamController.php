@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Danhmucsanpham;
 use App\Danhmuc_sanpham;
+use App\Rules\checkSlug;
+
 class DanhmucsanphamController extends Controller
 {
     public function index()
@@ -25,6 +27,7 @@ class DanhmucsanphamController extends Controller
 
     public function createPost(Request $request)
     {
+        $request['code'] = $request->code ? changTitle($request->code) :changTitle($request->name);
     	$message = [
                 'name.required' => 'Chưa nhập tên danh mục !',
                 'name.unique' => 'Tên danh mục đã tồn tại !',
@@ -32,6 +35,8 @@ class DanhmucsanphamController extends Controller
         $validated =
             [
                 'name' => 'required|unique:danhmucsanpham,name,'.$request->id,
+                'code' => ['string', new checkSlug()],
+                'anhdaidien' => 'mimes:jpg,png,jpeg',
             ];
         $this->validate($request, $validated, $message);
 
@@ -87,6 +92,17 @@ class DanhmucsanphamController extends Controller
     {
         // dd($request->all());
     	$danhmucsanpham = Danhmucsanpham::find($id);
+        $request['code'] = $request->code ? changTitle($request->code) :changTitle($request->name);
+        if ($request->code != $danhmucsanpham->code) {
+            $message = [
+                'code' => ['string', new checkSlug()],
+            ];
+            $validated =
+                [
+                    'code' => ['string', new checkSlug()],
+                ];
+            $this->validate($request, $validated, $message);
+        }
 
     	$message = [
                 'name.required' => 'Chưa nhập tên danh mục !',
@@ -100,7 +116,7 @@ class DanhmucsanphamController extends Controller
 
         $danhmucsanpham->fill([
             'name' => $request->name,
-            'code' => changTitle($request->name),
+            'code' => $request->code,
             'danhmuccha_id' => $request->danhmuccha_id,
             'status' => $request->status,
             'title' => $request->title,
