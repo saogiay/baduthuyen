@@ -37,9 +37,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
 	Route::group(['prefix' => 'sanpham'], function () {
 		Route::get('index', 'SanphamController@index');
 		Route::get('create', 'SanphamController@create');
-		Route::post('create', 'SanphamController@createPost');
+		Route::post('create', 'SanphamController@createProduct');
 		Route::get('update/{id}', 'SanphamController@update');
-		Route::post('update/{id}', 'SanphamController@updatePost');
+		Route::post('update/{id}', 'SanphamController@updateProduct');
 		Route::get('view/{id}', 'SanphamController@view');
 		Route::get('delete/{id}', 'SanphamController@delete');
 

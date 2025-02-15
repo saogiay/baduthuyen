@@ -87,57 +87,73 @@
 	    	</div>
 
 	    	<div class="row">
-	    		<div class="col-md-7 col-xs-12">
-	        		<div class="field-caterory-name">
-						<label>Ảnh đại diện ( Width: 400px | Height: 400px )</label>
-						<input type="file" class="form-control" name="anhdaidien" aria-required="true">
+				<div class="col-md-7 col-xs-12">
+					<div class="field-caterory-name">
+						<label>Ảnh đại diện (Width: 400px | Height: 400px)</label>
+						<input type="file" class="form-control" name="anhdaidien" id="avatar-input" aria-required="true">
 						@if(session('thongbao_create'))
 							<div class="alert alert-danger">
 								<i class="fa fa-info-circle"></i> {{session('thongbao_create')}}
 							</div>
 						@endif
+						<div id="avatar-preview" class="row"></div>
 						<div class="help-block"></div>
 					</div>
 				</div>
-	    	</div>
+			</div>
 
-	    	<div class="row">
+			<div class="row">
 				<div class="col-md-7 col-xs-12">
 					<div class="field-caterory-name">
 						<label>Hình ảnh chi tiết (Width: 800px | Height: 450px)</label>
 						<input type="file" name="image_detail[]" id="image-input" class="form-control" multiple>
-						<div class="help-block"></div>
 					</div>
-					<div id="preview-container" class="mt-3 row"></div>
+					<div id="preview-container" class="row"></div>
+					<div class="help-block"></div>
 				</div>
 			</div>
 			
 			<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				document.getElementById("image-input").addEventListener("change", function (event) {
-					const previewContainer = document.getElementById("preview-container");
-					previewContainer.innerHTML = ""; // Xóa ảnh cũ khi chọn mới
-			
-					const files = event.target.files;
-					if (!files.length) return;
-			
-					Array.from(files).forEach((file, index) => {
-						const reader = new FileReader();
-						reader.onload = function (e) {
-							const colDiv = document.createElement("div");
-							colDiv.className = "col-md-4 col-xs-12 mb-2";
-							colDiv.innerHTML = `
-								<div class="image-preview">
-									<img src="${e.target.result}" class="img-thumbnail" style="width: 100%; height: auto;">
-									<input type="text" name="image_alt[]" class="form-control mt-1" placeholder="Nhập alt cho ảnh">
-								</div>
+				document.getElementById('avatar-input').addEventListener('change', function(event) {
+					let file = event.target.files[0];
+					let previewContainer = document.getElementById('avatar-preview');
+					previewContainer.style.marginTop = '5px';
+					previewContainer.innerHTML = '';
+					if (file) {
+						let reader = new FileReader();
+						reader.onload = function(e) {
+							let div = document.createElement('div');
+							div.classList.add('col-md-4', 'mb-3');
+							div.innerHTML = `
+								<img src="${e.target.result}" class="img-thumbnail" style="max-width: 100%; height: auto; margin-bottom: 5px;">
+								<input type="text" class="form-control mt-2" name="alt_avatar" placeholder="Nhập alt text cho ảnh đại diện">
 							`;
-							previewContainer.appendChild(colDiv);
+							previewContainer.appendChild(div);
+						};
+						reader.readAsDataURL(file);
+					}
+				});
+
+				document.getElementById('image-input').addEventListener('change', function(event) {
+					let files = event.target.files;
+					let previewContainer = document.getElementById('preview-container');
+					previewContainer.style.marginTop = '5px';
+					previewContainer.innerHTML = '';
+					
+					Array.from(files).forEach((file, index) => {
+						let reader = new FileReader();
+						reader.onload = function(e) {
+							let div = document.createElement('div');
+							div.classList.add('col-md-4', 'mb-3');
+							div.innerHTML = `
+								<img src="${e.target.result}" class="img-thumbnail" style="max-width: 100%; height: auto; margin-bottom: 5px;">
+								<input type="text" class="form-control mt-2" name="image_alt[]" placeholder="Nhập alt text cho ảnh chi tiết">
+							`;
+							previewContainer.appendChild(div);
 						};
 						reader.readAsDataURL(file);
 					});
 				});
-			});
 			</script>
 
 	    	<div class="row">
@@ -174,7 +190,7 @@
 	    	</div>
 
 	    	<div class="row">
-	    		<div class="col-md-12 col-xs-12">
+	    		<div class="col-md-7 col-xs-12">
 	        		<div class="field-caterory-name">
 						<label>Nội dung sản phẩm</label>
 						<textarea class="form-control" id="editor" rows="7" name="noidungsanpham" placeholder="Nhập nội dung sản phẩm ..."></textarea>

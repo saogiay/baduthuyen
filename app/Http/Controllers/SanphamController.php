@@ -32,7 +32,7 @@ class SanphamController extends Controller
         ]);
     }
 
-    public function createPost(Request $request)
+    public function createProduct(Request $request)
     {
         DB::beginTransaction();
         try {
@@ -96,6 +96,7 @@ class SanphamController extends Controller
             return redirect('admin/sanpham/index')->with('thongbao', 'Thêm mới thành công !');
         } catch (\Exception $e) {
             Db::rollBack();
+            logger($e->getMessage());
             return redirect('admin/sanpham/index')->with('thongbao', 'Thêm mới thất bại !');
         }
     }
@@ -112,7 +113,7 @@ class SanphamController extends Controller
         ]);
     }
 
-    public function updatePost(Request $request, $id)
+    public function updateProduct(Request $request, $id)
     {
         DB::beginTransaction();
         try {

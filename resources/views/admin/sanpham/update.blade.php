@@ -168,7 +168,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12 col-xs-12">
+                        <div class="col-md-7 col-xs-12">
                             <div class="field-caterory-name">
                                 <label>Nội dung sản phẩm</label>
                                 <textarea class="form-control" id="editor" rows="7" name="noidungsanpham"
