@@ -135,19 +135,36 @@
                         <div class="col-md-7 col-xs-12">
                             <div class="field-caterory-name">
                                 <label>Ảnh đại diện ( Width: 300px | Height: 200px )</label>
-                                <input type="file" class="form-control" name="anhdaidien" aria-required="true">
+                                <input type="file" class="form-control" name="anhdaidien" id="avatar-input" aria-required="true">
                                 @if (session('thongbao_create'))
                                     <div class="alert alert-danger">
                                         <i class="fa fa-info-circle"></i> {{ session('thongbao_create') }}
                                     </div>
                                 @endif
-                                <div style="height: 5px"></div>
-                                <img src="{{ asset('storage/baiviet/' . $baiviet->anhdaidien) }}"
-                                    class="img-responsive image_baiviet_backend_update" />
+                                <div class="row" style="margin-top: 5px;">
+                                    <div id="avatar-preview" class="mt-3 col-md-4">
+                                        <img src="{{ asset('storage/baiviet/' . $baiviet->anhdaidien) }}" class="img-responsive img-thumbnail image_baiviet_backend_update" id="avatar-image" style="max-width: 100%; height: auto; margin-bottom: 5px;" />
+                                        <input type="text" class="form-control mt-2" name="alt_avatar" placeholder="Nhập alt text cho ảnh đại diện" value="{{ $baiviet->alt_avatar ?? '' }}">
+                                    </div>
+                                </div>
                                 <div class="help-block"></div>
                             </div>
                         </div>
                     </div>
+                    <script>
+                        document.getElementById('avatar-input').addEventListener('change', function(event) {
+                            let file = event.target.files[0];
+                            let previewContainer = document.getElementById('avatar-preview');
+                            if (file) {
+                                let reader = new FileReader();
+                                reader.onload = function(e) {
+                                    document.getElementById('avatar-image').src = e.target.result;
+                                };
+                                reader.readAsDataURL(file);
+                            }
+                        });
+                    </script>
+
 
                     <div class="row">
                         <div class="col-md-7 col-xs-12">
