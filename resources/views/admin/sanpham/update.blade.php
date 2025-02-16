@@ -100,15 +100,18 @@
                         <div class="col-md-7 col-xs-12">
                             <div class="field-caterory-name">
                                 <label>Ảnh đại diện ( Width: 400px | Height: 400px )</label>
-                                <input type="file" class="form-control" name="anhdaidien" aria-required="true">
+                                <input type="file" class="form-control" name="anhdaidien" id="avatar-input" aria-required="true">
                                 @if (session('thongbao_create'))
                                     <div class="alert alert-danger">
                                         <i class="fa fa-info-circle"></i> {{ session('thongbao_create') }}
                                     </div>
                                 @endif
-                                <div style="height: 5px"></div>
-                                <img src="{{ asset('storage/sanpham/' . $sanpham->anhdaidien) }}"
-                                    class="img-responsive image_baiviet_backend_update" />
+                                <div class="row" style="margin-top: 5px;">
+                                    <div id="avatar-preview" class="mt-3 col-md-4">
+                                        <img src="{{ asset('storage/sanpham/' . $sanpham->anhdaidien) }}" class="img-responsive img-thumbnail image_baiviet_backend_update" id="avatar-image" style="max-width: 100%; height: auto; margin-bottom: 5px;" />
+                                        <input type="text" class="form-control mt-2" name="alt_avatar" placeholder="Nhập alt text cho ảnh đại diện" value="{{ $sanpham->alt_avatar ?? '' }}">
+                                    </div>
+                                </div>
                                 <div class="help-block"></div>
                             </div>
                         </div>
@@ -118,15 +121,15 @@
                         <div class="col-md-7 col-xs-12">
                             <div class="field-caterory-name">
                                 <label>Hình ảnh chi tiết ( Width: 800px | Height: 450px )</label>
-                                <input type="file" name="image_detail[]" class="form-control" multiple="multiple">
+                                <input type="file" name="image_detail[]" id="image-input" class="form-control" multiple>
                                 <div style="height: 5px"></div>
-                                <div class="div-sanpham_image_many">
+                                <div id="preview-container" class="row" style="margin-bottom: 10px;"></div>
+                                <div class="div-sanpham_image_many row" id="existing-images">
                                     @foreach ($hinhanhsanpham as $item)
-                                        <span class="div-sanpham_image_many-box">
-                                            <img src="{{ asset('storage/sanpham/hinhanh/'.$sanpham->id .'/' . $item->hinhanhsanpham )}}"
-                                                class="img-responsive image_baiviet_backend_update sanpham_image_many" />
-                                            <a href="admin/sanpham/deleteHinhanhsanpham/{{ $item->id }}"><i
-                                                    class="fa fa-trash"></i> Xóa</a>
+                                        <span class="div-sanpham_image_many-box col-md-4" style="margin-bottom: 10px;">
+                                            <img src="{{ asset('storage/sanpham/hinhanh/'.$sanpham->id .'/' . $item->hinhanhsanpham )}}" class="img-responsive img-thumbnail image_baiviet_backend_update sanpham_image_many" style="max-width: 100%; height: auto; margin-bottom: 5px;" />
+                                            <input type="text" class="form-control mt-2 alt-input" data-id="{{ $item->id }}" placeholder="Nhập alt text" value="{{ $item->alt ?? '' }}" style="margin-bottom: 5px;">
+                                            <a href="admin/sanpham/deleteHinhanhsanpham/{{ $item->id }}"><i class="fa fa-trash"></i> Xóa</a>
                                         </span>
                                     @endforeach
                                 </div>
@@ -134,6 +137,62 @@
                             </div>
                         </div>
                     </div>
+
+                    <script>
+                        document.getElementById('avatar-input').addEventListener('change', function(event) {
+                            let file = event.target.files[0];
+                            let previewContainer = document.getElementById('avatar-preview');
+                            if (file) {
+                                let reader = new FileReader();
+                                reader.onload = function(e) {
+                                    document.getElementById('avatar-image').src = e.target.result;
+                                };
+                                reader.readAsDataURL(file);
+                            }
+                        });
+
+                        document.getElementById('image-input').addEventListener('change', function(event) {
+                            let files = event.target.files;
+                            let previewContainer = document.getElementById('preview-container');
+                            previewContainer.innerHTML = '';
+                            
+                            Array.from(files).forEach((file, index) => {
+                                let reader = new FileReader();
+                                reader.onload = function(e) {
+                                    let div = document.createElement('div');
+                                    div.classList.add('col-md-4', 'mb-3');
+                                    div.innerHTML = `
+                                        <img src="${e.target.result}" class="img-thumbnail" style="max-width: 100%; height: auto;">
+                                        <input type="text" class="form-control mt-2" name="image_alt[]" placeholder="Nhập alt text cho ảnh chi tiết">
+                                    `;
+                                    previewContainer.appendChild(div);
+                                };
+                                reader.readAsDataURL(file);
+                            });
+                        });
+
+                        document.querySelectorAll(".alt-input").forEach((input) => {
+                            input.addEventListener("change", function () {
+                                let id = this.dataset.id;
+                                let value = this.value;
+                                alert("Đang cập nhật Alternative Text...");
+                                updateAlt(id, value);
+                            });
+                        });
+
+                        function updateAlt(id, value) {
+                            fetch(`api/updateAltHinhanhsanpham/${id}`, {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({ alt: value }),
+                            })
+                                .then((response) => response.json())
+                                .then((data) => alert(data.message))
+                                .catch((error) => alert(error.message));
+                        }
+                    </script>
 
                     <div class="row">
                         <div class="col-md-7 col-xs-12">

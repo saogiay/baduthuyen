@@ -44,7 +44,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
 		Route::get('delete/{id}', 'SanphamController@delete');
 
 		Route::get('deleteHinhanhsanpham/{id}', 'SanphamController@removeHinhanhsanpham');
-		Route::post('updateAltHinhanhsanpham/{id}', 'SanphamController@updateAltHinhanhsanpham');
 	});
 
 	Route::group(['prefix' => 'thongtinlienhe'], function () {

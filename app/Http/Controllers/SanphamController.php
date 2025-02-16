@@ -153,6 +153,7 @@ class SanphamController extends Controller
                 'title' => $request->title,
                 'description' => $request->description,
                 'headings' => $request->headings,
+                'alt_avatar' => $request->alt_avatar ? $request->alt_avatar : $request->name,
             ]);
 
 
@@ -194,10 +195,18 @@ class SanphamController extends Controller
 
     public function updateAltHinhanhsanpham(Request $request, $id)
     {
-        $hinhanhsanpham = Hinhanhsanpham::find($id);
-        $hinhanhsanpham->alt = $request->alt;
-        $hinhanhsanpham->save();
-        return redirect()->back();
+        DB::beginTransaction();
+        try {
+            $hinhanhsanpham = Hinhanhsanpham::find($id);
+            $hinhanhsanpham->alt = $request->alt;
+            $hinhanhsanpham->save();
+            DB::commit();
+            return response()->json(['message' => 'Cập nhật Alternative Text cho ảnh thành công !'], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            logger($e->getMessage());
+            return response()->json(['message' => 'Cập nhật Alternative Text cho ảnh thất bại !'], 500);
+        }
     }
 
     public function view($id)

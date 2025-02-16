@@ -56,7 +56,7 @@
                                     </td>
                                     <td width="7%">
                                         <img src="{{ asset('storage/sanpham/' . $item->anhdaidien) }}"
-                                            class="img-responsive image_baiviet_backend">
+                                            class="img-responsive image_baiviet_backend" style="margin: auto;">
                                     </td>
                                     <td width="30%">{{ $item->name }}</td>
                                     <td width="12%">
