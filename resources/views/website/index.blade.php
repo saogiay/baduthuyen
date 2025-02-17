@@ -144,7 +144,7 @@
                                         </div>
                                         <div class="new-block-cap">
                                             <div class="new-block-name">
-                                                <a href="{{ route('indexCode', ['code' => $item2->code]) }}">
+                                                <a href="{{ route('indexCode', ['code' => $item2->code]) }}" title="{{ $item2->name }}">
                                                     {{ $item2->name }}
                                                 </a>
                                             </div>
@@ -188,7 +188,7 @@
                                 <div class="col-md-3 col-xs-6">
                                     <div class="activity-block">
                                         <a href="{{ route('indexCode', ['code' => $item->code]) }}">
-                                            <img src="{{ asset('storage/baiviet/' . $item->anhdaidien) }}"
+                                            <img src="{{ asset('storage/baiviet/' . $item->anhdaidien) }}" alt="{{ $item->alt_avatar }}"
                                                 class="hover-shadow">
                                             <div class="activity-block-cap">
                                                 {{ $item->name }}
@@ -327,7 +327,7 @@
                                     </div>
                                     <div class="new-block-cap">
                                         <div class="new-block-name">
-                                            <a href="{{ route('indexCode', ['code' => $item->code]) }}">
+                                            <a href="{{ route('indexCode', ['code' => $item->code]) }}" title="{{ $item->name }}">
                                                 {{ $item->name }}
                                             </a>
                                         </div>

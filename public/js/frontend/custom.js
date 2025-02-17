@@ -22,25 +22,25 @@ $('.search-icon').on('click', function (e) {
 
 // menu mobile
 
-var owl = $('.owl-carousel');
-owl.owlCarousel({
-  margin: 10,
-  loop: true,
-  autoplay: true,
-  autoplayTimeout: 2000,
-  autoplayHoverPause: true,
-  responsive: {
-    0: {
-      items: 2,
-    },
-    600: {
-      items: 2,
-    },
-    1000: {
-      items: 6,
-    },
-  },
-});
+// var owl = $('.owl-carousel');
+// owl.owlCarousel({
+//   margin: 10,
+//   loop: true,
+//   autoplay: true,
+//   autoplayTimeout: 2000,
+//   autoplayHoverPause: true,
+//   responsive: {
+//     0: {
+//       items: 2,
+//     },
+//     600: {
+//       items: 2,
+//     },
+//     1000: {
+//       items: 6,
+//     },
+//   },
+// });
 
 // Open the Modal
 function openModal() {

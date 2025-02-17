@@ -178,8 +178,9 @@
                                         <input name="tukhoa" type="text" class="form-control"
                                             placeholder="Nhập từ khóa tìm kiếm...">
                                         <span class="input-group-btn">
-                                            <button type="submit" class="btn btn-success"><i
-                                                    class="fa fa-search"></i></button>
+                                            <button type="submit" aria-label="search-button" class="btn btn-success">
+                                                <i class="fa fa-search"></i>
+                                            </button>
                                         </span>
                                     </div><!-- /input-group -->
                                 </form>
@@ -304,7 +305,7 @@
                             <input type="text" class="form-control" name="tukhoa"
                                 placeholder="Tìm kiếm thông tin.." required>
                             <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit">
+                                <button class="btn btn-default" aria-label="search-button" type="submit">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </div>

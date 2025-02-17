@@ -1047,9 +1047,18 @@ span.fa.fa-chevron-left {
     padding-bottom: 0;
 }
 
-.new-block-img img {
+.new-block-img a img {
+    max-width: none !important;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.new-block-img a {
+    overflow: hidden;
+    display: inline-block;
     width: 130px;
-    height: 70px;
+    max-width: none !important;
+    aspect-ratio: 4/3;
 }
 
 .new-block-cap {
@@ -1061,6 +1070,13 @@ span.fa.fa-chevron-left {
     text-transform: uppercase;
     color: #333;
     font-weight: 700;
+
+    display: -webkit-box;        /* Để sử dụng flexbox với webkit */
+    -webkit-line-clamp: 2;       /* Giới hạn số dòng */
+    -webkit-box-orient: vertical;/* Xác định hướng của box */
+    overflow: hidden;            /* Ẩn phần nội dung vượt quá */
+    text-overflow: ellipsis;     /* Hiển thị "..." khi nội dung bị cắt */
+    white-space: normal; 
 }
 
 .new-block-name a:hover {
@@ -1229,6 +1245,9 @@ span.fa.fa-chevron-left {
 .activity-block {
     margin-bottom: 10px;
     position: relative;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
 }
 
 .activity-block:hover {
@@ -1249,10 +1268,17 @@ span.fa.fa-chevron-left {
     opacity: 1;
 }
 
-.activity-block img {
-    width: 100%;
+.activity-block a {
     border: 1px solid #efefef;
     height: 200px;
+    aspect-ratio: 4/3;
+    display: inline-block;
+}
+
+.activity-block img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
 }
 
 /*more*/
@@ -4037,8 +4063,9 @@ body {
 }
 
 .block-new-content .new-block-img img {
-    width: 250px;
-    height: 110px;
+    width: 130px;
+    max-width: none !important;
+    aspect-ratio: 4/3;
 }
 
 .block-new {

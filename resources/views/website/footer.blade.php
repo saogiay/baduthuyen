@@ -101,10 +101,10 @@
                     <div class="socical-foot">Kết nối với chúng tôi</div>
                     <div class="listSocial">
                         <ul>
-                            <li class="facebook"><a target="_blank" href="{{ $cauhinh->fanpage }}"><i class="fa fa-facebook"></i></a></li>
-                            <li class="google-plus"><a target="_blank" href="{{ $cauhinh->google }}"><i class="fa fa-google-plus"></i></a></li>
-                            <li class="twitter"><a target="_blank" href="{{ $cauhinh->twiter }}"><i class="fa fa-twitter"></i></a></li>
-                            <li class="instagram"><a target="_blank" href="{{ $cauhinh->ytb }}"><i class="fa fa-youtube"></i></a></li>
+                            <li class="facebook"><a target="_blank" aria-label="facebook" href="{{ $cauhinh->fanpage }}"><i class="fa fa-facebook"></i></a></li>
+                            <li class="google-plus"><a target="_blank" aria-label="google" href="{{ $cauhinh->google }}"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="twitter"><a target="_blank" aria-label="twitter" href="{{ $cauhinh->twiter }}"><i class="fa fa-twitter"></i></a></li>
+                            <li class="instagram"><a target="_blank" aria-label="youtube" href="{{ $cauhinh->ytb }}"><i class="fa fa-youtube"></i></a></li>
                         </ul>
                     </div>
                 </div>
