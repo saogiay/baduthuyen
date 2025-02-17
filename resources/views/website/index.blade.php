@@ -81,7 +81,7 @@
                     <div class="box-index-title-2">
                         Thi công Sơn Bả du thuyền số 1 Việt Nam
                     </div>
-                    <div class="text-center" style="margin-bottom: 30px"><img src="images/e.png"/ alt="Img"></div>
+                    <div class="text-center" style="margin-bottom: 30px"><img src="images/devide-line.svg"/ alt="Img" style="width: 200px;"></div>
                     <div class="box-index-content">
                         <div class="row">
                             <?php $baivietIndex = DB::table('baiviet')->where('status', 1)->where('status3', 1)->orderBy('id', 'desc')->limit(2)->get(); ?>
@@ -212,7 +212,7 @@
                         <div class="box-index-title-2">
                             Sản phẩm
                         </div>
-                        <div class="text-center" style="margin-bottom: 30px"><img src="images/e.png"/ alt="Img">
+                        <div class="text-center" style="margin-bottom: 30px"><img src="images/devide-line.svg"/ alt="devide-line" style="width: 200px;">
                         </div>
                         <div class="box-index-title-des">
                             Làm phong phú thêm không gian cuộc sống với những dải sắc màu ấn tượng của chúng tôi.

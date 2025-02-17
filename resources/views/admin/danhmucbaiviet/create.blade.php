@@ -41,6 +41,16 @@
 				</div>
 	    	</div>
 
+			<div class="row">
+	    		<div class="col-md-7 col-xs-12">
+	        		<div class="field-caterory-name">
+						<label>Keyword</label>
+						<input type="text" class="form-control" name="keyword" placeholder="Nhập keyword.. " aria-required="true">
+						<div class="help-block"></div>
+					</div>
+				</div>
+	    	</div>
+
 	    	<div class="row">
 	    		<div class="col-md-7 col-xs-12">
 	        		<div class="field-caterory-name">
