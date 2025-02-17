@@ -81,7 +81,8 @@
                     <div class="box-index-title-2">
                         Thi công Sơn Bả du thuyền số 1 Việt Nam
                     </div>
-                    <div class="text-center" style="margin-bottom: 30px"><img src="images/devide-line.svg"/ alt="Img" style="width: 200px;"></div>
+                    <div class="text-center" style="margin-bottom: 30px"><img src="images/devide-line.svg"/ alt="Img"
+                            style="width: 200px;"></div>
                     <div class="box-index-content">
                         <div class="row">
                             <?php $baivietIndex = DB::table('baiviet')->where('status', 1)->where('status3', 1)->orderBy('id', 'desc')->limit(2)->get(); ?>
@@ -144,7 +145,8 @@
                                         </div>
                                         <div class="new-block-cap">
                                             <div class="new-block-name">
-                                                <a href="{{ route('indexCode', ['code' => $item2->code]) }}" title="{{ $item2->name }}">
+                                                <a href="{{ route('indexCode', ['code' => $item2->code]) }}"
+                                                    title="{{ $item2->name }}">
                                                     {{ $item2->name }}
                                                 </a>
                                             </div>
@@ -188,8 +190,8 @@
                                 <div class="col-md-3 col-xs-6">
                                     <div class="activity-block">
                                         <a href="{{ route('indexCode', ['code' => $item->code]) }}">
-                                            <img src="{{ asset('storage/baiviet/' . $item->anhdaidien) }}" alt="{{ $item->alt_avatar }}"
-                                                class="hover-shadow">
+                                            <img src="{{ asset('storage/baiviet/' . $item->anhdaidien) }}"
+                                                alt="{{ $item->alt_avatar }}" class="hover-shadow">
                                             <div class="activity-block-cap">
                                                 {{ $item->name }}
                                             </div>
@@ -212,7 +214,8 @@
                         <div class="box-index-title-2">
                             Sản phẩm
                         </div>
-                        <div class="text-center" style="margin-bottom: 30px"><img src="images/devide-line.svg"/ alt="devide-line" style="width: 200px;">
+                        <div class="text-center" style="margin-bottom: 30px"><img src="images/devide-line.svg"/
+                                alt="devide-line" style="width: 200px;">
                         </div>
                         <div class="box-index-title-des">
                             Làm phong phú thêm không gian cuộc sống với những dải sắc màu ấn tượng của chúng tôi.
@@ -327,7 +330,8 @@
                                     </div>
                                     <div class="new-block-cap">
                                         <div class="new-block-name">
-                                            <a href="{{ route('indexCode', ['code' => $item->code]) }}" title="{{ $item->name }}">
+                                            <a href="{{ route('indexCode', ['code' => $item->code]) }}"
+                                                title="{{ $item->name }}">
                                                 {{ $item->name }}
                                             </a>
                                         </div>
