@@ -10,3 +10,5 @@ npm-debug.log
 yarn-error.log
 vendor
 composer.lock
+yarn.lock
+package-lock.json

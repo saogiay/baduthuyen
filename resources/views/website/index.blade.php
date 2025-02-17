@@ -416,8 +416,6 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/frontend/owl.carousel.js') }}"></script>
-
     <script>
         var slideIndex = 1;
         showSlides(slideIndex);

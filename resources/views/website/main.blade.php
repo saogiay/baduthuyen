@@ -7,20 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="{{ asset('') }}">
-    <link rel="stylesheet" href="{{ asset('css/frontend/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/frontend/stellarnav.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/frontend/lightslider.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/frontend/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/frontend/owl.theme.default.min.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@400;700&family=Shrikhand&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/frontend/alo.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/frontend/style.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <meta name="robots" content="index,follow" />
     <meta name="google-site-verification" content="sxDrQyN6kO8uuQWwTP2EhvlDdY-4av45EOGXRNQ2AFY">
     <link rel="shortcut icon" href="{{ asset('storage/cauhinh/favicon.ico') }}" type="image/x-icon">
@@ -408,10 +400,7 @@
         </ul>
     </div>
 
-    <script src="{{ asset('js/frontend/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/frontend/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/frontend/stellarnav.js') }}"></script>
-    <script src="{{ asset('js/frontend/lightslider.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -445,7 +434,6 @@
             })
         })
     </script>
-    <script src="js/frontend/custom.js"></script>
     <script type="application/ld+json">{
 			"@context": "http://schema.org",
 		  	"@type": "Professionalservice",
