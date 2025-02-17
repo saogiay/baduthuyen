@@ -19,7 +19,6 @@ mix.scripts(
     'public/js/frontend/bootstrap.min.js',
     'public/js/frontend/stellarnav.js',
     'public/js/frontend/lightslider.js',
-    'public/js/frontend/custom.js',
   ],
   'public/js/app.js'
 );
@@ -27,7 +26,6 @@ mix.scripts(
 mix.styles(
   [
     'public/css/frontend/bootstrap.min.css',
-    'public/css/frontend/font-awesome.min.css',
     'public/css/frontend/stellarnav.css',
     'public/css/frontend/lightslider.css',
     'public/css/frontend/owl.carousel.min.css',

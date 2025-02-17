@@ -56,5 +56,3 @@ Header always set Content-Security-Policy "upgrade-insecure-requests;"
 ## ONEPANEL Force HTTPS by SSL installation end
 
 
-AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/x-javascript
-

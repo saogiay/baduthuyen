@@ -29,8 +29,8 @@ class Cauhinhseo extends Model
 
     public static function getAndCache()
     {
-        if (count(self::$caches) > 0) {
-            return self::$caches;
+        if (isset(self::$caches['data'])) {
+            return self::$caches['data'];
         }
 
         $cauhinh = Cache::remember('cauhinhseo', 60 * 60 * 24 * 30, function () {
@@ -38,8 +38,8 @@ class Cauhinhseo extends Model
         });
         $data = json_decode($cauhinh, false);
 
-        self::$caches = $data;
+        self::$caches['data'] = $data;
 
-        return $data;
+        return self::$caches['data'];
     }
 }
