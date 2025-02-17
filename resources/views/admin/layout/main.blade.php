@@ -294,64 +294,69 @@
 
 			// Cập nhật lại nội dung CKEditor sau khi đã thêm ID
 			document.querySelector("#editor").value = doc.body.innerHTML;
+		};
+
+		const editorObject = document.querySelector("#editor");
+		
+		if (editorObject) {
+			ClassicEditor.create(editorObject, {
+					plugins: configPlugins,
+					toolbar: configToolbarItems,
+					image: {
+						styles: ["alignLeft", "alignCenter", "alignRight"],
+						toolbar: [
+							"resizeImage:50",
+							"resizeImage:75",
+							"resizeImage:original",
+							"toggleImageCaption",
+							"imageStyle:alignLeft",
+							"imageStyle:alignCenter",
+							"imageStyle:alignRight",
+						],
+						resizeOptions: [{
+								name: "resizeImage:original",
+								value: null,
+								icon: "original",
+							},
+							{
+								name: "resizeImage:custom",
+								value: "custom",
+								icon: "custom",
+							},
+							{
+								name: "resizeImage:50",
+								value: "50",
+								icon: "medium",
+							},
+							{
+								name: "resizeImage:75",
+								value: "75",
+								icon: "large",
+							},
+						],
+					},
+					link: {
+						addTargetToExternalLinks: true,
+						decorators: [{
+							mode: "manual",
+							label: "External Link",
+							attributes: {
+								target: "_blank",
+							},
+						}, ],
+					},
+				})
+				.then((editor) => {
+					editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
+						return uploadAdapter(loader);
+					};
+					editor.model.document.on('change:data', () => {
+						document.querySelector("#editor").value = editor.getData();
+						addIdsToHeadings();
+					});
+				})
+				.catch((error) => console.log(error));
 		}
-		ClassicEditor.create(document.querySelector("#editor"), {
-				plugins: configPlugins,
-				toolbar: configToolbarItems,
-				image: {
-					styles: ["alignLeft", "alignCenter", "alignRight"],
-					toolbar: [
-						"resizeImage:50",
-						"resizeImage:75",
-						"resizeImage:original",
-						"toggleImageCaption",
-						"imageStyle:alignLeft",
-						"imageStyle:alignCenter",
-						"imageStyle:alignRight",
-					],
-					resizeOptions: [{
-							name: "resizeImage:original",
-							value: null,
-							icon: "original",
-						},
-						{
-							name: "resizeImage:custom",
-							value: "custom",
-							icon: "custom",
-						},
-						{
-							name: "resizeImage:50",
-							value: "50",
-							icon: "medium",
-						},
-						{
-							name: "resizeImage:75",
-							value: "75",
-							icon: "large",
-						},
-					],
-				},
-				link: {
-					addTargetToExternalLinks: true,
-					decorators: [{
-						mode: "manual",
-						label: "External Link",
-						attributes: {
-							target: "_blank",
-						},
-					}, ],
-				},
-			})
-			.then((editor) => {
-				editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
-					return uploadAdapter(loader);
-				};
-				editor.model.document.on('change:data', () => {
-					document.querySelector("#editor").value = editor.getData();
-					addIdsToHeadings();
-				});
-			})
-			.catch((error) => console.error("Error initializing CKEditor", error));
 	</script>
 	<script src="{{asset("js/backend/demo.js")}}"></script>
 	<script src="{{asset("js/backend/custom.js")}}"></script>
