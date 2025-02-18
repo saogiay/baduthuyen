@@ -231,6 +231,53 @@
                             </div>
 
                         </div>
+
+                        <!-- download -->
+                        <div style="padding: 30px 0px 0px 0px; width: 100%;">
+                            <p style="font-size: 18px; margin: 0px; font-weight: bold;">TẢI TÀI LIỆU</p>
+                            <span style="height: 1px; background-color: blue; width: 100%; display: inline-block; margin-bottom: 8px;"></span>
+                            <div style="padding: 20px; width: 100%; background-color: #f1f1f1;">
+                                <div>
+                                    <p style="margin-bottom: 5px;">Data Sheet</p>
+                                    <button style="background-color: #010cde; padding: 10px 20px; color: white; border: none;"><i class="fa fa-download"></i><span style="margin-left: 7px;">Download</span></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- comment -->
+                        <div style="padding: 30px 0px 0px 0px; width: 100%;">
+                            <p style="font-size: 18px; margin: 0px; font-weight: bold;">ĐÁNH GIÁ SẢN PHẨM</p>
+                            <span style="height: 1px; background-color: blue; width: 100%; display: inline-block; margin-bottom: 8px;"></span>
+                            <textarea id="expandableTextarea" placeholder="Nhập thắc mắc hoặc ý kiến của bạn ở đây..." style="border: 1px solid #ccc; width: 100%; height: 150px; padding: 10px; font-size: 14px; outline: none;"></textarea>
+                            <div id="inputContainer" style="display: none; width: 100%; padding: 15px; border: 1px solid #ccc; margin-top: 10px;">
+                                <p style="margin: 0 0 10px;">Nhập thông tin của bạn</p>
+                                <input type="email" id="email" placeholder="Email" style="width: 100%; outline: none; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc;">
+                                <input type="text" id="name" placeholder="Tên của bạn" style="width: 100%; outline: none; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc;">
+                                <div style="display: flex; gap: 5px;">
+                                    <button id="submitBtn" style="padding: 7px 15px; background-color: #007bff; color: white; border: none; cursor: pointer;">Gửi</button>
+                                    <button id="closeBtn" style="padding: 7px 15px; background-color: #ccc; color: white; border: none; cursor: pointer;">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            document.getElementById('expandableTextarea').addEventListener('click', function() {
+                                document.getElementById('inputContainer').style.display = 'block';
+                            });
+
+                            document.getElementById('closeBtn').addEventListener('click', function() {
+                                document.getElementById('inputContainer').style.display = 'none';
+                            });
+                        </script>
+                        <div style="padding: 15px 0px 0px 0px; width: 100%; display: flex; gap: 15px;">
+                            <img src="{{ asset("images/avatar.webp") }}" alt="avatar" style="width: 60px; height: 60px; flex-shrink: 1;">
+                            <div style="display: flex; flex-direction: column; gap: 5px;">
+                                <div>
+                                    <span style="font-weight: bold; font-size: 16px; margin-right: 5px;">hihihi</span>
+                                    <span style="font-size: 12px; color: #757575;">Gửi vào lúc 18/02/2025 15:18:47</span>
+                                </div>
+                                <p style="line-height: 17px;">xin chào mọi người lorem</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="page-product">
