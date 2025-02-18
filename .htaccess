@@ -1,3 +1,4 @@
+
 RewriteEngine On
 
 # Handle Authorization Header
@@ -10,7 +11,7 @@ RewriteCond %{REQUEST_URI} (.+)/$
 RewriteRule ^ %1 [L,R=301]
 
 # Handle Front Controller...
-RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.gif|robots\.txt)$ [NC]
+RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.gif|robots\.txt|\.webp|\.svg|\.min.css|\.eot|\.woff|\.ttf|\.ico)$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
@@ -19,7 +20,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !^/public/
 
-RewriteRule ^(css|js|images)/(.*)$ public/$1/$2 [L,NC]
+RewriteRule ^(css|js|images|storage|font-awesome|font-awesome\font)/(.*)$ public/$1/$2 [L,NC] 
 
 # Tắt liệt kê nội dung thư mục 
 # Options All -Indexes
@@ -48,11 +49,45 @@ RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
     Order allow,deny
     Deny from all
 </Files>
-## ONEPANEL Force HTTPS by SSL installation
-RewriteEngine On
-RewriteCond %{HTTPS} !=on
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
-Header always set Content-Security-Policy "upgrade-insecure-requests;"
-## ONEPANEL Force HTTPS by SSL installation end
 
 
+<IfModule LiteSpeed>
+RewriteEngine on
+CacheLookup on
+RewriteRule ^(css|js|images|storage|font-awesome|font-awesome\font)/(.*) - [E=cache-control:max-age=3600]
+</IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive on
+ExpiresByType application/pdf A31557600
+ExpiresByType image/x-icon A31557600
+ExpiresByType image/vnd.microsoft.icon A31557600
+ExpiresByType image/svg+xml A31557600
+
+ExpiresByType image/jpg A31557600
+ExpiresByType image/jpeg A31557600
+ExpiresByType image/png A31557600
+ExpiresByType image/gif A31557600
+ExpiresByType image/webp A31557600
+
+ExpiresByType video/ogg A31557600
+ExpiresByType audio/ogg A31557600
+ExpiresByType video/mp4 A31557600
+ExpiresByType video/webm A31557600
+
+ExpiresByType text/css A31557600
+ExpiresByType text/javascript A31557600
+ExpiresByType application/javascript A31557600
+ExpiresByType application/x-javascript A31557600
+
+ExpiresByType application/x-font-ttf A31557600
+ExpiresByType application/x-font-woff A31557600
+ExpiresByType application/font-woff A31557600
+ExpiresByType application/font-woff2 A31557600
+ExpiresByType application/vnd.ms-fontobject A31557600
+ExpiresByType font/ttf A31557600
+ExpiresByType font/otf A31557600
+ExpiresByType font/woff A31557600
+ExpiresByType font/woff2 A31557600
+
+</IfModule>

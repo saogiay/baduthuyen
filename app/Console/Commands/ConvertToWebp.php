@@ -2,11 +2,10 @@
 
 namespace App\Console\Commands;
 
-use Buglinjo\LaravelWebp\Facades\Webp;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\ImageManagerStatic;
+use Intervention\Image\Laravel\Facades\Image;
 
 class ConvertToWebp extends Command
 {
@@ -45,7 +44,7 @@ class ConvertToWebp extends Command
 
         //only get images with extension jpg, jpeg, png, gif, svg
         $images = array_filter($images, function ($image) {
-            return in_array(pathinfo($image, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif', 'svg']);
+            return in_array(pathinfo($image, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp']);
         });
 
         foreach ($images as $image) {
@@ -54,8 +53,12 @@ class ConvertToWebp extends Command
             $image = File::get($imagePath);
 
             $newPath = str_replace('.jpg', '.webp', $imagePath);
+            $newPath = str_replace('.jpeg', '.webp', $newPath);
+            $newPath = str_replace('.png', '.webp', $newPath);
+            $newPath = str_replace('.gif', '.webp', $newPath);
+            $newPath = str_replace('.svg', '.webp', $newPath);
 
-            $webp = ImageManagerStatic::make($image)->encode('webp', 70);
+            $webp = Image::read($image)->toWebp(70);
 
             File::delete($imagePath);
 
