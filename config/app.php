@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://badu.dev'),
+    'url' => env('APP_URL', 'https://badu.dev'),
 
     'asset_url' => env('ASSET_URL', null),
 

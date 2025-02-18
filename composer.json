@@ -12,7 +12,7 @@
     "buglinjo/laravel-webp": "^2.3",
     "erlandmuchasaj/laravel-gzip": "^1.1",
     "guzzlehttp/guzzle": "^7.0.1",
-    "intervention/image": "^2.7",
+    "intervention/image-laravel": "^1.5",
     "laravel/framework": "^10",
     "laravel/legacy-factories": "^1.4",
     "laravel/telescope": "^5.5",

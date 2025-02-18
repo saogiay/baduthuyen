@@ -6,7 +6,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Intervention\Image\ImageManagerStatic;
+use Intervention\Image\Laravel\Facades\Image;
 
 trait SaveFileTrait
 {
@@ -30,7 +30,7 @@ trait SaveFileTrait
 
         $fileName = Str::slug($fileName) . '.webp';
 
-        $webp = ImageManagerStatic::make($file)->encode('webp', 70);
+        $webp = Image::read($file)->toWebp(70);
 
         Storage::disk('public')->put($path . '/' . $fileName, $webp);
 
