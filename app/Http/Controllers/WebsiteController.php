@@ -108,38 +108,38 @@ class WebsiteController extends Controller
         }
         // End chi tiết bài viết
         elseif ($danhmucsanpham) {
-            if ($danhmucsanpham->danhmuccha_id == 0) {
-                $danhmucsanphamCon = DB::table('danhmucsanpham')->where('danhmuccha_id', $danhmucsanpham->id)->get();
-                return view('website.danhmucsanphamCon', [
-                    'title' => $danhmucsanpham->title ?? $danhmucsanpham->name ?? $cauhinhseo->title,
-                    'description' => $danhmucsanpham->description ?? $cauhinhseo->description,
-                    'created_at' => $danhmucsanpham->created_at,
-                    'headings' => $danhmucsanpham->headings ?? $cauhinhseo->headings,
-                    'cauhinhseo' => $cauhinhseo,
-                    'cauhinh' => $cauhinh,
-                    'danhmucsanpham' => $danhmucsanpham,
-                    'danhmucsanphamCon' => $danhmucsanphamCon,
-                    'hinhanhdaidien' => $hinhanhdaidien,
-                ]);
-            } else {
-                $dieukien[] = $danhmucsanpham->id;
-                $danhmucsanpham1 = Danhmucsanpham::where('danhmuccha_id', $danhmucsanpham->id)->get();
-                if (count($danhmucsanpham1) > 0)
-                    foreach ($danhmucsanpham1 as $item1) {
-                        $dieukien[] = $item1->id;
-                        $danhmucsanpham2 = Danhmucsanpham::where('danhmuccha_id', $item1->id)->get();
-                        if (count($danhmucsanpham2) > 0)
-                            foreach ($danhmucsanpham2 as $item2) {
-                                $dieukien[] = $item2->id;
-                                $danhmucsanpham3 = Danhmucsanpham::where('danhmuccha_id', $item2->id)->get();
-                                if (count($danhmucsanpham3) > 0)
-                                    foreach ($danhmucsanpham3 as $item3) {
-                                        $dieukien[] = $item3->id;
-                                    }
-                            }
-                    }
-                $sanpham = Sanpham::whereIn('danhmucsanpham_id', $dieukien)->orderBy('id', 'desc')->paginate(20);
-            }
+            // if ($danhmucsanpham->danhmuccha_id == 0) {
+            //     $danhmucsanphamCon = DB::table('danhmucsanpham')->where('danhmuccha_id', $danhmucsanpham->id)->get();
+            //     return view('website.danhmucsanphamCon', [
+            //         'title' => $danhmucsanpham->title ?? $danhmucsanpham->name ?? $cauhinhseo->title,
+            //         'description' => $danhmucsanpham->description ?? $cauhinhseo->description,
+            //         'created_at' => $danhmucsanpham->created_at,
+            //         'headings' => $danhmucsanpham->headings ?? $cauhinhseo->headings,
+            //         'cauhinhseo' => $cauhinhseo,
+            //         'cauhinh' => $cauhinh,
+            //         'danhmucsanpham' => $danhmucsanpham,
+            //         'danhmucsanphamCon' => $danhmucsanphamCon,
+            //         'hinhanhdaidien' => $hinhanhdaidien,
+            //     ]);
+            // } else {
+            $dieukien[] = $danhmucsanpham->id;
+            $danhmucsanpham1 = Danhmucsanpham::where('danhmuccha_id', $danhmucsanpham->id)->get();
+            if (count($danhmucsanpham1) > 0)
+                foreach ($danhmucsanpham1 as $item1) {
+                    $dieukien[] = $item1->id;
+                    $danhmucsanpham2 = Danhmucsanpham::where('danhmuccha_id', $item1->id)->get();
+                    if (count($danhmucsanpham2) > 0)
+                        foreach ($danhmucsanpham2 as $item2) {
+                            $dieukien[] = $item2->id;
+                            $danhmucsanpham3 = Danhmucsanpham::where('danhmuccha_id', $item2->id)->get();
+                            if (count($danhmucsanpham3) > 0)
+                                foreach ($danhmucsanpham3 as $item3) {
+                                    $dieukien[] = $item3->id;
+                                }
+                        }
+                }
+            $sanpham = Sanpham::whereIn('danhmucsanpham_id', $dieukien)->orderBy('id', 'desc')->paginate(20);
+            // }
 
             return view('website.danhmucsanpham', [
                 'title' => $danhmucsanpham->title ?? $danhmucsanpham->name ?? $cauhinhseo->title,
