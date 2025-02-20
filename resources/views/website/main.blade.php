@@ -402,6 +402,7 @@
     </div>
 
     <script src="{{ asset('js/app.min.js') }}"></script>
+    <script src="{{ asset('js/frontend/custom.js') }}"></script>
 
     <script type="text/javascript">
         function googleTranslateElementInit() {
