@@ -11,8 +11,6 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').sass('resources/sass/app.scss', 'public/css');
-
 mix.scripts(
   [
     'public/js/frontend/jquery.min.js',
@@ -28,10 +26,10 @@ mix.styles(
     'public/css/frontend/bootstrap.min.css',
     'public/css/frontend/stellarnav.css',
     'public/css/frontend/lightslider.css',
-    'public/css/frontend/owl.carousel.min.css',
-    'public/css/frontend/owl.theme.default.min.css',
     'public/css/frontend/alo.css',
     'public/css/frontend/style.css',
   ],
   'public/css/app.css'
 );
+
+mix.minify(['public/js/app.js', 'public/css/app.css']);

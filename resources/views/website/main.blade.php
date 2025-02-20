@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@400;700&family=Shrikhand&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.min.css') }}">
     <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
     <meta name="robots" content="index,follow" />
     <meta name="google-site-verification" content="sxDrQyN6kO8uuQWwTP2EhvlDdY-4av45EOGXRNQ2AFY">
@@ -160,7 +160,7 @@
 
                         <div class="col-xs-6 mobile-block-desktop-none">
                             <div class="thuong-hieu">
-                                <img src="{{ asset('images/logo-nippon-paint.png') }}" alt="Logo Nippon Paint">
+                                <img src="{{ asset('images/logo-nippon-paint.webp') }}" alt="Logo Nippon Paint">
                             </div>
                         </div>
 
@@ -182,7 +182,7 @@
                         <div class="col-md-1 col-sm-1 col-xs-1 mobile-none-desktop-block"></div>
                         <div class="col-md-3 col-sm-3 col-xs-4 mobile-none-desktop-block">
                             <div class="thuong-hieu">
-                                <img src="{{ asset('images/logo-nippon-paint.png') }}" alt="Logo Nippon Paint">
+                                <img src="{{ asset('images/logo-nippon-paint.webp') }}" alt="Logo Nippon Paint">
                             </div>
                         </div>
                     </div>
@@ -401,8 +401,8 @@
         </ul>
     </div>
 
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/frontend/custom.js') }}"></script>
+    <script src="{{ asset('js/app.min.js') }}"></script>
+
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
