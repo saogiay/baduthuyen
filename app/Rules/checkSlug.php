@@ -3,6 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Str;
 
 class checkSlug implements Rule
 {
@@ -26,7 +27,7 @@ class checkSlug implements Rule
     public function passes($attribute, $value)
     {
         if ($value) {
-            $slug = str_slug($value);
+            $slug = Str::slug($value);
             $checkPost = \App\Baiviet::where('code', $slug)->first();
             $checkProduct = \App\Sanpham::where('code', $slug)->first();
             $checkCategoryPost = \App\Danhmucbaiviet::where('code', $slug)->first();
