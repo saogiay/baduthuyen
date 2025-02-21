@@ -12,12 +12,22 @@ const mix = require('laravel-mix');
  */
 
 mix
-  .scripts(['public/js/frontend/stellarnav.js', 'public/js/frontend/lightslider.js'], 'public/js/app.js', true)
+  .scripts(
+    [
+      'public/js/frontend/jquery.min.js',
+      'public/js/frontend/bootstrap.min.js',
+      'public/js/frontend/stellarnav.js',
+      'public/js/frontend/lightslider.js',
+    ],
+    'public/js/app.js',
+    true
+  )
   .minify('public/js/app.js');
 
 mix
   .styles(
     [
+      'public/css/frontend/bootstrap.min.css',
       'public/css/frontend/stellarnav.css',
       'public/css/frontend/lightslider.css',
       'public/css/frontend/alo.css',
