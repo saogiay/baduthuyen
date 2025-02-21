@@ -18,7 +18,6 @@ mix
 mix
   .styles(
     [
-      'public/css/frontend/bootstrap.min.css',
       'public/css/frontend/stellarnav.css',
       'public/css/frontend/lightslider.css',
       'public/css/frontend/alo.css',
