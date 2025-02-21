@@ -37,7 +37,7 @@ class WebsiteController extends Controller
             'created_at' => $cauhinhseo->created_at,
             'cauhinhseo' => $cauhinhseo,
             'cauhinh' => $cauhinh,
-            'hinhanhdaidien' => asset('storage/slider/' . $hinhanhdaidien->anhdaidien),
+            'hinhanhdaidien' => asset('storage/slider/' . @$hinhanhdaidien->anhdaidien),
             'danhmucsanpham' => $danhmucsanpham,
             'doitac' => $doitac,
             'hoatdong' => $hoatdong,

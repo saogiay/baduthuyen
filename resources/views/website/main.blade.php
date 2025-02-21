@@ -401,6 +401,8 @@
         </ul>
     </div>
 
+    <script src="{{ asset('js/frontend/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/frontend/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/app.min.js') }}"></script>
     <script src="{{ asset('js/frontend/custom.js') }}"></script>
 
