@@ -12,7 +12,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@400;700&family=Shrikhand&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/frontend/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.min.css') }}">
     <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
     <meta name="robots" content="index,follow" />
@@ -402,8 +401,6 @@
         </ul>
     </div>
 
-    <script src="{{ asset('js/frontend/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/frontend/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/app.min.js') }}"></script>
     <script src="{{ asset('js/frontend/custom.js') }}"></script>
 
