@@ -466,14 +466,14 @@ img {
     font-weight: bold;
 }
 
-.hamburger:after {
+/* .hamburger:after {
     content: "\f0c9";
     font-family: FontAwesome;
     font-weight: 400;
     float: right;
     margin-top: -1px;
     font-size: 18px;
-}
+} */
 
 .xt-ct-menu ul.sub-menu {
     margin-left: 0px;
