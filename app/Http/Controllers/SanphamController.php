@@ -43,12 +43,14 @@ class SanphamController extends Controller
                 'masp.required' => 'Chưa nhập mã sản phẩm !',
                 'masp.unique' => 'Mã sản phẩm đã tồn tại !',
                 'anhdaidien.mimes' => 'Bạn chỉ được chọn file ảnh có đuôi jpg, png, jpeg !',
+                'tailieu.mimes' => 'Bạn chỉ được chọn file có đuôi pdf, doc, docx !',
             ];
             $validated =
                 [
                     'name' => 'required|unique:sanpham,name,' . $request->id,
                     'masp' => 'required|unique:sanpham,masp,' . $request->id,
                     'anhdaidien' => 'mimes:jpg,png,jpeg',
+                    'tailieu' => 'nullable|mimes:pdf,doc,docx',
                     'code' => ['string', new checkSlug()],
                 ];
             $this->validate($request, $validated, $message);
@@ -76,6 +78,11 @@ class SanphamController extends Controller
             if ($request->hasFile('anhdaidien')) {
                 $sanpham->anhdaidien = $this->saveFile($request->file('anhdaidien'), 'sanpham');
             }
+
+            if ($request->hasFile('tailieu')) {
+                $sanpham->tailieu = $this->saveDocument($request->file('tailieu'), 'sanpham');
+            }
+
             $sanpham->save();
 
             $sanpham_id = $sanpham->id;
@@ -160,6 +167,11 @@ class SanphamController extends Controller
             if ($request->hasFile('anhdaidien')) {
                 $this->deleteFile('sanpham', $sanpham->anhdaidien);
                 $sanpham->anhdaidien = $this->saveFile($request->file('anhdaidien'), 'sanpham');
+            }
+
+            if ($request->hasFile('tailieu')) {
+                $this->deleteFile('sanpham', $sanpham->tailieu);
+                $sanpham->tailieu = $this->saveDocument($request->file('tailieu'), 'sanpham');
             }
 
             $sanpham->save();
