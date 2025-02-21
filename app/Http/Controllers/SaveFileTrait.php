@@ -41,4 +41,17 @@ trait SaveFileTrait
     {
         Storage::disk('public')->delete($path . '/' . $fileName);
     }
+
+    public function saveDocument(UploadedFile $file, string $path)
+    {
+        $this->ensureDirectoryExists($path);
+
+        $fileName = Str::random(4) . '_' . preg_replace('/\s+/', '', $file->getClientOriginalName());
+
+        $fileName = Str::slug($fileName) . '.' . $file->getClientOriginalExtension();
+
+        $file->move(public_path("storage/$path"), $fileName);
+
+        return $fileName;
+    }
 }

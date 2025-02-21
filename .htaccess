@@ -11,83 +11,76 @@ RewriteCond %{REQUEST_URI} (.+)/$
 RewriteRule ^ %1 [L,R=301]
 
 # Handle Front Controller...
-RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.gif|robots\.txt|\.webp|\.svg|\.min.css|\.eot|\.woff|\.ttf|\.ico)$ [NC]
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|gif|txt|webp|svg|min\.css|eot|woff|ttf|ico)$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
 
+# Handle Static Assets
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(css|js|images|storage|font-awesome)/(.*)$ public/$1/$2 [L,NC]
 
-RewriteRule ^(css|js|images|storage|font-awesome|font-awesome\font)/(.*)$ public/$1/$2 [L,NC] 
+# Disable Directory Listing
+Options -Indexes
 
-# Tắt liệt kê nội dung thư mục 
-# Options All -Indexes
-
-# custom error docs 
+# Custom Error Pages
 ErrorDocument 404 /index.php
 ErrorDocument 403 /index.php
 ErrorDocument 500 /index.php
 
-# Force SSL
-RewriteCond %{SERVER_PORT} ^80$
-RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Tắt file source
-<Files .env>
+# Protect Sensitive Files
+<FilesMatch "^(\.env|composer\.json|config)$">
     Order allow,deny
     Deny from all
-</Files>
+</FilesMatch>
 
-<Files composer.json>
-    Order allow,deny
-    Deny from all
-</Files>
-
-<Files config>
-    Order allow,deny
-    Deny from all
-</Files>
-
-
+# LiteSpeed Cache Settings
 <IfModule LiteSpeed>
-RewriteEngine on
-CacheLookup on
-RewriteRule ^(css|js|images|storage|font-awesome|font-awesome\font)/(.*) - [E=cache-control:max-age=3600]
+    RewriteEngine on
+    CacheLookup on
+    RewriteRule ^(css|js|images|storage|font-awesome)/(.*)$ - [E=cache-control:max-age=31536000]
 </IfModule>
 
+# Browser Caching
 <IfModule mod_expires.c>
-ExpiresActive on
-ExpiresByType application/pdf A31557600
-ExpiresByType image/x-icon A31557600
-ExpiresByType image/vnd.microsoft.icon A31557600
-ExpiresByType image/svg+xml A31557600
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
 
-ExpiresByType image/jpg A31557600
-ExpiresByType image/jpeg A31557600
-ExpiresByType image/png A31557600
-ExpiresByType image/gif A31557600
-ExpiresByType image/webp A31557600
+    # Documents
+    ExpiresByType application/pdf "access plus 1 year"
 
-ExpiresByType video/ogg A31557600
-ExpiresByType audio/ogg A31557600
-ExpiresByType video/mp4 A31557600
-ExpiresByType video/webm A31557600
+    # Images
+    ExpiresByType image/(x-icon|vnd.microsoft.icon|svg+xml|jpg|jpeg|png|gif|webp) "access plus 1 year"
 
-ExpiresByType text/css A31557600
-ExpiresByType text/javascript A31557600
-ExpiresByType application/javascript A31557600
-ExpiresByType application/x-javascript A31557600
+    # Media
+    ExpiresByType (video|audio)/ogg "access plus 1 year"
+    ExpiresByType video/(mp4|webm) "access plus 1 year"
 
-ExpiresByType application/x-font-ttf A31557600
-ExpiresByType application/x-font-woff A31557600
-ExpiresByType application/font-woff A31557600
-ExpiresByType application/font-woff2 A31557600
-ExpiresByType application/vnd.ms-fontobject A31557600
-ExpiresByType font/ttf A31557600
-ExpiresByType font/otf A31557600
-ExpiresByType font/woff A31557600
-ExpiresByType font/woff2 A31557600
+    # CSS, JavaScript
+    ExpiresByType text/(css|javascript) "access plus 1 year"
+    ExpiresByType application/(javascript|x-javascript) "access plus 1 year"
 
+    # Fonts
+    ExpiresByType application/(x-font-ttf|x-font-woff|font-woff|font-woff2|vnd.ms-fontobject) "access plus 1 year"
+    ExpiresByType font/(ttf|otf|woff|woff2) "access plus 1 year"
+</IfModule>
+
+# GZIP Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css text/javascript
+    AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/x-httpd-php application/x-font-ttf application/x-font-woff
+    AddOutputFilterByType DEFLATE image/svg+xml
+    
+    # Remove browser bugs
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+    Header append Vary User-Agent
 </IfModule>
