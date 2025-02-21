@@ -93,7 +93,7 @@
                                             <a href="{{ route('indexCode', ['code' => $item->code]) }}"
                                                 title="{{ $item->name }}">
                                                 <img src="{{ asset('storage/baiviet/' . $item->anhdaidien) }}"
-                                                    class="img-responsive" alt="{{ $item->name }}">
+                                                    class="img-responsive" alt="{{ $item->name }}" loading="lazy">
                                             </a>
                                             <div class="box-index-post-info">
                                                 <ul class="notStyle">
