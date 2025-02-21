@@ -8,7 +8,6 @@ use App\Danhmucsanpham;
 use App\Hinhanhsanpham;
 use App\Rules\checkSlug;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
 
 class SanphamController extends Controller
@@ -87,8 +86,8 @@ class SanphamController extends Controller
 
             $sanpham_id = $sanpham->id;
 
-            if (Input::hasFile('image_detail')) {
-                foreach (Input::file('image_detail') as $i => $file) {
+            if ($request->hasFile('image_detail')) {
+                foreach ($request->file('image_detail') as $i => $file) {
                     $sanpham_img = new Hinhanhsanpham();
                     if (isset($file)) {
                         $sanpham_img->sanpham_id = $sanpham_id;
@@ -178,8 +177,8 @@ class SanphamController extends Controller
 
             $sanpham_id = $sanpham->id;
 
-            if (Input::hasFile('image_detail')) {
-                foreach (Input::file('image_detail') as $i => $file) {
+            if ($request->hasFile('image_detail')) {
+                foreach ($request->file('image_detail') as $i => $file) {
                     if (isset($file)) {
                         $this->deleteFile('sanpham/hinhanh/' . $sanpham_id, $file->getClientOriginalName());
                         $sanpham_img = new Hinhanhsanpham();
