@@ -208,6 +208,16 @@
                     <div class="row">
                         <div class="col-md-7 col-xs-12">
                             <div class="field-caterory-name">
+                                <label>Tài liệu</label>
+                                <input type="file" class="form-control" name="tailieu" aria-required="true" value="{{ $sanpham->tailieu ?? '' }}">
+                                <div class="help-block"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-7 col-xs-12">
+                            <div class="field-caterory-name">
                                 <label>Mã sản phẩm</label>
                                 <input type="text" class="form-control" name="masp" placeholder="Nhập mã sản phẩm... "
                                     aria-required="true" value="{{ $sanpham->masp }}">
