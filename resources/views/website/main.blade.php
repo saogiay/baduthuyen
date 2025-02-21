@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@400;700&family=Shrikhand&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/frontend/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.min.css') }}">
     <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
     <meta name="robots" content="index,follow" />
