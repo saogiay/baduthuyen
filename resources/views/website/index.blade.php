@@ -8,7 +8,7 @@
                 <?php $slider = DB::table('slider')->orderBy('id', 'DESC')->get(); ?>
                 <?php $i = 0; ?>
                 @foreach ($slider as $item)
-                    <div
+                    <div style="padding: 0px !important; margin: 0px !important;"
                         @if ($i == 0) class="item active"
              @else
              class="item" @endif>
