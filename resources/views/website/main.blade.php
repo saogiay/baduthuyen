@@ -9,11 +9,17 @@
     <base href="{{ asset('') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@400;700&family=Shrikhand&display=swap"
-        rel="stylesheet">
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@400;700&family=Shrikhand&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@400;700&family=Shrikhand&display=swap">
+
+    <link rel="preload" as="style" href="{{ asset('css/app.min.css') }}" fetchpriority="high">
     <link rel="stylesheet" href="{{ asset('css/app.min.css') }}">
+
+    <link rel="preload" as="style" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
+
     <meta name="robots" content="index,follow" />
     <meta name="google-site-verification" content="sxDrQyN6kO8uuQWwTP2EhvlDdY-4av45EOGXRNQ2AFY">
     <link rel="shortcut icon" href="{{ asset('storage/cauhinh/favicon.ico') }}" type="image/x-icon">
@@ -148,7 +154,7 @@
                             <div class="logo-site">
                                 <a href="{{ url('/') }}">
                                     <img class="img-responsive" src="{{ asset('storage/cauhinh/' . $cauhinh->logo) }}"
-                                        alt="{{ $cauhinh->tendoanhnghiep }}">
+                                        alt="{{ $cauhinh->tendoanhnghiep }}" fetchpriority="high">
                                 </a>
                             </div>
                             <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
@@ -160,7 +166,8 @@
 
                         <div class="col-xs-6 mobile-block-desktop-none">
                             <div class="thuong-hieu">
-                                <img src="{{ asset('images/logo-nippon-paint.webp') }}" alt="Logo Nippon Paint">
+                                <img src="{{ asset('images/logo-nippon-paint.webp') }}" alt="Logo Nippon Paint"
+                                    fetchpriority="high">
                             </div>
                         </div>
 
@@ -171,7 +178,8 @@
                                         <input name="tukhoa" type="text" class="form-control"
                                             placeholder="Nhập từ khóa tìm kiếm...">
                                         <span class="input-group-btn">
-                                            <button type="submit" aria-label="search-button" class="btn btn-success">
+                                            <button type="submit" aria-label="search-button"
+                                                class="btn btn-success">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </span>
@@ -182,7 +190,8 @@
                         <div class="col-md-1 col-sm-1 col-xs-1 mobile-none-desktop-block"></div>
                         <div class="col-md-3 col-sm-3 col-xs-4 mobile-none-desktop-block">
                             <div class="thuong-hieu">
-                                <img src="{{ asset('images/logo-nippon-paint.webp') }}" alt="Logo Nippon Paint">
+                                <img src="{{ asset('images/logo-nippon-paint.webp') }}" alt="Logo Nippon Paint"
+                                    fetchpriority="high">
                             </div>
                         </div>
                     </div>
@@ -401,8 +410,11 @@
         </ul>
     </div>
 
-    <script src="{{ asset('js/app.min.js') }}"></script>
-    <script src="{{ asset('js/frontend/custom.js') }}"></script>
+    <link rel="preload" as="script" href="{{ asset('js/app.min.js') }}">
+    <script src="{{ asset('js/app.min.js') }}" defer></script>
+
+    <link rel="preload" as="script" href="{{ asset('js/frontend/custom.js') }}">
+    <script src="{{ asset('js/frontend/custom.js') }}" defer></script>
 
     <script type="text/javascript">
         function googleTranslateElementInit() {
@@ -412,7 +424,7 @@
         }
     </script>
 
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer>
     </script>
     <script>
         $(function() {
