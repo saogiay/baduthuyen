@@ -19,10 +19,10 @@ mix
       'public/js/frontend/stellarnav.js',
       'public/js/frontend/lightslider.js',
     ],
-    'public/js/app.js',
-    true
+    'public/js/app.js'
   )
-  .minify('public/js/app.js');
+  .minify('public/js/app.js')
+  .version();
 
 mix
   .styles(
@@ -35,4 +35,7 @@ mix
     ],
     'public/css/app.css'
   )
-  .minify('public/css/app.css');
+  .minify('public/css/app.css')
+  .version()
+  .sourceMaps(false, 'source-map')
+  .disableNotifications();
