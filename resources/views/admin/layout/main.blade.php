@@ -345,6 +345,37 @@
 							},
 						}, ],
 					},
+					heading: {
+						options: [
+							{
+							model: "paragraph",
+							view: {
+								name: "p",
+								classes: "ck-heading_paragraph",
+								converterPriority: "high",
+							},
+							title: "Paragraph",
+							},
+							{
+							model: "heading2",
+							view: {
+								name: "h3",
+								classes: "ck-heading_heading2",
+								converterPriority: "high",
+							},
+							title: "Heading 2",
+							},
+							{
+							model: "heading3",
+							view: {
+								name: "h4",
+								classes: "ck-heading_heading3",
+								converterPriority: "high",
+							},
+							title: "Heading 3",
+							},
+						],
+						},
 				})
 				.then((editor) => {
 					editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {

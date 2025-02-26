@@ -42,7 +42,7 @@
                             <i class="fa fa-eye"></i> {{ $baivietChitiet->count_page }} lượt xem
                         </div>
                         <div id="table-of-contents"></div>
-                        <div class="chi-tiet-bai-viet">
+                        <div class="chi-tiet-bai-viet ck ck-content ck-editor__editable ck-rounded-corners ck-editor__editable_inline ck-blurred">
                             {!!$baivietChitiet->noidungbaiviet!!}
                         </div>
 
@@ -155,35 +155,59 @@
 
             if (!contentElement || !tocElement) return;
 
-            const headings = contentElement.querySelectorAll("h2, h3, h4, h5, h6"); // VÌ EDITOR KHÔNG DÙNG H1
+            const headings = contentElement.querySelectorAll("h3, h4");
             if (headings.length === 0) {
                 tocElement.style.display = "none"; // Ẩn mục lục nếu không có tiêu đề
                 return;
             }
 
-            let tocHTML = '<ul style="padding: 10px; border: 1px solid #c6c6c6; list-style-type: none;">';
-            headings.forEach((heading, index) => {
-                const id = heading.id || `heading-${index}`;
-                heading.id = id; // Gán ID nếu chưa có
+            let tocHTML = '<ul class="toc-list">';
+            let countH3 = 0,
+                countH4 = 0;
 
-                const level = parseInt(heading.tagName.replace("H", ""), 10) - 2; // Lấy số từ H2, ... VÌ EDITOR KHÔNG DÙNG H1
-                tocHTML += `<li style="margin-left: ${level * 10}px;">
-                                <a href="#${id}" class="toc-link">${heading.innerText}</a>
-                            </li>`;
+            headings.forEach((heading, index) => {
+                if (heading.tagName === "H3") {
+                    countH3++;
+                    countH4 = 0; // Reset H4 khi gặp H3 mới
+                } else {
+                    countH4++;
+                }
+
+                // Tạo số thứ tự cho mục lục
+                const tocNumber = heading.tagName === "H3" ? `${countH3}.` : `${countH3}.${countH4}`;
+
+                // Chuyển đổi nội dung heading thành định dạng URL-friendly
+                const headingText = heading.innerText.trim();
+                const headingSlug = convertToSlug(headingText);
+
+                const id = `${tocNumber}-${headingSlug}`;
+                heading.id = id; // Gán ID mới cho heading
+
+                tocHTML += `
+            <li class="${heading.tagName === "H3" ? "toc-item-h3" : "toc-item-h4"}">
+                <a href="#${id}" class="toc-link">${tocNumber} ${headingText}</a>
+            </li>
+        `;
             });
+
             tocHTML += "</ul>";
             tocElement.innerHTML = tocHTML;
+            tocElement.style.display = "block"; // Hiển thị mục lục
 
-            // Thêm sự kiện click để cuộn mượt mà không thay đổi URL
+            // Thêm sự kiện click để cuộn mượt mà và cập nhật URL đúng cách
             document.querySelectorAll(".toc-link").forEach(link => {
-                link.addEventListener("click", function (event) {
-                    event.preventDefault(); // Ngăn trình duyệt thay đổi URL
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
 
                     const targetId = this.getAttribute("href").substring(1);
                     const targetElement = document.getElementById(targetId);
 
                     if (targetElement) {
-                        const offset = targetElement.getBoundingClientRect().top + window.scrollY - 50; // Trừ 50px nếu có header cố định
+                        const offset = targetElement.getBoundingClientRect().top + window.scrollY - 120;
+
+                        // Giữ nguyên URL gốc và chỉ thêm hash với số thứ tự + slug
+                        const newUrl = `${window.location.origin}${window.location.pathname}#${targetId}`;
+                        window.history.pushState(null, null, newUrl);
 
                         window.scrollTo({
                             top: offset,
@@ -192,7 +216,18 @@
                     }
                 });
             });
-        };
+        }
+        // Hàm chuyển đổi tiêu đề thành định dạng URL-friendly (bỏ dấu, chữ thường, thay dấu cách thành "-")
+        function convertToSlug(str) {
+            return str
+                .normalize("NFD") // Tách dấu ra khỏi ký tự (e.g., é -> e)
+                .replace(/[\u0300-\u036f]/g, "") // Xóa dấu tiếng Việt
+                .toLowerCase() // Chuyển thành chữ thường
+                .replace(/đ/g, "d") // Chuyển đ -> d
+                .replace(/[^a-z0-9\s-]/g, "") // Xóa ký tự đặc biệt
+                .trim() // Xóa khoảng trắng thừa
+                .replace(/\s+/g, "-"); // Thay khoảng trắng thành dấu "-"
+        }
 
         generateTableOfContents();
         convertEmbedMediaFromCkeditor5();
