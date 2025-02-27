@@ -41,7 +41,10 @@
                             <i class="fa fa-bars"></i> {{$danhmucbaivietChitiet->name}} |
                             <i class="fa fa-eye"></i> {{ $baivietChitiet->count_page }} lượt xem
                         </div>
-                        <div id="table-of-contents"></div>
+                        <div id="table-of-contents">
+                            <div id="toc-content"></div>
+                            <button id="toggle-toc">Ẩn mục lục</button>
+                        </div>
                         <div class="chi-tiet-bai-viet ck ck-content ck-editor__editable ck-rounded-corners ck-editor__editable_inline ck-blurred">
                             {!!$baivietChitiet->noidungbaiviet!!}
                         </div>
@@ -152,12 +155,13 @@
         function generateTableOfContents() {
             const contentElement = document.querySelector(".chi-tiet-bai-viet");
             const tocElement = document.getElementById("table-of-contents");
+            const tocContent = document.getElementById("toc-content");
 
-            if (!contentElement || !tocElement) return;
+            if (!contentElement || !tocElement || !tocContent) return;
 
             const headings = contentElement.querySelectorAll("h3, h4");
             if (headings.length === 0) {
-                tocElement.style.display = "none"; // Ẩn mục lục nếu không có tiêu đề
+                tocElement.style.display = "none";
                 return;
             }
 
@@ -168,33 +172,30 @@
             headings.forEach((heading, index) => {
                 if (heading.tagName === "H3") {
                     countH3++;
-                    countH4 = 0; // Reset H4 khi gặp H3 mới
+                    countH4 = 0;
                 } else {
                     countH4++;
                 }
 
-                // Tạo số thứ tự cho mục lục
+                let headingText = heading.innerText.trim();
+                headingText = convertToSentenceCase(headingText);
+
                 const tocNumber = heading.tagName === "H3" ? `${countH3}.` : `${countH3}.${countH4}`;
-
-                // Chuyển đổi nội dung heading thành định dạng URL-friendly
-                const headingText = heading.innerText.trim();
                 const headingSlug = convertToSlug(headingText);
-
                 const id = `${tocNumber}-${headingSlug}`;
-                heading.id = id; // Gán ID mới cho heading
+                heading.id = id;
 
                 tocHTML += `
-            <li class="${heading.tagName === "H3" ? "toc-item-h3" : "toc-item-h4"}">
-                <a href="#${id}" class="toc-link">${tocNumber} ${headingText}</a>
-            </li>
-        `;
-            });
+                        <li class="${heading.tagName === "H3" ? "toc-item-h3" : "toc-item-h4"}">
+                            <a href="#${id}" class="toc-link">${tocNumber} ${headingText}</a>
+                        </li>
+                    `;
+                });
 
             tocHTML += "</ul>";
-            tocElement.innerHTML = tocHTML;
-            tocElement.style.display = "block"; // Hiển thị mục lục
+            tocContent.innerHTML = tocHTML;
+            tocElement.style.display = "block";
 
-            // Thêm sự kiện click để cuộn mượt mà và cập nhật URL đúng cách
             document.querySelectorAll(".toc-link").forEach(link => {
                 link.addEventListener("click", function(event) {
                     event.preventDefault();
@@ -205,7 +206,6 @@
                     if (targetElement) {
                         const offset = targetElement.getBoundingClientRect().top + window.scrollY - 120;
 
-                        // Giữ nguyên URL gốc và chỉ thêm hash với số thứ tự + slug
                         const newUrl = `${window.location.origin}${window.location.pathname}#${targetId}`;
                         window.history.pushState(null, null, newUrl);
 
@@ -216,6 +216,17 @@
                     }
                 });
             });
+
+            const toggleButton = document.getElementById("toggle-toc");
+            toggleButton.addEventListener("click", () => {
+                tocContent.classList.toggle("hidden");
+                toggleButton.textContent = tocContent.classList.contains("hidden") ? "Hiện mục lục" : "Ẩn mục lục";
+            });
+        }
+
+        function convertToSentenceCase(text) {
+            text = text.toLowerCase();
+            return text.charAt(0).toUpperCase() + text.slice(1);
         }
         // Hàm chuyển đổi tiêu đề thành định dạng URL-friendly (bỏ dấu, chữ thường, thay dấu cách thành "-")
         function convertToSlug(str) {

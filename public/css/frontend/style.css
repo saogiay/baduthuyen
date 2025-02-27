@@ -3444,25 +3444,45 @@ header {
 
 /* table content post */
 #table-of-contents {
-    padding: 10px 0px 10px 8px;
-    border: 1px solid #c6c6c6;
-    margin-bottom: 10px;
+  padding: 10px 0px 10px 8px;
+  border: 1px solid #c6c6c6;
+  margin-bottom: 10px;
+}
+#toc-content {
+  margin-bottom: 6px !important;
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .toc-list {
-    list-style: none;
-    padding: 0;
-    margin: 0px;
+  list-style: none;
+  padding: 0;
+  margin: 0px;
 }
 
 .toc-link {
-    text-decoration: none;
-    color: #4e4e4e;
-    font-weight: 200;
+  text-decoration: none;
+  color: #505050;
 }
 
 .toc-link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+#toggle-toc {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#toggle-toc:hover {
+  background-color: #e0e0e0;
+}
+
+.hidden {
+  display: none;
 }
 
 .chi-tiet-bai-viet h2,
