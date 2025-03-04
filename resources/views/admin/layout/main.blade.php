@@ -156,10 +156,14 @@
 			Heading,
 			Link,
 			List,
+			ListProperties,
+			// TodoList,
 			Indent,
 			Image,
 			BlockQuote,
 			Table,
+			TableColumnResize,
+			TableCaption,
 			TableToolbar,
 			MediaEmbed,
 			ImageToolbar,
@@ -178,6 +182,8 @@
 			FontFamily,
 			SourceEditing,
 			ImageTextAlternative,
+			IndentBlock,
+			AdjacentListsSupport,
 		} = CKEDITOR;
 
 		const configToolbarItems = [
@@ -195,8 +201,14 @@
 			"fontColor",
 			"|",
 			"alignment",
-			"indent",
 			"blockQuote",
+			"|",
+			"list",
+			"bulletedList",
+			"numberedList",
+			// "todoList",
+			"outdent",
+			"indent",
 			"|",
 			"link",
 			"insertTable",
@@ -219,12 +231,17 @@
 			Heading,
 			Link,
 			List,
+			ListProperties,
+			// TodoList,
 			Indent,
+			IndentBlock,
 			Image,
 			ImageInsert,
 			BlockQuote,
 			Table,
 			TableToolbar,
+			TableColumnResize,
+			TableCaption,
 			MediaEmbed,
 			ImageToolbar,
 			ImageResize,
@@ -238,6 +255,7 @@
 			SourceEditing,
 			ImageTextAlternative,
 			GeneralHtmlSupport,
+			AdjacentListsSupport,
 		];
 
 		const uploadAdapter = (loader) => {
@@ -334,6 +352,24 @@
 								icon: "large",
 							},
 						],
+					},
+					table: {
+						contentToolbar: [
+							"tableColumn",
+							"tableRow",
+							"mergeTableCells",
+							"toggleTableCaption",
+							"tableProperties",
+							"tableCellProperties",
+						],
+					},
+					list: {
+						multiBlock: false,
+						properties: {
+							styles: true,
+							startIndex: true,
+							reversed: true
+						}
 					},
 					link: {
 						addTargetToExternalLinks: true,
