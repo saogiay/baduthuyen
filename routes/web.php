@@ -154,7 +154,7 @@ Route::post('ajax/filter/danhmucsanpham', 'DanhmucsanphamController@ajaxFilter')
 Route::post('ajax/filter/sanpham', 'SanphamController@ajaxFilter');
 
 // Route website mới
-Route::get('/', 'WebsiteController@index')->name('trangchu');
+Route::get('/', 'WebsiteController@index')->name('trangchu')->middleware('lscache:max-age=300;public');
 Route::get('{code}', 'WebsiteController@show')->name('indexCode');
 Route::post('{code}', 'WebsiteController@post')->name('indexCodePost');
 
