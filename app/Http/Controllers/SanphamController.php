@@ -39,7 +39,6 @@ class SanphamController extends Controller
             $message = [
                 'name.required' => 'Chưa nhập tên sản phẩm !',
                 'name.unique' => 'Tên sản phẩm đã tồn tại !',
-                'masp.required' => 'Chưa nhập mã sản phẩm !',
                 'masp.unique' => 'Mã sản phẩm đã tồn tại !',
                 'anhdaidien.mimes' => 'Bạn chỉ được chọn file ảnh có đuôi jpg, png, jpeg !',
                 'tailieu.mimes' => 'Bạn chỉ được chọn file có đuôi pdf, doc, docx !',
@@ -47,7 +46,7 @@ class SanphamController extends Controller
             $validated =
                 [
                     'name' => 'required|unique:sanpham,name,' . $request->id,
-                    'masp' => 'required|unique:sanpham,masp,' . $request->id,
+                    'masp' => 'nullable|unique:sanpham,masp,' . $request->id,
                     'anhdaidien' => 'mimes:jpg,png,jpeg',
                     'tailieu' => 'nullable|mimes:pdf,doc,docx',
                     'code' => ['string', new checkSlug()],
@@ -61,7 +60,7 @@ class SanphamController extends Controller
                 'code' => $request->code,
                 'status' => $request->status,
                 'giasanpham' => $request->giasanpham,
-                'masp' => $request->masp,
+                'masp' => $request->masp ?? null,
                 'motasanpham' => $request->motasanpham,
                 'noidungsanpham' => $request->noidungsanpham,
                 'danhmucsanpham_id' => $request->danhmucsanpham_id,
