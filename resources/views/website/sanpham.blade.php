@@ -62,9 +62,9 @@
                                     </div>
                                     <div class="col-md-5 col-sm-5">
                                         <div class="noi-dung-san-pham-web-info">
-                                            <div class="ten-san-pham">
+                                            <h1 class="ten-san-pham">
                                                 {{ $sanpham->name }}
-                                            </div>
+                                            </h1>
                                             <div class="noi-dung-san-pham-web-info-spice">
 
                                                 @if ($sanpham->giasanpham != null or $sanpham->giasanpham != 0)
