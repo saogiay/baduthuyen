@@ -171,6 +171,31 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                     <!-- download -->
+                                    @if (!empty($sanpham->tailieu))
+                                        <div class="col-md-9 col-sm-9">
+                                            <p style="font-size: 18px; margin: 0px; font-weight: bold;">TẢI TÀI LIỆU</p>
+                                            <span style="height: 1px; background-color: blue; width: 100%; display: inline-block; margin-bottom: 8px;"></span>
+                                            <div style="padding: 20px; width: 100%; background-color: #f1f1f1;">
+                                                <div>
+                                                    <p style="margin-bottom: 5px;">Data Sheet</p>
+                                                    <button 
+                                                        style="background-color: #010cde; padding: 10px 20px; color: white; border: none; cursor: pointer;" 
+                                                        onclick="openDocument('{{ asset('storage/sanpham/' . $sanpham->tailieu) }}')">
+                                                        <i class="fa fa-download"></i>
+                                                        <span style="margin-left: 7px;">Download</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <script>
+                                                function openDocument(url) {
+                                                    // console.log(url);
+                                                    window.open(url, "_blank");
+                                                }
+                                            </script>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -231,31 +256,6 @@
                             </div>
 
                         </div>
-
-                        <!-- download -->
-                        @if (!empty($sanpham->tailieu))
-                            <div style="padding: 30px 0px 0px 0px; width: 100%;">
-                                <p style="font-size: 18px; margin: 0px; font-weight: bold;">TẢI TÀI LIỆU</p>
-                                <span style="height: 1px; background-color: blue; width: 100%; display: inline-block; margin-bottom: 8px;"></span>
-                                <div style="padding: 20px; width: 100%; background-color: #f1f1f1;">
-                                    <div>
-                                        <p style="margin-bottom: 5px;">Data Sheet</p>
-                                        <button 
-                                            style="background-color: #010cde; padding: 10px 20px; color: white; border: none; cursor: pointer;" 
-                                            onclick="openDocument('{{ asset('storage/sanpham/' . $sanpham->tailieu) }}')">
-                                            <i class="fa fa-download"></i>
-                                            <span style="margin-left: 7px;">Download</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <script>
-                                function openDocument(url) {
-                                    console.log(url);
-                                    // window.open(url, "_blank");
-                                }
-                            </script>
-                        @endif
                     </div>
 
                     <div class="page-product">
