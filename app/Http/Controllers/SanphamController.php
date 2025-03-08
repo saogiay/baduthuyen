@@ -159,6 +159,7 @@ class SanphamController extends Controller
                 'description' => $request->description,
                 'headings' => $request->headings,
                 'alt_avatar' => $request->alt_avatar ? $request->alt_avatar : $request->name,
+                'keyword' => $request->keyword,
             ]);
 
 
