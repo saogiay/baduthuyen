@@ -173,8 +173,7 @@
 				<div class="col-md-7 col-xs-12">
 					<div class="field-caterory-name">
 						<label>Tài liệu</label>
-						<input type="file" class="form-control" name="tailieu" aria-required="true" value="{{ $sanpham->tailieu ?? '' }}">
-						file hiện tại: <a href="{{ asset('storage/sanpham/'. $sanpham->tailieu )}}" target="_blank">{{ $sanpham->tailieu }}</a>
+						<input type="file" class="form-control" name="tailieu[]" aria-required="true">
 						<div class="help-block"></div>
 					</div>
 				</div>

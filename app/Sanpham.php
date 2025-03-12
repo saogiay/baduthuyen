@@ -22,7 +22,11 @@ class Sanpham extends Model
 		'masp',
 		'alt_avatar',
 		'keyword',
-		'tailieu'
+		'tailieu',
+	];
+
+	protected $casts = [
+		'tailieu' => 'array',
 	];
 
 	public function danhmucsanpham()

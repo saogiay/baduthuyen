@@ -41,14 +41,14 @@ class SanphamController extends Controller
                 'name.unique' => 'Tên sản phẩm đã tồn tại !',
                 'masp.unique' => 'Mã sản phẩm đã tồn tại !',
                 'anhdaidien.mimes' => 'Bạn chỉ được chọn file ảnh có đuôi jpg, png, jpeg !',
-                'tailieu.mimes' => 'Bạn chỉ được chọn file có đuôi pdf, doc, docx !',
+                'tailieu.*.mimes' => 'Bạn chỉ được chọn file có đuôi pdf, doc, docx !',
             ];
             $validated =
                 [
                     'name' => 'required|unique:sanpham,name,' . $request->id,
                     'masp' => 'nullable|unique:sanpham,masp,' . $request->id,
                     'anhdaidien' => 'mimes:jpg,png,jpeg',
-                    'tailieu' => 'nullable|mimes:pdf,doc,docx',
+                    'tailieu.*' => 'mimes:pdf,doc,docx',
                     'code' => ['string', new checkSlug()],
                 ];
             $this->validate($request, $validated, $message);
@@ -78,7 +78,11 @@ class SanphamController extends Controller
             }
 
             if ($request->hasFile('tailieu')) {
-                $sanpham->tailieu = $this->saveDocument($request->file('tailieu'), 'sanpham');
+                $tailieu = collect([]);
+                foreach ($request->file('tailieu') as $file) {
+                    $tailieu->push($this->saveDocument($file, 'sanpham'));
+                }
+                $sanpham->tailieu = $tailieu;
             }
 
             $sanpham->save();
@@ -169,8 +173,14 @@ class SanphamController extends Controller
             }
 
             if ($request->hasFile('tailieu')) {
-                $this->deleteFile('sanpham', $sanpham->tailieu);
-                $sanpham->tailieu = $this->saveDocument($request->file('tailieu'), 'sanpham');
+                foreach ($sanpham->tailieu as $file) {
+                    $this->deleteFile('sanpham', $file);
+                }
+                $tailieu = collect([]);
+                foreach ($request->file('tailieu') as $file) {
+                    $tailieu->push($this->saveDocument($file, 'sanpham'));
+                }
+                $sanpham->tailieu = $tailieu;
             }
 
             $sanpham->save();
@@ -231,6 +241,9 @@ class SanphamController extends Controller
     public function delete($id)
     {
         $sanpham = Sanpham::find($id);
+        foreach ($sanpham->tailieu as $file) {
+            $this->deleteFile('sanpham', $file);
+        }
         $sanpham->delete();
         return redirect('admin/sanpham/index')->with('thongbao', 'Bạn đã xóa thành công !');
     }
