@@ -102,7 +102,7 @@
 	    	<div class="row">
 				<div class="col-md-7 col-xs-12">
 					<div class="field-caterory-name">
-						<label>Ảnh đại diện (Width: 400px | Height: 400px)</label>
+						<label>Ảnh đại diện</label>
 						<input type="file" class="form-control" name="anhdaidien" id="avatar-input" aria-required="true">
 						@if(session('thongbao_create'))
 							<div class="alert alert-danger">
@@ -118,7 +118,7 @@
 			<div class="row">
 				<div class="col-md-7 col-xs-12">
 					<div class="field-caterory-name">
-						<label>Hình ảnh chi tiết (Width: 800px | Height: 450px)</label>
+						<label>Hình ảnh chi tiết</label>
 						<input type="file" name="image_detail[]" id="image-input" class="form-control" multiple>
 					</div>
 					<div id="preview-container" class="row"></div>
@@ -172,8 +172,8 @@
 			<div class="row">
 				<div class="col-md-7 col-xs-12">
 					<div class="field-caterory-name">
-						<label>Tài liệu</label>
-						<input type="file" class="form-control" name="tailieu[]" aria-required="true">
+						<label>Tài liệu <span>(pdf, doc, docx)</span></label>
+						<input type="file" class="form-control" name="tailieu[]" aria-required="true" multiple>
 						<div class="help-block"></div>
 					</div>
 				</div>

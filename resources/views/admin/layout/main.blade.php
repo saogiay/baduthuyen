@@ -395,7 +395,7 @@
 							{
 							model: "heading2",
 							view: {
-								name: "h3",
+								name: "h2",
 								classes: "ck-heading_heading2",
 								converterPriority: "high",
 							},
@@ -404,7 +404,7 @@
 							{
 							model: "heading3",
 							view: {
-								name: "h4",
+								name: "h3",
 								classes: "ck-heading_heading3",
 								converterPriority: "high",
 							},

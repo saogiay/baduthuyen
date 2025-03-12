@@ -159,7 +159,7 @@
 
             if (!contentElement || !tocElement || !tocContent) return;
 
-            const headings = contentElement.querySelectorAll("h3, h4");
+            const headings = contentElement.querySelectorAll("h2, h3");
             if (headings.length === 0) {
                 tocElement.style.display = "none";
                 return;
@@ -170,7 +170,7 @@
                 countH4 = 0;
 
             headings.forEach((heading, index) => {
-                if (heading.tagName === "H3") {
+                if (heading.tagName === "H2") {
                     countH3++;
                     countH4 = 0;
                 } else {
@@ -180,13 +180,13 @@
                 let headingText = heading.innerText.trim();
                 headingText = convertToSentenceCase(headingText);
 
-                const tocNumber = heading.tagName === "H3" ? `${countH3}.` : `${countH3}.${countH4}`;
+                const tocNumber = heading.tagName === "H2" ? `${countH3}.` : `${countH3}.${countH4}`;
                 const headingSlug = convertToSlug(headingText);
                 const id = `${tocNumber}-${headingSlug}`;
                 heading.id = id;
 
                 tocHTML += `
-                        <li class="${heading.tagName === "H3" ? "toc-item-h3" : "toc-item-h4"}">
+                        <li class="${heading.tagName === "H3" ? "toc-item-h2" : "toc-item-h3"}">
                             <a href="#${id}" class="toc-link">${tocNumber} ${headingText}</a>
                         </li>
                     `;
