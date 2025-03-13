@@ -175,19 +175,23 @@
                                      <!-- download -->
                                     @if (!empty($sanpham->tailieu))
                                         <div class="col-md-9 col-sm-9">
-                                            <p style="font-size: 18px; margin: 0px; font-weight: bold;">TẢI TÀI LIỆU</p>
-                                            <span style="height: 1px; background-color: blue; width: 100%; display: inline-block; margin-bottom: 8px;"></span>
-                                            <div style="padding: 20px; width: 100%; background-color: #f1f1f1;">
+                                        <div class="document-dl">
+                                            <p class="document-title">TẢI TÀI LIỆU</p>
+                                            <span class="document-divider"></span>
+                                            <div class="document-container">
                                                 <div>
-                                                    <p style="margin-bottom: 5px;">Data Sheet</p>
-                                                    <button 
-                                                        style="background-color: #010cde; padding: 10px 20px; color: white; border: none; cursor: pointer;" 
-                                                        onclick="openDocument('{{ asset('storage/sanpham/' . $sanpham->tailieu) }}')">
-                                                        <i class="fa fa-download"></i>
-                                                        <span style="margin-left: 7px;">Download</span>
-                                                    </button>
+                                                    <p class="document-subtitle">Data Sheet</p>
+                                                    <div class="button-container">
+                                                        @foreach ($sanpham->tailieu as $file)
+                                                            <button class="button-dl" onclick="openDocument('{{ asset('storage/sanpham/' . $file) }}')">
+                                                                <i class="fa fa-download"></i>
+                                                                <span class="button-text">Download</span>
+                                                            </button>
+                                                        @endforeach
+                                                    </div>
                                                 </div>
                                             </div>
+                                        </div>
                                             <script>
                                                 function openDocument(url) {
                                                     // console.log(url);
