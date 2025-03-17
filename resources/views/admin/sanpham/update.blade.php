@@ -209,10 +209,12 @@
                         <div class="col-md-7 col-xs-12">
                             <div class="field-caterory-name">
                                 <label>Tài liệu <span>(pdf, doc, docx)</span></label>
-                                <input type="file" class="form-control" name="tailieu" aria-required="true" multiple>
-                                @foreach ($sanpham->tailieu as $file)
-                                    <a href="{{ asset('storage/sanpham/' . $file) }}" target="_blank">{{ $file }}</a><br>
-                                @endforeach
+                                <input type="file" class="form-control" name="tailieu[]" aria-required="true" multiple>
+                                @if (!empty($sanpham->tailieu))
+                                    @foreach ($sanpham->tailieu as $file)
+                                        <a href="{{ asset('storage/sanpham/' . $file) }}" target="_blank">{{ $file }}</a><br>
+                                    @endforeach
+                                @endif
                                 <div class="help-block"></div>
                             </div>
                         </div>
