@@ -69,6 +69,7 @@ class SanphamController extends Controller
                 'headings' => $request->headings,
                 'keyword' => $request->keyword,
                 'alt_avatar' => $request->alt_avatar ? $request->alt_avatar : $request->name,
+
             ]);
 
 
@@ -83,6 +84,8 @@ class SanphamController extends Controller
                     $tailieu->push($this->saveDocument($file, 'sanpham'));
                 }
                 $sanpham->tailieu = $tailieu;
+            } else {
+                $sanpham->tailieu = collect([]);
             }
 
             $sanpham->save();
