@@ -404,7 +404,7 @@
     </div>
 
     <!-- Deferred JS loading -->
-    <script src="{{ mix('js/app.min.js') }}" defer></script>
+    <script src="{{ mix('js/app.min.js') }}"></script>
     <script src="{{ asset('js/frontend/custom.js') }}" defer></script>
 
     <!-- Google Translate -->
