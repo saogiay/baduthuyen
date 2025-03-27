@@ -297,7 +297,7 @@ use App\Danhmucsanpham;
     <div class="section-4">
         <div class="container">
             <div class="section-4-content">
-                <h2>Phản hồi của khách hàng về dịch vụ thi công bả hàng hải<br>của công ty TNHH Trang Trí D&T</h2>
+                <h2>Phản hồi của khách hàng về dịch vụ thi công bả hàng hải<br>của công ty cổ phần Trang Trí D&T</h2>
                 <img src="{{ asset('images/devide-line.svg') }}" alt="Devide line" class="devide-line-4">
 
                 <p class="section-5-subtitle">Đánh giá thực tế từ những chủ tàu và đối tác tin cậy.</p>
@@ -311,7 +311,7 @@ use App\Danhmucsanpham;
                         </div>
                     </div>
                     <p class="testimonial-text">"Tôi hoàn toàn hài lòng với chất lượng dịch vụ thi công bả
-                        hàng hải của công ty TNHH Trang Trí D&T"</p>
+                        hàng hải của công ty cổ phần Trang Trí D&T"</p>
                     <div class="testimonial-author">
                         <div class="author-info">
                             <div class="author-details">
@@ -326,7 +326,7 @@ use App\Danhmucsanpham;
                 <div class="testimonial-slider-mobile">
                     <div class="testimonial-slider-mobile-item">
                         <p class="testimonial-text">"Tôi hoàn toàn hài lòng với chất lượng dịch vụ thi công bả
-                            hàng hải của công ty TNHH Trang Trí D&T"</p>
+                            hàng hải của công ty cổ phần Trang Trí D&T"</p>
                     </div>
                     <div class="testimonial-slider-mobile-item">
                         <p class="testimonial-text">“Sản phẩm của KATAVINA
