@@ -339,6 +339,23 @@ use App\Danhmucsanpham;
             </div>
         </div>
     </div>
+    <section class="section-product-detail">
+        <div class="container">
+            <h2 class="section-product-title">Chi tiết sản phẩm</h2>
+            <div class="product-detail-wrapper">
+                <div class="product-detail-content">
+                    <p>Dịch vụ thi công bả du thuyền đóng vai trò quan trọng hoàn thiện bề mặt tàu thuyền, là yếu tố quyết định đến độ bền bỉ và vẻ đẹp sang trọng của du thuyền. Quy trình này giúp bảo vệ tàu khỏi những tác động khắc nghiệt của môi trường biển, đồng thời mang lại lớp hoàn thiện bóng bẩy, đẳng cấp.</p>
+                </div>
+                <div class="product-detail-image">
+                    <img src="{{ asset('images/boat5.jpeg') }}" alt="Chi tiết sản phẩm" class="product-img">
+                </div>
+                <div class="content-overlay"></div>
+                <div class="text-center btn-overlay-container">
+                    <a href="#" class="btn-xem-them">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="section-6">
         <div class="container card d-flex align-items-stretch">
             <div class="image-container ">
@@ -365,6 +382,7 @@ use App\Danhmucsanpham;
             </div>
         </div>
     </section>
+   
     <section class="section-4">
         <div class="container d-flex flex-column align-items-center">
             <div class="section-4-content">
