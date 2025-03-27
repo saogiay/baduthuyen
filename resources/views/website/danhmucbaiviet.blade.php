@@ -22,7 +22,8 @@
         </div>
     </div>
     <div class="main-content-page">
-        <div class="container">
+        @include('website.layout')  
+        {{-- <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-4 dis-block">
                     @include('website.sidebar')
@@ -78,7 +79,7 @@
                     @include('website.sidebar')
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     @include('website.footer')
