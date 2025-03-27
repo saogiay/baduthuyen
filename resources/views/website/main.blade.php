@@ -105,6 +105,7 @@
                 transform: translateY(5px);
                 background-image: none
             }
+          
         }
 
         @media (max-width:576px) {
@@ -141,32 +142,26 @@
         <div class="header">
             <div class="header-block">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-4 col-xs-4 no-pad-right">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class=" no-pad-right flex-1">
                             <div class="logo-site">
                                 <a href="{{ url('/') }}">
-                                    <img width="200" height="60" class="img-responsive"
-                                        src="{{ asset('storage/cauhinh/' . $cauhinh->logo) }}"
+                                    <img width="132" height="104" class="img-responsive"
+                                       src="{{ asset('images/dtLogo.png') }}"
                                         alt="{{ $cauhinh->tendoanhnghiep }}" fetchpriority="high">
                                 </a>
                             </div>
-                            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-                                <span class="hamb-top"></span>
-                                <span class="hamb-middle"></span>
-                                <span class="hamb-bottom"></span>
-                            </button>
+                          
                         </div>
-
-                        <div class="col-xs-6 mobile-block-desktop-none">
-                            <div class="thuong-hieu">
+                        <div class="mobile-block-desktop-none flex-1">
+                            <div class="d-flex justify-content-center align-items-center" >
                                 <img width="150" height="45" src="{{ asset('images/logo-nippon-paint.webp') }}"
                                     alt="Logo Nippon Paint" fetchpriority="high">
                             </div>
                         </div>
-
-                        <div class="col-md-4 col-sm-4 col-xs-12 mobile-none-desktop-block">
-                            <div class="search">
-                                <form action="tim-kiem" method="get">
+                        <div class=" mobile-none-desktop-block flex-1">
+                            <div class="search d-flex justify-content-center align-items-center w-full">
+                                <form action="tim-kiem" class="w-full" method="get">
                                     <div class="input-group">
                                         <input name="tukhoa" type="text" class="form-control"
                                             placeholder="Nhập từ khóa tìm kiếm...">
@@ -180,13 +175,19 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-md-1 col-sm-1 col-xs-1 mobile-none-desktop-block"></div>
-                        <div class="col-md-3 col-sm-3 col-xs-4 mobile-none-desktop-block">
-                            <div class="thuong-hieu">
+                        <div class="mobile-none-desktop-block flex-1">
+                            <div class="d-flex justify-content-center align-items-center">
                                 <img width="150" height="45"
                                     src="{{ asset('images/logo-nippon-paint.webp') }}" alt="Logo Nippon Paint"
                                     fetchpriority="high">
                             </div>
+                        </div>
+                        <div class="mobile-block-desktop-none flex-1 align-items-center justify-content-end">
+                            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                                <span class="hamb-top"></span>
+                                <span class="hamb-middle"></span>
+                                <span class="hamb-bottom"></span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -287,7 +288,7 @@
             <ul class="nav sidebar-nav">
                 <li class="sidebar-logo">
                     <a href="">
-                        <img width="200" height="60" src="{{ asset('storage/cauhinh/' . $cauhinh->logo) }}"
+                        <img width="200" height="60" src="{{ asset('images/dtLogo.png'  ) }}"
                             alt="Logo">
                     </a>
                 </li>

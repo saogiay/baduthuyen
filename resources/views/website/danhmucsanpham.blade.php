@@ -33,15 +33,15 @@
                         @if (count($sanpham) > 0)
                             <div class="detail-content-body-product">
 
-                                <div class="row">
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-1">
                                     @foreach ($sanpham as $item)
-                                        <div class="col-xs-5ths">
-                                            <div class="box-product-index margin-bottom-10">
+                                        <div class="col">
+                                            <div class="box-product-index h-100">
                                                 <div class="box-product-index-img box-product-index-img-page">
                                                     <a href="{{ route('indexCode', ['code' => $item->code]) }}"
                                                         class="a-img-product">
                                                         <img src="{{ asset('storage/sanpham/' . $item->anhdaidien) }}"
-                                                            class="img-responsive" alt="{{ $item->name }}">
+                                                            class="img-fluid w-100" alt="{{ $item->name }}">
                                                     </a>
                                                     <div class="quick-view">
                                                         <a href="{{ route('indexCode', ['code' => $item->code]) }}">Thông
