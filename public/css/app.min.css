@@ -7882,4 +7882,7 @@ body {
     .section-product-detail h2{
       font-size: 26px;
     }
+    .news-items{
+      align-items: flex-start;
+    }
 }
