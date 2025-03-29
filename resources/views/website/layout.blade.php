@@ -48,7 +48,7 @@ use App\Danhmucsanpham;
                 <div class="consequence-cards">
                     <div class="consequence-card">
                         <div class="card-number">1</div>
-                        <img src="{{ asset('images/cate1.jpeg') }}" alt="Hậu quả 1">
+                        <img src="{{ asset('public/images/cate1.jpeg') }}" alt="Hậu quả 1">
                         <div class="consequen-card-layer">
                             <p>Sơn bả kém chất lượng làm mất giá trị du thuyền, giảm tốc độ tàu, tăng tiêu hao nhiên
                                 liệu
@@ -57,14 +57,14 @@ use App\Danhmucsanpham;
                     </div>
                     <div class="consequence-card">
                         <div class="card-number">2</div>
-                        <img src="{{ asset('images/cate2.jpeg') }}" alt="Hậu quả 2">
+                        <img src="{{ asset('public/images/cate2.jpeg') }}" alt="Hậu quả 2">
                         <div class="consequen-card-layer">
                             <p>Môi trường nước biển gây ăn mòn nhanh chóng lớp sơn tàu biển của bạn</p>
                         </div>
                     </div>
                     <div class="consequence-card">
                         <div class="card-number">3</div>
-                        <img src="{{ asset('images/cate3.jpeg') }}" alt="Hậu quả 3">
+                        <img src="{{ asset('public/images/cate3.jpeg') }}" alt="Hậu quả 3">
                         <div class="consequen-card-layer">
                             <p>Tốn kém khi phải sơn lại thường xuyên do lớp bả bị bong tróc</p>
                         </div>
