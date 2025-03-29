@@ -7254,13 +7254,16 @@ body {
     max-width: 70%;
     margin: 0 auto;
     position: relative;
-    height: 180px; /* Giới hạn chiều cao của container ảnh */
-    overflow: hidden;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .product-img {
     width: 100%;
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     left: 0;
     object-fit: cover;

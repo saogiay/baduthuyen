@@ -383,6 +383,14 @@ use App\Danhmucsanpham;
                         cấp. Vậy chi tiết dịch vụ thi công bả du thuyền gồm những yêu cầu và quy trình gì khi thực hiện?
                         Cần lưu ý gì khi làm bả du thuyền? Bài viết dưới đây sẽ cung cấp đầy đủ cho bạn!
                     </p>
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/dich-vu-thi-cong-ba-du-thuyen.jpg') }}"
+                            alt="Dịch Vụ Thi Công Bả Du Thuyền Là Gì? Quy Trình, Lưu Ý Sơn Bả Du Thuyền"
+                            class="product-img">
+                        <p>
+                            Dịch Vụ Thi Công Bả Du Thuyền Là Gì? Quy Trình, Lưu Ý Sơn Bả Du Thuyền
+                        </p>
+                    </div>
                     <h3>
                         Dịch vụ thi công bả du thuyền là gì?
 
@@ -394,6 +402,14 @@ use App\Danhmucsanpham;
                         công bả hàng hải còn đóng vai trò như một lớp bảo vệ quan trọng trước những yếu tố khắc nghiệt
                         của môi trường biển, như ánh sáng mặt trời, nước mặn và các tác nhân ăn mòn khác.
                     </p>
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/dich-vu-thi-cong-ba-du-thuyen-la-gi.jpg') }}"
+                            alt="Dịch Vụ Thi Công Bả Du Thuyền Là Gì? Quy Trình, Lưu Ý Sơn Bả Du Thuyền"
+                            class="product-img">
+                        <p>
+                            Dịch vụ thi công bả du thuyền giúp bảo trì và nâng cấp
+                        </p>
+                    </div>
 
                     <p>
                         Việc thực hiện sơn bả định kỳ là điều cần thiết để bảo vệ khoản đầu tư vào du thuyền. Nhờ vậy,
@@ -419,9 +435,13 @@ use App\Danhmucsanpham;
                         khác. Các yếu tố này thường khó tránh khi sử dụng tàu thuyền, là nguyên nhân trực tiếp dẫn đến
                         sự hư hỏng nghiêm trọng, làm phai màu và suy giảm chất lượng vật liệu.
                     </p>
-                    <h4>
-                        Sơn bả giúp bảo vệ bề mặt thuyền
-                    </h4>
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/son-ba-giup-bao-ve-mat-thuyen.jpg') }}"
+                            alt="Sơn bả giúp bảo vệ bề mặt thuyền" class="product-img">
+                        <p>
+                            Sơn bả giúp bảo vệ bề mặt thuyền
+                        </p>
+                    </div>
                     <p>
                         Lớp sơn bả chất lượng cao được thi công bởi đội ngũ chuyên nghiệp, giúp bề mặt thuyền hình thành
                         một lớp "rào chắn" vững chắc, ngăn ngừa sự ăn mòn và tác động tiêu cực của thời tiết. Ngoài ra,
@@ -439,6 +459,13 @@ use App\Danhmucsanpham;
                         Tư vấn các loại sơn phù hợp với phong cách thiết kế và mục đích sử dụng của du thuyền, mang lại
                         sự hài lòng tối đa về mặt thẩm mỹ.
                     </p>
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/son-ba-hang-hai-tang-tinh-tham-mi-cho-du-thuyen.jpg') }}"
+                            alt="Sơn bả hàng hải tăng tính thẩm mỹ cho du thuyền" class="product-img">
+                        <p>
+                            Sơn bả hàng hải tăng tính thẩm mỹ cho du thuyền
+                        </p>
+                    </div>
 
                     <h4>
                         Tăng tuổi thọ cho du thuyền
@@ -484,6 +511,12 @@ use App\Danhmucsanpham;
                         </li>
                     </ul>
 
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/ba-du-thuyen-epoxy.jpg') }}" alt="Bả du thuyền epoxy"
+                            class="product-img">
+
+                    </div>
+
                     <h4>
                         Bả polyester
                     </h4>
@@ -505,6 +538,11 @@ use App\Danhmucsanpham;
                         bả này thường được sử dụng cho các khu vực thân dưới của du thuyền, nơi tiếp xúc trực tiếp với
                         nước biển.
                     </p>
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/ba-matit-chong-tham-doc-quyen.jpg') }}"
+                            alt="Bả mạtít chống thấm dộc quyền" class="product-img">
+
+                    </div>
                     <p>
                         Ưu điểm của bả chống thấm là khả năng bảo vệ bề mặt khỏi hiện tượng ăn mòn, nứt vỡ và hạn chế sự
                         phát triển của sinh vật biển. Tuy nhiên, nhược điểm là tính ứng dụng không cao đối với các khu
@@ -546,7 +584,13 @@ use App\Danhmucsanpham;
                             Đồ bảo hộ: Găng tay, kính bảo hộ và khẩu trang, đảm bảo an toàn cho người thực hiện.
                         </li>
                     </ul>
-
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/dung-cu-son-ba-can-thiet.jpg') }}"
+                            alt="Dụng cụ sơn bả cần thiết: giấy nhám, đồ đạc chuyên dụng" class="product-img">
+                        <p>
+                            Dụng cụ sơn bả cần thiết: giấy nhám, đồ đạc chuyên dụng
+                        </p>
+                    </div>
                     <h4>
                         Quy trình thực hiện sơn bả du thuyền
                     </h4>
@@ -571,6 +615,15 @@ use App\Danhmucsanpham;
                         </li>
 
                     </ul>
+
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/quy-trinh-thuc-hien-son-ba-du-thuyen.jpg') }}"
+                            alt="Quy trình thi công bả du thuyền" class="product-img">
+                        <p>
+                            Thi công sơn bả du thuyền cần chuẩn bị kỹ lưỡng khi thực hiện
+
+                        </p>
+                    </div>
                     <h3>
                         Các yếu tố ảnh hưởng đến thi công bả du thuyền
 
@@ -588,15 +641,211 @@ use App\Danhmucsanpham;
                         kiện môi trường khắc nghiệt, như ánh sáng mặt trời gay gắt và nước biển mặn.
 
                     </p>
-                </div>
-                <div class="product-detail-image">
-                    <img src="{{ asset('images/boat5.jpeg') }}" alt="Chi tiết sản phẩm" class="product-img">
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/vat-lieu-ba-chat-luong-cao.jpg') }}"
+                            alt="Vật liệu bả chất lượng cao" class="product-img">
+
+                    </div>
+                    <p>Chất lượng vật liệu bả còn ảnh hưởng đến độ bền của lớp hoàn thiện, giúp giảm nguy cơ nứt, bong
+                        tróc
+                        hoặc phai màu. Ngoài ra, việc lựa chọn bả cần phù hợp với từng loại bề mặt du thuyền, từ
+                        composite,
+                        thép, nhôm đến gỗ. Các nhà cung cấp dịch vụ chuyên nghiệp sẽ đảm bảo sử dụng đúng loại bả và sơn
+                        phù
+                        hợp để mang lại hiệu quả cao nhất.</p>
+                    <h4>
+                        Kỹ thuật trét bả
+                    </h4>
+                    <p>
+                        Kỹ thuật trét bả là yếu tố then chốt quyết định độ mịn và độ bám dính của bề mặt. Quy trình trét
+                        bả
+                        không chỉ đơn thuần là việc phủ lên bề mặt mà còn đòi hỏi sự tỉ mỉ và chuyên môn cao:
+                    </p>
+                    <ul>
+                        <li>
+                            Đầu tiên, lớp bả phải được trộn đều để tránh hiện tượng vón cục.
+                        </li>
+                        <li>
+                            Sau đó, người thợ sẽ sử dụng các công cụ chuyên dụng như dao bả hoặc con lăn để trét đều lớp
+                            bả lên
+                            bề mặt, đảm bảo không có khe hở hoặc chỗ dày mỏng không đồng đều.
+                        </li>
+                        <li>
+                            Khi lớp bả khô, bề mặt cần được chà nhám lại để đạt độ mịn tối ưu trước khi sơn.
+                        </li>
+                        <li>
+                            Một kỹ thuật trét bả đúng cách không chỉ tạo nên lớp nền hoàn hảo mà còn giúp tăng cường độ
+                            bám dính
+                            cho lớp sơn hoàn thiện, đảm bảo lớp sơn không bị bong tróc khi tiếp xúc với môi trường khắc
+                            nghiệt.
+                        </li>
+
+                    </ul>
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/ky-thuat-tret-ba.jpg') }}" alt="Kỹ thuật trét bả"
+                            class="product-img">
+                        <p>
+                            Kỹ thuật trét bả là yếu tố then chốt quyết định độ mịn
+                        </p>
+                    </div>
+                    <h4>
+                        Điều kiện môi trường
+                    </h4>
+                    <p>
+                        Điều kiện môi trường ảnh hưởng đến hiệu quả thi công bả hàng hải. Các yếu tố như độ ẩm cao,
+                        nhiệt độ
+                        quá thấp hoặc quá cao đều có thể làm giảm chất lượng lớp bả và lớp sơn phủ. Ví dụ:
+                    </p>
+                    <ul>
+                        <li>
+                            Nhiệt độ quá lạnh có thể khiến bả khô chậm và khó bám, trong khi độ ẩm cao có thể gây ra
+                            hiện tượng
+                            bong bóng trên bề mặt sơn.
+                        </li>
+                        <li>
+                            Ánh sáng mặt trời gay gắt cũng có thể làm sơn khô quá nhanh, dẫn đến hiện tượng nứt hoặc
+                            không đều
+                            màu.
+                        </li>
+                    </ul>
+                    <p>
+                        Vì vậy, việc thi công thường được thực hiện các xưởng có điều kiện kiểm soát nhiệt độ và độ ẩm
+                        tốt.
+                    </p>
+                    <p>
+                        Các nhà thầu chuyên nghiệp sẽ luôn kiểm tra kỹ lưỡng điều kiện môi trường trước khi thi công,
+                        đảm
+                        bảo bề mặt thuyền được bả và sơn trong điều kiện lý tưởng nhất để đạt chất lượng hoàn hảo.
+                    </p>
+                    <h4>
+                        Lưu ý quan trọng khi thi công bả du thuyền
+                    </h4>
+                    <p>
+                        Từ việc lựa chọn sơn bả chất lượng, đến tìm kiếm đơn vị thi công uy tín và kiểm tra sau khi hoàn
+                        thiện đều là những lưu ý quan trọng trong dịch vụ thi công bả du thuyền.
+                    </p>
+                    <h4>
+                        Lựa chọn sơn bả chất lượng
+                    </h4>
+                    <p>
+                        Sơn bả dành cho du thuyền cần đáp ứng các tiêu chí như khả năng chống thấm, chống nắng, chống
+                        tia
+                        UV, chống chịu ăn mòn từ môi trường biển. Ngoài ra, sau khi thi công bả hàng hải, cần phân biệt
+                        rõ
+                        giữa lớp sơn phủ dưới cùng (chống hà bám) và lớp sơn phủ trên cùng (tăng tính thẩm mỹ). Vì vậy,
+                        chủ
+                        du thuyền cần tìm kiếm đơn vị uy tín, cung cấp sơn bả du thuyền chất lượng cao, đầy đủ giấy tờ
+                        chứng
+                        nhận trước khi thực hiện thi công.
+                    </p>
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/son-ba-chat-luong-cao-danh-cho-du-thuyen.jpg') }}"
+                            alt="Sơn bả du thuyền chất lượng cao" class="product-img">
+                        <p>
+                            Sơn bả dành cho du thuyền cần có đầy đủ chứng nhận chất lượng
+                        </p>
+                    </div>
+                    <h4>
+                        Tìm kiếm đơn vị thi công bả du thuyền uy tín
+                    </h4>
+                    <p>
+                        Đơn vị uy tín quyết định đến 90% chất lượng trong việc thi công bả du thuyền. Một nhà thầu
+                        chuyên
+                        nghiệp không chỉ sở hữu đội ngũ thợ lành nghề mà còn sử dụng các công cụ, vật liệu đạt chuẩn.
+                        Ngoài
+                        ra, các đơn vị uy tín thường cung cấp chính sách bảo hành rõ ràng, giúp bạn yên tâm hơn về chất
+                        lượng dịch vụ.
+                    </p>
+                    <p>
+                        Mọi người có thể tham khảo dịch vụ thi công bả hàng hải của công ty TNHH trang trí D&T, là đơn
+                        vị
+                        dẫn đầu trong lĩnh vực trang trí ngoại thất du thuyền tại Việt Nam. Mỗi công trình thi công bởi
+                        D&T
+                        đều mang đậm dấu ấn của sự chuyên nghiệp và tinh thần trách nhiệm. Sự thành công vang dội của
+                        các dự
+                        án như Grand Pioneers Cruise – đạt giải thưởng “Du thuyền xanh tốt nhất thế giới năm 2024”, hay
+                        các
+                        du thuyền 5 sao như Calista và Saquila Yacht, là minh chứng cho cam kết vượt mong đợi khách hàng
+                    </p>
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/du-thuyen-Grand-Pioneers-Cruise.jpg') }}"
+                            alt="Du thuyền Grand Pioneers Cruise" class="product-img">
+                        <p>
+                            Du thuyền Grand Pioneers Cruise đoạt giải du thuyền xanh 2024 được D&T thực hiện
+                        </p>
+                    </div>
+                    <p>
+                        Với tư cách là nhà phân phối chính thức của hãng sơn Nippon, đơn vị D&T luôn đảm bảo cung cấp
+                        sản
+                        phẩm sơn chất lượng cao, phù hợp với các tiêu chuẩn khắt khe nhất trong ngành.. Công ty cũng sở
+                        hữu
+                        đội ngũ lãnh đạo, kỹ sư và nhân viên kỹ thuật giàu kinh nghiệm, am hiểu sâu sắc về trang trí du
+                        thuyền.
+                    </p>
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/Cong-ty-co-phan-trang-tri-DT-su-dung-cac-cong-cu-dat-chuan-nhan-cong-chuyen-mon-cao.jpg') }}"
+                            alt="Công ty TNHH trang trí D&T sử dụng các công cụ đạt chuẩn, nhân công chuyên môn cao"
+                            class="product-img">
+                        <p>
+                            Công ty TNHH trang trí D&T sử dụng các công cụ đạt chuẩn, nhân công chuyên môn cao
+                        </p>
+                    </div>
+                    <h4>
+                        Kiểm tra chất lượng sau khi bả du thuyền
+                    </h4>
+                    <p>
+                        Sau khi hoàn tất thi công, kiểm tra chất lượng là bước không thể bỏ qua. Việc kiểm tra giúp bạn
+                        đảm
+                        bảo lớp bả và sơn đạt đúng tiêu chuẩn về độ mịn, độ bám dính và tính thẩm mỹ. Hãy chú ý đến các
+                        chi
+                        tiết nhỏ như đường viền, khu vực góc cạnh hoặc những vị trí dễ bị sót sơn. Ngoài ra, kiểm tra bề
+                        mặt
+                        dưới ánh sáng để phát hiện các khuyết điểm như vệt cọ, bóng khí hoặc sơn không đều trước khi làm
+                        sơn
+                        phủ.
+                    </p>
+                    <div class="product-detail-image">
+                        <img src="{{ asset('images/bao-duong-sau-khi-thi-cong-ba-du-thuyen.jpg') }}"
+                            alt="Bảo dưỡng sau thi công bả du thuyền duy trì vẻ đẹp và độ bền của du thuyền"
+                            class="product-img">
+                        <p>
+                            Bảo dưỡng sau thi công bả du thuyền duy trì vẻ đẹp và độ bền của du thuyền
+
+                        </p>
+                    </div>
+                    <p>
+                        Bên cạnh đó, việc bảo dưỡng sau thi công bả du thuyền đóng vai trò thiết yếu trong việc duy trì
+                        vẻ
+                        đẹp và độ bền của du thuyền. Bảo dưỡng định kỳ giúp phát hiện sớm các vấn đề như ăn mòn bề mặt,
+                        sự
+                        phát triển của sinh vật biển hay hao mòn do thời gian, từ đó có biện pháp khắc phục kịp thời.
+                        Ngoài
+                        ra, việc làm sạch, đánh bóng và sơn lại khi cần thiết còn giúp lớp sơn luôn giữ được vẻ mới mẻ,
+                        nâng
+                        cao giá trị sử dụng cũng như giá trị bán lại của du thuyền.
+                    </p>
+                    <h3>
+                        Lời kết
+                    </h3>
+                    <p>
+                        Dịch vụ thi công bả du thuyền không chỉ giúp bảo vệ mà còn nâng cao giá trị cho bề mặt tàu
+                        thuyền
+                        cao cấp. Với quy trình thi công đúng chuẩn và sự chăm chút từ đội ngũ chuyên nghiệp, du thuyền
+                        của
+                        bạn sẽ luôn giữ được vẻ đẹp sang trọng và bền bỉ vượt thời gian. Nếu bạn đang tìm kiếm đơn vị
+                        thi
+                        công sơn bả hàng hải, đầy đủ sản phẩm chất lượng và thợ nghề giàu kinh nghiệm, hãy liên hệ CÔNG
+                        TY
+                        TNHH TRANG TRÍ D&T qua Hotline: 0815 599 588 - 0984 260 860 để nhận tư vấn chi tiết.
+                    </p>
+
                 </div>
                 <div class="content-overlay"></div>
                 <div class="text-center btn-overlay-container">
                     <a href="javascript:void(0)" class="btn-xem-them" onclick="toggleProductContent(this)">Xem
                         thêm</a>
                 </div>
+
             </div>
         </div>
     </section>
