@@ -757,7 +757,7 @@ use App\Danhmucsanpham;
                         lượng dịch vụ.
                     </p>
                     <p>
-                        Mọi người có thể tham khảo dịch vụ thi công bả hàng hải của công ty TNHH trang trí D&T, là đơn
+                        Mọi người có thể tham khảo dịch vụ thi công bả hàng hải của công ty cổ phần trang trí D&T, là đơn
                         vị
                         dẫn đầu trong lĩnh vực trang trí ngoại thất du thuyền tại Việt Nam. Mỗi công trình thi công bởi
                         D&T
@@ -784,10 +784,10 @@ use App\Danhmucsanpham;
                     </p>
                     <div class="product-detail-image">
                         <img src="{{ asset('images/Cong-ty-co-phan-trang-tri-DT-su-dung-cac-cong-cu-dat-chuan-nhan-cong-chuyen-mon-cao.jpg') }}"
-                            alt="Công ty TNHH trang trí D&T sử dụng các công cụ đạt chuẩn, nhân công chuyên môn cao"
+                            alt="Công ty cổ phần trang trí D&T sử dụng các công cụ đạt chuẩn, nhân công chuyên môn cao"
                             class="product-img">
                         <p>
-                            Công ty TNHH trang trí D&T sử dụng các công cụ đạt chuẩn, nhân công chuyên môn cao
+                            Công ty cổ phần trang trí D&T sử dụng các công cụ đạt chuẩn, nhân công chuyên môn cao
                         </p>
                     </div>
                     <h4>
@@ -836,7 +836,7 @@ use App\Danhmucsanpham;
                         thi
                         công sơn bả hàng hải, đầy đủ sản phẩm chất lượng và thợ nghề giàu kinh nghiệm, hãy liên hệ CÔNG
                         TY
-                        TNHH TRANG TRÍ D&T qua Hotline: 0815 599 588 - 0984 260 860 để nhận tư vấn chi tiết.
+                        cổ phần TRANG TRÍ D&T qua Hotline: 0815 599 588 - 0984 260 860 để nhận tư vấn chi tiết.
                     </p>
 
                 </div>
