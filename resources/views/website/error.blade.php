@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="footer-coppyright">
-                        {{ date('Y') }} © All Rights Reserved. <a href="https://daivietsoft.com/">Thiết kế website</a>
+                        {{ date('Y') }} © All Rights Reserved. Thiết kế website
                     </div>
                 </div>
                 <div class="col-md-8">

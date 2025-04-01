@@ -757,7 +757,8 @@ use App\Danhmucsanpham;
                         lượng dịch vụ.
                     </p>
                     <p>
-                        Mọi người có thể tham khảo dịch vụ thi công bả hàng hải của công ty cổ phần trang trí D&T, là đơn
+                        Mọi người có thể tham khảo dịch vụ thi công bả hàng hải của công ty cổ phần trang trí D&T, là
+                        đơn
                         vị
                         dẫn đầu trong lĩnh vực trang trí ngoại thất du thuyền tại Việt Nam. Mỗi công trình thi công bởi
                         D&T
@@ -862,15 +863,16 @@ use App\Danhmucsanpham;
                 </div>
                 <h2>Liên hệ với chúng tôi</h2>
                 <div class="form-line"></div>
-                <form>
+                <form action="{{ route('tuvan.store') }}" method="post">
+                    @csrf
                     <div class="d-flex form-name gap-2">
-                        <input type="text" placeholder="Họ" required>
-                        <input type="text" placeholder="Tên" required>
+                        <input type="text" placeholder="Họ" required name="lastName">
+                        <input type="text" placeholder="Tên" required name="firstName">
                     </div>
-                    <input type="tel" placeholder="Số điện thoại" required>
-                    <input type="email" placeholder="Email" required>
-                    <textarea placeholder="Lời nhắn" required></textarea>
-                    <button onclick="return false;">NHẬN TƯ VẤN <i class="fa fa-phone"></i></button>
+                    <input type="tel" placeholder="Số điện thoại" required name="phone">
+                    <input type="email" placeholder="Email" required name="email">
+                    <textarea placeholder="Lời nhắn" required name="message"></textarea>
+                    <button type="submit">NHẬN TƯ VẤN <i class="fa fa-phone"></i></button>
                 </form>
             </div>
         </div>
