@@ -1405,9 +1405,9 @@ use App\Danhmucsanpham;
                 document.getElementById('contactForm').reset();
 
                 // Tự động ẩn popup sau 3 giây
-                // setTimeout(() => {
-                //     document.getElementById('successPopup').style.display = 'none';
-                // }, 3000);
+                setTimeout(() => {
+                    document.getElementById('successPopup').style.display = 'none';
+                }, 5000);
             })
             .catch(error => {
                 // Hiển thị popup
@@ -1417,9 +1417,9 @@ use App\Danhmucsanpham;
                 document.getElementById('contactForm').reset();
 
                 // Tự động ẩn popup sau 3 giây
-                // setTimeout(() => {
-                //     document.getElementById('successPopup').style.display = 'none';
-                // }, 10000);
+                setTimeout(() => {
+                    document.getElementById('successPopup').style.display = 'none';
+                }, 5000);
                 // console.error('Error:', error);
             });
 
