@@ -46,12 +46,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
 		Route::get('deleteHinhanhsanpham/{id}', 'SanphamController@removeHinhanhsanpham');
 	});
 
-	Route::group(['prefix' => 'thongtinlienhe'], function () {
-		Route::get('index', 'ThongtinlienheController@index');
-		Route::get('update/{id}', 'ThongtinlienheController@update');
-		Route::post('update/{id}', 'ThongtinlienheController@updatePost');
-		Route::get('view/{id}', 'ThongtinlienheController@view');
-		Route::get('delete/{id}', 'ThongtinlienheController@delete');
+	Route::group(['prefix' => 'tuvan'], function () {
+		Route::get('index', 'TuvanController@index');
+		Route::get('delete/{id}', 'TuvanController@delete');
 	});
 
 	Route::group(['prefix' => 'danhmucbaiviet'], function () {
@@ -160,6 +157,7 @@ Route::post('{code}', 'WebsiteController@post')->name('indexCodePost');
 
 Route::get('thong-tin/xac-nhan', 'WebsiteController@xacnhan')->name('xacnhan');
 Route::get('index/error-404', 'WebsiteController@error')->name('error');
+Route::post('tuvan', 'TuvanController@store')->name('tuvan.store');
 
 Route::any(
 	'{query}',
