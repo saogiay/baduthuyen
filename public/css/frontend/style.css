@@ -7310,7 +7310,6 @@ body {
     
     .product-detail-image {
         max-width: 95%;
-        height: 150px; /* Giảm chiều cao trên mobile */
     }
     
     .content-overlay {
