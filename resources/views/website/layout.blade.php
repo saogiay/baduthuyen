@@ -10,7 +10,8 @@ use App\Danhmucsanpham;
                 <h1>GIẢI PHÁP SƠN BẢ CHUYÊN NGHIỆP CHO TÀU THUYỀN</h1>
                 <p>Bảo vệ và nâng cấp tàu thuyền với dịch vụ sơn bả chất lượng cao. Chúng tôi cung cấp giải pháp toàn
                     diện, giúp tàu của bạn bền đẹp, chống chịu tốt với môi trường biển khắc nghiệt.</p>
-                <a href="#" class="btn-tu-van">NHẬN TƯ VẤN <i class="fa fa-phone"></i></a>
+                <a href="javascript:void(0)" onclick="scrollToContactForm()" class="btn-tu-van">NHẬN TƯ VẤN <i
+                        class="fa fa-phone"></i></a>
             </div>
         </div>
     </div>
@@ -106,7 +107,8 @@ use App\Danhmucsanpham;
                             trợ và
                             mang đến sản phẩm tốt nhất.</p>
                         <div class="section-3-cta">
-                            <a href="#" class="btn-tu-van">NHẬN TƯ VẤN <i class="fa fa-phone"></i></a>
+                            <a href="javascript:void(0)" onclick="scrollToContactForm()" class="btn-tu-van">NHẬN TƯ VẤN
+                                <i class="fa fa-phone"></i></a>
                         </div>
                     </div>
                 </div>
@@ -154,7 +156,8 @@ use App\Danhmucsanpham;
                         </div>
                     </div>
                     <div class="section-3-cta">
-                        <a href="#" class="btn-tu-van">NHẬN TƯ VẤN <i class="fa fa-phone"></i></a>
+                        <a href="javascript:void(0)" onclick="scrollToContactForm()" class="btn-tu-van">NHẬN TƯ VẤN <i
+                                class="fa fa-phone"></i></a>
                     </div>
                 </div>
             </div>
@@ -357,8 +360,8 @@ use App\Danhmucsanpham;
                             hàng hải của công ty cổ phần Trang Trí D&T"</p>
                     </div>
                     <div class="testimonial-slider-mobile-item">
-                        <p class="testimonial-text">“Sản phẩm của KATAVINA
-                            "Dịch vụ thi công của công ty bả hàng hải của D&T”</p>
+                        <p class="testimonial-text">"Sản phẩm của KATAVINA "Dịch vụ thi công của công ty bả hàng hải
+                            của D&T"</p>
                     </div>
                     <img src="{{ asset('images/person.png') }}" alt="D&T Logo">
                     {{-- <button class="nav-btn prev"><i class="fa fa-chevron-left"></i></button>
@@ -764,7 +767,7 @@ use App\Danhmucsanpham;
                         D&T
                         đều mang đậm dấu ấn của sự chuyên nghiệp và tinh thần trách nhiệm. Sự thành công vang dội của
                         các dự
-                        án như Grand Pioneers Cruise – đạt giải thưởng “Du thuyền xanh tốt nhất thế giới năm 2024”, hay
+                        án như Grand Pioneers Cruise – đạt giải thưởng "Du thuyền xanh tốt nhất thế giới năm 2024", hay
                         các
                         du thuyền 5 sao như Calista và Saquila Yacht, là minh chứng cho cam kết vượt mong đợi khách hàng
                     </p>
@@ -850,7 +853,7 @@ use App\Danhmucsanpham;
             </div>
         </div>
     </section>
-    <section class="section-6">
+    <section class="section-6" id="contact-form">
         <div class="container card d-flex align-items-stretch">
             <div class="image-container ">
                 <img src="{{ asset('images/boat5.jpeg') }}" alt="Yacht">
@@ -863,7 +866,8 @@ use App\Danhmucsanpham;
                 </div>
                 <h2>Liên hệ với chúng tôi</h2>
                 <div class="form-line"></div>
-                <form action="{{ route('tuvan.store') }}" method="post">
+                <form action="{{ route('tuvan.store') }}" method="post" id="contactForm"
+                    onsubmit="return handleSubmit(event)">
                     @csrf
                     <div class="d-flex form-name gap-2">
                         <input type="text" placeholder="Họ" required name="lastName">
@@ -1155,6 +1159,76 @@ use App\Danhmucsanpham;
         overflow: visible !important;
         padding-bottom: 20px;
     }
+
+    /* Style cho popup */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .popup-content {
+        position: relative;
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 30px;
+        max-width: 450px;
+        border-radius: 8px;
+        text-align: center;
+        animation: popupFadeIn 0.3s;
+    }
+
+    .popup-content h3 {
+        font-size: 20px !important;
+        color: #003380 !important;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .popup-content p {
+        font-size: 16px !important;
+    }
+
+    @keyframes popupFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .close-popup {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #666;
+    }
+
+    .success-icon {
+        font-size: 50px;
+        color: #4CAF50;
+        margin-bottom: 20px;
+    }
+
+    .popup-content h3 {
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .popup-content p {
+        color: #666;
+    }
 </style>
 
 <script>
@@ -1289,4 +1363,88 @@ use App\Danhmucsanpham;
             }, 100);
         }
     }
+
+    function scrollToContactForm() {
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+
+            // Tự động focus vào input đầu tiên (tùy chọn)
+            const firstInput = contactForm.querySelector('input');
+            if (firstInput) {
+                setTimeout(() => {
+                    firstInput.focus();
+                }, 800); // Đợi scroll hoàn tất
+            }
+        }
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        // Lấy form data
+        const formData = new FormData(event.target);
+
+        // Gửi form bằng fetch API
+        fetch('{{ route('tuvan.store') }}', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Hiển thị popup
+                document.getElementById('successPopup').style.display = 'block';
+
+                // Reset form
+                document.getElementById('contactForm').reset();
+
+                // Tự động ẩn popup sau 3 giây
+                // setTimeout(() => {
+                //     document.getElementById('successPopup').style.display = 'none';
+                // }, 3000);
+            })
+            .catch(error => {
+                // Hiển thị popup
+                document.getElementById('successPopup').style.display = 'block';
+
+                // Reset form
+                document.getElementById('contactForm').reset();
+
+                // Tự động ẩn popup sau 3 giây
+                // setTimeout(() => {
+                //     document.getElementById('successPopup').style.display = 'none';
+                // }, 10000);
+                // console.error('Error:', error);
+            });
+
+        return false;
+    }
+
+    // Đóng popup khi click vào nút close
+    document.querySelector('.close-popup').addEventListener('click', function() {
+        document.getElementById('successPopup').style.display = 'none';
+    });
+
+    // Đóng popup khi click bên ngoài
+    window.addEventListener('click', function(event) {
+        const popup = document.getElementById('successPopup');
+        if (event.target == popup) {
+            popup.style.display = 'none';
+        }
+    });
 </script>
+
+<!-- Thêm popup -->
+<div id="successPopup" class="popup">
+    <div class="popup-content">
+        <img src="{{ asset('images/success.jpg') }}" alt="">
+        <h3>Trân trọng cám ơn quý khách</h3>
+        <p>Chúng tôi đã nhận được thông tin và sẽ liên hệ đến bạn trong thời gian sớm nhất</p>
+    </div>
+</div>
