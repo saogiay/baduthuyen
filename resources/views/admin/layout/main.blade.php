@@ -318,7 +318,7 @@
 
             headers.forEach((header, index) => {
                 const text = header.textContent.trim().toLowerCase().replace(/\s+/g,
-                "-"); // Tạo ID từ nội dung tiêu đề
+                    "-"); // Tạo ID từ nội dung tiêu đề
                 header.id = `heading-${index}-${text}`;
             });
 
@@ -402,6 +402,15 @@
                                     converterPriority: "high",
                                 },
                                 title: "Paragraph",
+                            },
+                            {
+                                model: "heading1",
+                                view: {
+                                    name: "h1",
+                                    classes: "ck-heading_heading1",
+                                    converterPriority: "high",
+                                },
+                                title: "Heading 1",
                             },
                             {
                                 model: "heading2",
