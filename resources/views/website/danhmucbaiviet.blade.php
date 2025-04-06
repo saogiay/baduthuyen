@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="main-content-page">
-        @if(request()->path() === 'dich-vu')
+        @if(request()->path() === 'dich-vu-son-ba-du-thuyen')
             @include('website.layout')  
         @else
             <div class="container">
