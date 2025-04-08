@@ -133,9 +133,11 @@
             </div>
             <div class="col-md-8">
                 <div class="theH">
-                    <marquee direction="left" onmouseout="this.start()" scrollamount="4" onmouseover="this.stop()">
-                        {!! $headings ?? $cauhinhseo->headings !!}
-                    </marquee>
+                    @if (route('trangchu') == request()->url())
+                        <marquee direction="left" onmouseout="this.start()" scrollamount="4" onmouseover="this.stop()">
+                            {!! $headings ?? $cauhinhseo->headings !!}
+                        </marquee>
+                    @endif
                 </div>
             </div>
         </div>
