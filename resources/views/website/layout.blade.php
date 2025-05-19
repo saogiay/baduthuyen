@@ -85,7 +85,7 @@ use App\Danhmucsanpham;
                             style="width: 20px; height: 20px; margin-right: 10px;">
                         GIẢI PHÁP
                     </div>
-                    <h2>Tại sao chọn chúng tôi</h2>
+                    <h2>Tại sao nên chọn chúng tôi</h2>
                 </div>
                 <div class="solution-card">
                     <div class="solution-icon">
@@ -178,10 +178,10 @@ use App\Danhmucsanpham;
                         <div class="project-image">
                             <img src="{{ asset('images/project1.png') }}"
                                 alt="Du thuyền 6 sao Grand Pioneers Hạ Long">
-                            <div class="project-image-desc">
+                            <h3 class="project-image-desc">
                                 DU THUYỀN 6 SAO GRAND PIONEERS
                                 HẠ LONG
-                            </div>
+                            </h3>
                         </div>
                         <div class="project-content">
                             <div class="project-info">
@@ -199,9 +199,9 @@ use App\Danhmucsanpham;
                         <div class="project-image">
                             <img src="{{ asset('images/project2.png') }}"
                                 alt="Du thuyền 6 sao Grand Pioneers Hạ Long">
-                            <div class="project-image-desc">
+                            <h3 class="project-image-desc">
                                 SIÊU DU THUYỀN NHÀ HÀNG 6 SAO SAQUILA YACHT
-                            </div>
+                            </h3>
                         </div>
                         <div class="project-content">
                             <div class="project-info">
@@ -375,9 +375,9 @@ use App\Danhmucsanpham;
             <h2 class="section-product-title">Chi tiết sản phẩm</h2>
             <div class="product-detail-wrapper">
                 <div class="product-detail-content">
-                    <h3 class="text-center">
+                    <h2 class="text-center">
                         Dịch Vụ Thi Công Bả Du Thuyền Là Gì? Quy Trình, Lưu Ý Sơn Bả Du Thuyền
-                    </h3>
+                    </h2>
                     <p>
 
                         Dịch vụ thi công bả du thuyền đóng vai trò quan trọng hoàn thiện bề mặt tàu thuyền, là yếu tố
@@ -720,9 +720,9 @@ use App\Danhmucsanpham;
                         đảm
                         bảo bề mặt thuyền được bả và sơn trong điều kiện lý tưởng nhất để đạt chất lượng hoàn hảo.
                     </p>
-                    <h4>
+                    <h3>
                         Lưu ý quan trọng khi thi công bả du thuyền
-                    </h4>
+                    </h3>
                     <p>
                         Từ việc lựa chọn sơn bả chất lượng, đến tìm kiếm đơn vị thi công uy tín và kiểm tra sau khi hoàn
                         thiện đều là những lưu ý quan trọng trong dịch vụ thi công bả du thuyền.
