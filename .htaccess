@@ -11,7 +11,6 @@ RewriteCond %{REQUEST_URI} (.+)/$
 RewriteRule ^ %1 [L,R=301]
 
 # Handle Front Controller...
-RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|gif|txt|webp|svg|min\.css|eot|woff|ttf|ico)$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
@@ -30,9 +29,11 @@ ErrorDocument 404 /index.php
 ErrorDocument 403 /index.php
 ErrorDocument 500 /index.php
 
-# Force HTTPS
+# Force HTTPS AND WWW
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Protect Sensitive Files
 <FilesMatch "^(\.env|composer\.json|config)$">

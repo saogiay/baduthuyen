@@ -145,7 +145,7 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div class=" no-pad-right flex-1">
                             <div class="logo-site">
-                                <a href="{{ url('/') }}">
+                                <a href="{{ route('trangchu') }}">
                                     <img width="132" height="104" class="img-responsive"
                                        src="{{ asset('images/dtLogo.png') }}"
                                         alt="{{ $cauhinh->tendoanhnghiep }}" fetchpriority="high">
@@ -199,7 +199,7 @@
                             <nav class="navbar navbar-inverse">
                                 <ul class="nav navbar-nav">
                                     <li>
-                                        <a href="{{ url('/') }}" class="active">
+                                        <a href="{{ route('trangchu') }}" class="active">
                                             <i class="fa fa-home"></i>
                                             Trang chủ
                                         </a>

@@ -209,6 +209,8 @@ class WebsiteController extends Controller
                 'baivietList' => $baivietList,
                 'sanphamList' => $sanphamList,
             ])->header('Content-Type', 'text/xml');
+        } elseif ($code == 'trang-chu') {
+            return view('website.index');
         }
         // End sitemap
         else {

@@ -39,7 +39,9 @@ trait SaveFileTrait
 
     public function deleteFile(string $path, string $fileName)
     {
-        Storage::disk('public')->delete($path . '/' . $fileName);
+        if (Storage::disk('public')->exists($path . '/' . $fileName)) {
+            Storage::disk('public')->delete($path . '/' . $fileName);
+        }
     }
 
     public function saveDocument(UploadedFile $file, string $path)

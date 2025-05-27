@@ -152,7 +152,7 @@ Route::post('ajax/filter/sanpham', 'SanphamController@ajaxFilter');
 
 // Route website mới
 Route::post('tuvan', 'TuvanController@store')->name('tuvan.store');
-Route::get('/', 'WebsiteController@index')->name('trangchu')->middleware('lscache:max-age=604800;public;');
+Route::get('', 'WebsiteController@index')->name('trangchu')->middleware('lscache:max-age=604800;public;');
 Route::get('{code}', 'WebsiteController@show')->name('indexCode');
 Route::post('{code}', 'WebsiteController@post')->name('indexCodePost');
 
