@@ -39,12 +39,12 @@ use App\Danhmucsanpham;
             </div>
 
             <div class="section-2-bottom">
-                <h3 class="text-left d-flex align-items-center ">
+                <p class="text-left d-flex align-items-center ">
                     <img src="{{ asset('images/arrow.png') }}" alt="Tag"
                         style="width: 20px; height: 20px; margin-right: 10px;">
 
                     BẢO VỆ DU THUYỀN
-                </h3>
+                </p>
                 <h2 class="text-left">Hậu quả của sơn bả kém chất lượng</h2>
                 <div class="consequence-cards">
                     <div class="consequence-card">
@@ -116,13 +116,13 @@ use App\Danhmucsanpham;
             </div>
             <div
                 class="section-3-mobile mobile-block-desktop-none d-flex flex-column align-items-center justify-content-center">
-                <h3 class="d-flex align-items-center justify-content-center">
+                <p class="d-flex align-items-center justify-content-center">
                     <img src="{{ asset('images/arrow.png') }}" alt="Tag"
                         style="width: 20px; height: 20px; margin-right: 10px;">
 
                     BẢO VỆ DU THUYỀN
-                </h3>
-                <h2>Tại sao lại chọn chúng tôi</h2>
+                </p>
+                <p>Tại sao lại chọn chúng tôi</p>
                 <img src="{{ asset('images/devide-line.svg') }}" alt="Devide line" class="devide-line-4">
                 <div class="section-3-mobile-contents">
                     <div class="section-3-mobile-content">
@@ -372,7 +372,7 @@ use App\Danhmucsanpham;
     </div>
     <section class="section-product-detail">
         <div class="container">
-            <h2 class="section-product-title">Chi tiết sản phẩm</h2>
+            <p class="section-product-title">Chi tiết sản phẩm</p>
             <div class="product-detail-wrapper">
                 <div class="product-detail-content">
                     <h2 class="text-center">
@@ -885,7 +885,7 @@ use App\Danhmucsanpham;
     <section class="section-4">
         <div class="container d-flex flex-column align-items-center">
             <div class="section-4-content">
-                <h2>Tin tức</h2>
+                <p>Tin tức</p>
                 <img src="{{ asset('images/devide-line.svg') }}" alt="Devide line" class="devide-line-4">
 
                 <p>Cập nhật tin tức & xu hướng ngành</p>
@@ -1444,7 +1444,7 @@ use App\Danhmucsanpham;
 <div id="successPopup" class="popup">
     <div class="popup-content">
         <img src="{{ asset('images/success.jpg') }}" alt="">
-        <h3>Trân trọng cám ơn quý khách</h3>
+        <p>Trân trọng cám ơn quý khách</p>
         <p>Chúng tôi đã nhận được thông tin và sẽ liên hệ đến bạn trong thời gian sớm nhất</p>
     </div>
 </div>
